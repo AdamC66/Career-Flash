@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<head>
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+    {% block style %}
+    {% endblock style %}
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class = nav-left>
+                <div class = logo>
+                    <a href="{% url 'home' %}"><img src="{% static 'img/careerflash-logo--white---421x160.png' %}" alt=""></a> 
+                </div>
+            </div>
+            <div class = nav-center>
+
+            </div>
+            <div class = nav-right>
+                <ul class="menu">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
