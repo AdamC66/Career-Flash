@@ -1,3 +1,5 @@
-#Career Flash!
+# Career Flash!
 
-![alt text](https://github.com/AdamC66/Career-Flash/blob/master/CareerFlash/static/img/careerflash-logo-white-842x319.png)
+#### A project by Adam, Stanley, and Shaheer
+
+![Logo Goes Here](https://github.com/AdamC66/Career-Flash/blob/master/CareerFlash/static/img/image.png)
