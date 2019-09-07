@@ -1,7 +1,7 @@
 import React from 'react'
 import splash from './img/splash.jpg'
 import "./splash.css"
-
+import { Link } from 'react-router-dom';
 function Splash() {
     return (
         <div>
@@ -11,7 +11,9 @@ function Splash() {
                 <h3>Your Job Search Control Center</h3>
                 </div>
                 <img src={splash} alt=""/>
-                <button className="btn" value="join">Join Now</button>
+                <Link to = '/join'>
+                <button className="btn" value="join" >Join Now</button>
+                </Link>
             </div>
         </div>
     )

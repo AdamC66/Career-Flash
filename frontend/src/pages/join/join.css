@@ -1,0 +1,40 @@
+.container{
+    margin: 1em auto;
+    width: 80%;
+    background: rgba(100,100,100,0.5);
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+    padding-bottom: 2em;
+}
+
+.container h1{
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+.join-org{
+    grid-column-start: 1;
+    width: 70%;
+    background: rgba(100,0,0,0.2);
+    text-align: center;
+    margin: 0 auto;
+    padding-bottom: 1em;
+}
+.join-user{
+    grid-column-start: 2;
+    width: 70%;
+    background: rgba(100,0,0,0.2);
+    text-align: center;
+    margin: 0 auto;
+    padding-bottom: 1em;
+}
+
+.btn{
+    background-color: #555;
+    color: white;
+    font-size: 24px;
+    padding: 24px 36px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}

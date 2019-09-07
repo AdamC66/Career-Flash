@@ -6,6 +6,7 @@ nav {
     overflow: hidden;
 }
 nav ul {
+    margin-left: 70px;
     list-style: none;
     white-space: nowrap;
 }
@@ -27,7 +28,7 @@ nav ul li a {
 }
 
 .nav-left {
-    margin: auto 0px;
+    margin: auto 10px;
     height: 100%;
     grid-column-start: 1;
     display: grid;

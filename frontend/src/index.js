@@ -4,13 +4,16 @@ import './index.css';
 import App from './pages/app/App';
 import Join from './pages/join/Join'
 import * as serviceWorker from './serviceWorker';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Header from './components/Header/Header';
 ReactDOM.render(
 <div>
+    <Header/>
     <Router>
+        <Switch>
         <Route exact path='/join' component={Join} />
         <Route path='/' component={App} />
+        </Switch>
     </Router>
 
 </div>, document.getElementById('root'));
