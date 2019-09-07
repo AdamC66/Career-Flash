@@ -17,14 +17,28 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers                
 from . import views
+from django.views.decorators.csrf import csrf_exempt
+from django.conf.urls import url
+from rest_framework import routers
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
 
-router = routers.DefaultRouter()        
-router.register(r'todos', views.TodoView, 'todo')
+
+router = routers.DefaultRouter()
+# router.register(r'users', views.UserViewSet)
+# router.register(r'groups', views.GroupViewSet)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.root),
-    path('home/', views.home, name='home'),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('api/', include(router.urls))
+    path('api/', include(router.urls)),
+    path('api/it/', csrf_exempt(views.ApiView.as_view())),
+    # path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^api/token/$', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    url(r'^api/token/refresh/$', TokenRefreshView.as_view(), name='token_refresh'),
+    # Put the API and admin routes about so they don't get eaten by the matcher?
+    # must be catch-all for pushState to work
+    # url(r'^', views.FrontendAppView.as_view()),
 ]

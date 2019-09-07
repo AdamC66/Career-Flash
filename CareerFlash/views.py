@@ -12,6 +12,7 @@ import json
 import requests
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
+from django.views.generic import View
 # from CareerFlash.serializers import UserSerializer, GroupSerializer
 
 # def root(request): 
