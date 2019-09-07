@@ -1,4 +1,4 @@
-import React from 'react'
+ import React from 'react'
 import './Header.css'
 import logo from './img/careerflash-logo--white---421x160.png'
 
@@ -19,7 +19,10 @@ function header() {
 
             </div>
             <div className = 'nav-right'>
-
+                <ul className="menu">
+                    <li><a href="#">Notifications</a></li>
+                    <li><a href="#">Login</a></li>
+                </ul>
             </div>
         </nav>
     </header>

@@ -1,5 +1,5 @@
 nav {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(100, 100, 100, 0.8);
     display: grid;
     grid-template-columns: 1fr 1fr 1f;
     grid-template-rows: 5em;
@@ -27,6 +27,7 @@ nav ul li a {
 }
 
 .nav-left {
+    margin: auto 0px;
     height: 100%;
     grid-column-start: 1;
     display: grid;
@@ -40,6 +41,7 @@ nav ul li a {
 
 
 .nav-right {
+    margin: auto 0px;
     height: 100%;
     grid-column-start: 3;
 }
@@ -48,6 +50,7 @@ nav ul li a {
     grid-column-start: 1;
     height: 4em;
     width: 8em;
+    margin: auto 20px;
 }
 .logo img {
     max-width: 100%;
