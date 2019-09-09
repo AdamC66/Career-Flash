@@ -4,13 +4,13 @@ from django.core.validators import ( MinLengthValidator, MaxLengthValidator, Min
 from phone_field import PhoneField
 
 
-class Profile(models.User):
+class Profile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='profile_users')
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
 
-class Organization_Profile(models.Group):
+class Organization_Profile(models.Model):
     group = models.ForeignKey(Group, on_delete=models.CASCADE, related_name="profile_orgs")
 
     def __str__(self):
