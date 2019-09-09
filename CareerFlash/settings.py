@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'CareerFlash',
     'corsheaders',
     'rest_framework',
+    'phone_field',
 ]
 
 MIDDLEWARE = [

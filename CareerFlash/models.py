@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User, Group
 from django.core.validators import ( MinLengthValidator, MaxLengthValidator, MinValueValidator, URLValidator)
+from phone_field import PhoneField
 
 
 class Profile(models.User):
@@ -23,7 +24,7 @@ class Application(models.Model):
     notes = models.TextField(null=True)
     contact_name = models.CharField(max_length=255, null=True)
     contact_email = models.CharField(max_length=255, null=True)
-    contact_phone = models.CharField(max_length=255, null=True) #SWAP TO PHONE FIELD AFTER
+    contact_phone = PhoneField(blank=True, help_text='Contact phone number')
     date_submitted = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -44,7 +45,8 @@ class Submittal(models.Model):
 class Comment_Resume(models.Model):
     message = models.TextField(validators=[MinLengthValidator(1), MaxLengthValidator(500)])
     comment_time = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments_user_rs')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments_resume')
+    submittal = models.ForeignKey(Submittal, on_delete=models.CASCADE, related_name='comments_resume')
     
     def __str__(self):
         return f"{self.message}"
@@ -52,7 +54,8 @@ class Comment_Resume(models.Model):
 class Comment_Cover_Letter(models.Model):
     message = models.TextField(validators=[MinLengthValidator(1), MaxLengthValidator(500)])
     comment_time = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments_user_cl')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments_coverletter')
+    submittal = models.ForeignKey(Submittal, on_delete=models.CASCADE, related_name='comments_coverletter')
     
     def __str__(self):
         return f"{self.message}"
