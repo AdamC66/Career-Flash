@@ -1,23 +1,19 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './TrackerTable.css'
+import ApplicationItem from '../ApplicationItem/ApplicationItem'
 function TrackerTable() {
-
-    let [filter, handleFilter] = useState('all')
-    let filters = [
-        {name: 'All', value:'all'},
-        {name: 'Application Submitted', value: 'appSub'},
-        {name: 'Interview', value: 'interview'},
-        {name: 'Offer',value:'offer'},
-        {name: 'Rejected', value:'rejected'}    
-    ]
-
     return (
         <>
             <section className="application-board">
                 <div className='table-title'>
                 <h1>My Job Applications</h1>
                 </div>
-
+                <ApplicationItem />
+                <ApplicationItem />
+                <ApplicationItem />
+                <ApplicationItem />
+                <ApplicationItem />
+                <ApplicationItem />
             </section>
         </>
     )

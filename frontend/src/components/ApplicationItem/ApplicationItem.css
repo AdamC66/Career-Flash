@@ -1,0 +1,29 @@
+.job-app{
+    display: flex;
+    justify-content: space-between;
+    background: rgba(120,100,100,0.3);
+    width: 90%;
+    margin: 0 auto;
+    font-size: 24px;
+    border-radius: 10px;
+    margin-bottom: 0.5em;
+    line-height: 3.5em;
+}
+
+
+.job-app > .date{
+    font-size: 24px;
+    background: white;
+    height: 3.5em;
+    width: 3.5em;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px; 
+}
+
+.circle{
+    background: red;
+    border-radius: 50%;
+    height: 1em;
+    width: 1em;
+    margin: 1.25em 1em;
+}
