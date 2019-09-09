@@ -7,6 +7,7 @@ import Tracker from './pages/tracker/Tracker';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 ReactDOM.render(
 <div>
     <Header/>
@@ -17,6 +18,7 @@ ReactDOM.render(
         <Route path='/' component={App} />
         </Switch>
     </Router>
+    <Footer/>
 
 </div>, document.getElementById('root'));
 

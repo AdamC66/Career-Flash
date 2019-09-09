@@ -1,0 +1,12 @@
+footer{
+    text-align: center;
+    background-color: black;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+}
+
+footer h3{
+    color: white;
+}
