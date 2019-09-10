@@ -1,14 +1,14 @@
 import React from 'react'
 import './ApplicationItem.css'
 
-function ApplicationItem() {
+function ApplicationItem({date, companyName, position}) {
     return (
         <>
          <div className="job-app">
     
-            <span className = 'date'> Sept 9</span>
-            <span className = 'company-name'> Google</span>
-            <span className = 'position'>Jr. Developer</span>
+            <span className = 'date'> {date} </span>
+            <span className = 'company-name'> {companyName} </span>
+            <span className = 'position'> {position} </span>
             <span className = 'marker'><div className='circle'/></span>
       
          </div>      

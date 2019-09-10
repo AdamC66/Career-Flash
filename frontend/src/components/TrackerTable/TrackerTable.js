@@ -1,7 +1,9 @@
 import React from 'react'
 import './TrackerTable.css'
 import ApplicationItem from '../ApplicationItem/ApplicationItem'
-function TrackerTable() {
+
+function TrackerTable({ applications }) {
+    applications.map((application, i)=><ApplicationItem key={i} id={i} date={application.date} companyName={application.company} position={application.position}/>)
     return (
         <>
             <section className="application-board">
