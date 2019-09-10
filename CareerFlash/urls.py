@@ -27,8 +27,12 @@ from rest_framework_simplejwt.views import (
 
 
 router = routers.DefaultRouter()
-# router.register(r'users', views.UserViewSet)
-# router.register(r'groups', views.GroupViewSet)
+router.register(r'users', views.UserViewSet)
+router.register(r'groups', views.GroupViewSet)
+router.register(r'applications', views.ApplicationViewSet)
+router.register(r'submittals', views.SubmittalViewSet)
+router.register(r'commentsresume', views.CommentResumeViewSet)
+router.register(r'commentscoverletter', views.CommentCoverLetterViewSet)
 
 
 urlpatterns = [
