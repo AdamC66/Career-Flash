@@ -1,4 +1,4 @@
-.filter-selector{
+/* .filter-selector{
     width: 8em;
     height: 4em;
     background: grey;
@@ -6,12 +6,39 @@
     text-align: center;
     display: inline-block;
     margin: 5px;
-}
+} */
 
-.filter-selector:hover{
+/* .filter-selector:hover{
     cursor: pointer;
-}
+} */
 
 .active{
     background: rgba(56, 248, 78, 0.637)
+}
+
+.filters {
+    margin: 1em 0;
+    padding-left: 1.5em;
+    font: bold 2em helvetica;
+    display: inline-block;
+}
+.filters li {
+    display:inline-block;
+    margin-right: 1em;
+    line-height: 1.5;
+    text-transform: capitalize;
+}
+
+.filters input {
+    display: none;
+}
+
+.filters label:hover {
+    cursor: pointer;
+    border-bottom: 3px solid black;
+}
+
+.filters input:checked + label {
+    border-bottom: 3px solid black;
+    background: rgba(56, 248, 78, 0.637);
 }

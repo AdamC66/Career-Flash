@@ -5,13 +5,15 @@ const FilterItem = ({ filter, id, setFilter }) => {
 
   const handleClick = (event)=>{
     setFilter(value)
-    event.target.classList.toggle("active")
   }
 
 
   return (
-      <div name="category" className="filter-selector"  id={ id } onClick={ (event)=>handleClick(event) }>{ name }</div>
-  );
+    <li>
+      <input type="radio" name="category" className="filter-selector"  id={ id }/>
+      <label htmlFor={ id } onClick={ (event)=>handleClick(event)}>{ name }</label>
+    </li>
+      );
 };
 
 export default FilterItem;
