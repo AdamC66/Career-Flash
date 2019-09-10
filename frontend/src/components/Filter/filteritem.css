@@ -1,0 +1,17 @@
+.filter-selector{
+    width: 8em;
+    height: 4em;
+    background: grey;
+    border: 1px solid black;
+    text-align: center;
+    display: inline-block;
+    margin: 5px;
+}
+
+.filter-selector:hover{
+    cursor: pointer;
+}
+
+.active{
+    background: rgba(56, 248, 78, 0.637)
+}

@@ -1,13 +1,16 @@
 import React from 'react';
-
+import './filteritem.css';
 const FilterItem = ({ filter, id, setFilter }) => {
   const { name, value } = filter;
 
+  const handleClick = (event)=>{
+    setFilter(value)
+    event.target.classList.toggle("active")
+  }
+
+
   return (
-    <li>
-      <input type="radio" name="category" value={ value } id={ id } defaultChecked onClick={setFilter({ name })} />
-      <label htmlFor="filter0">{ name }</label>
-    </li>
+      <div name="category" className="filter-selector"  id={ id } onClick={ (event)=>handleClick(event) }>{ name }</div>
   );
 };
 

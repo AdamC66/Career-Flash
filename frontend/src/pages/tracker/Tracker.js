@@ -1,20 +1,11 @@
 import React, { useState } from 'react'
 import './tracker.css'
 import TrackerTable from '../../components/TrackerTable/TrackerTable'
-import Filter from '../../components/Filter/Filter'
 import axios from 'axios';
 
 
 function Tracker() {
-    let [filter, setFilter] = useState('all')
     const [applications, setApplications] = useState('')
-    let filters = [
-        {name: 'All', value:'all'},
-        {name: 'Application Submitted', value: 'appSub'},
-        {name: 'Interview', value: 'interview'},
-        {name: 'Offer',value:'offer'},
-        {name: 'Rejected', value:'rejected'}    
-    ]
 
     const GET_APPS = () => {
         axios.get("/api/it/", {})
@@ -27,7 +18,6 @@ function Tracker() {
 
     return (
         <div>
-            <Filter filters={ filters }/>
             <TrackerTable applications={applications}/>
         </div>
     )
