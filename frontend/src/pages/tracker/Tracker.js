@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import './tracker.css'
 import TrackerTable from '../../components/TrackerTable/TrackerTable'
+import Filter from '../../components/Filter/Filter'
 import axios from 'axios';
+
 
 function Tracker() {
     let [filter, setFilter] = useState('all')
@@ -25,6 +27,7 @@ function Tracker() {
 
     return (
         <div>
+            <Filter filters={ filters }/>
             <TrackerTable applications={applications}/>
         </div>
     )
