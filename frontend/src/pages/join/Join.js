@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import './join.css'
+import main_url from '../../config';
 class Join extends Component {
     state = {   
         username: '',
@@ -8,18 +9,10 @@ class Join extends Component {
         password: '',
     }
 
-    handleEmail = (event) => {
+    handleChange = (event) => {
         this.setState({
-            email: event.target.value,
-            username: event.target.value
+            [event.target.name]: event.target.value 
         })
-    }
-
-    handlePassword = (event) => {
-        this.setState({
-            password: event.target.value
-        })
-        
     }
 
     confirmPassword = (event) => {
@@ -56,11 +49,11 @@ class Join extends Component {
                     <form className='join-user' onSubmit={this.handleSubmit}>
                         <h2>Create Account</h2>
                         <label for='email'><b>Email: </b>
-                        <input type='text' value={this.state.email} placeholder = 'Email' name='email' onChange = {this.handleEmail}required/>
+                        <input type='text' value={this.state.email} placeholder = 'Email' name='email' onChange = {this.handleChange}required/>
                         </label>
                         <br/><br/>
                         <label for='password'><b>Password: </b></label>
-                        <input type='password' value={this.state.password} placeholder = 'Password' name='password' onChange = {this.handlePassword} required/>
+                        <input type='password' value={this.state.password} placeholder = 'Password' name='password' onChange = {this.handleChange} required/>
                         <br/><br/>
                         <label for='password'><b>Confirm Password: </b></label>
                         <input type='password'  placeholder = 'Confirm Password' name='confirmPassword' onChange = {this.confirmPassword}required/>

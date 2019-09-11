@@ -58,3 +58,5 @@ target/
 
 *.env
 *.sqlite3
+settings.json
+keys.json
