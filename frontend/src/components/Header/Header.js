@@ -14,6 +14,7 @@ function header() {
                 </div>
                 <ul className="menu">
                     <li><a href="/">Home</a></li>
+                    <li><a href="/tracker">Tracker</a></li>
                     <li><a href="/">About</a></li>
                 </ul>
             </div>
@@ -22,6 +23,7 @@ function header() {
             </div>
             <div className = 'nav-right'>
                 <ul className="menu">
+                    <li><a href="/profile">Profile</a></li>
                     <li><a href="/">Notifications</a></li>
                     <li><a href="/">Login</a></li>
                 </ul>
