@@ -5,7 +5,13 @@ from CareerFlash.models import *
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
-        fields = ('url', 'username', 'first_name', 'last_name', 'email', 'groups')
+        fields = ('url', 'username', 'first_name', 'last_name', 'email', 'groups', 'password')
+
+    def create(self, validated_data):
+        user = super(UserSerializer, self).create(validated_data)
+        user.set_password(validated_data['password'])
+        user.save()
+        return user
 
 class GroupSerializer(serializers.HyperlinkedModelSerializer):
     users = UserSerializer(many=True)

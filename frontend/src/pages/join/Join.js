@@ -36,8 +36,7 @@ class Join extends Component {
             last_name: '',
             email: this.state.email,
             groups: [],
-            password: this.state.p
-            // password: this.state.password
+            password: this.state.password
         }
 
         console.log(user);
