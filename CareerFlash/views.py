@@ -17,6 +17,8 @@ from django.views.generic import View
 from CareerFlash.serializers import *
 from CareerFlash.models import *
 
+
+# Not sure if should be here or in api.py, check folder, will come back later
 # def root(request): 
 #     return redirect('home/')
     
@@ -24,29 +26,30 @@ from CareerFlash.models import *
 #     context = {}
 #     return render(request, 'index.html', context)
 
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
+# class UserViewSet(viewsets.ModelViewSet):
+#     queryset = User.objects.all()
+#     serializer_class = UserSerializer
 
-class GroupViewSet(viewsets.ModelViewSet):
-    queryset = Group.objects.all()
-    serializer_class = GroupSerializer
+# class GroupViewSet(viewsets.ModelViewSet):
+#     queryset = Group.objects.all()
+#     serializer_class = GroupSerializer
 
-class ApplicationViewSet(viewsets.ModelViewSet):
-    serializer_class = ApplicationSerailizer
-    queryset = Application.objects.all()
+# class ApplicationViewSet(viewsets.ModelViewSet):
+#     serializer_class = ApplicationSerailizer
+#     # queryset = Application.objects.all()
+#     def get_queryset(self)
 
-class SubmittalViewSet(viewsets.ModelViewSet):
-    serializer_class = SubmittalSerializer
-    queryset = Submittal.objects.all()
+# class SubmittalViewSet(viewsets.ModelViewSet):
+#     serializer_class = SubmittalSerializer
+#     queryset = Submittal.objects.all()
 
-class CommentResumeViewSet(viewsets.ModelViewSet):
-    serializer_class = CommentResumeSerializer
-    queryset = Comment_Resume.objects.all()
+# class CommentResumeViewSet(viewsets.ModelViewSet):
+#     serializer_class = CommentResumeSerializer
+#     queryset = Comment_Resume.objects.all()
 
-class CommentCoverLetterViewSet(viewsets.ModelViewSet):
-    serializer_class = CommentCoverLetterSerializer
-    queryset = Comment_Cover_Letter.objects.all()
+# class CommentCoverLetterViewSet(viewsets.ModelViewSet):
+#     serializer_class = CommentCoverLetterSerializer
+#     queryset = Comment_Cover_Letter.objects.all()
 
 
 class FrontendAppView(View):

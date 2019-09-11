@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers                
 from . import views
+from . import api
 from django.views.decorators.csrf import csrf_exempt
 from django.conf.urls import url
 from rest_framework import routers
@@ -28,12 +29,12 @@ from rest_framework.authtoken import views as auth_views
 
 
 router = routers.DefaultRouter()
-router.register(r'users', views.UserViewSet)
-router.register(r'groups', views.GroupViewSet)
-router.register(r'applications', views.ApplicationViewSet)
-router.register(r'submittals', views.SubmittalViewSet)
-router.register(r'commentsresume', views.CommentResumeViewSet)
-router.register(r'commentscoverletter', views.CommentCoverLetterViewSet)
+router.register(r'users', api.UserViewSet)
+router.register(r'groups', api.GroupViewSet)
+router.register(r'applications', api.ApplicationViewSet)
+router.register(r'submittals', api.SubmittalViewSet)
+router.register(r'commentsresume', api.CommentResumeViewSet)
+router.register(r'commentscoverletter', api.CommentCoverLetterViewSet)
 
 
 urlpatterns = [

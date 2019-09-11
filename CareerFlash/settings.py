@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'CareerFlash',
     'corsheaders',
     'rest_framework',
-    'rest_framework.authtoken',
+    'knox',
     'phone_field',
 ]
 
@@ -77,13 +77,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'CareerFlash.wsgi.application'
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.TokenAuthentication',
-    ),
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-        'rest_framework.permissions.IsAdminUser',
-    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': 
+    ('knox.auth.TokenAuthentication')
 }
 
 
