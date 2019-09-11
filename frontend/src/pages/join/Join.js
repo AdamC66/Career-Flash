@@ -72,7 +72,5 @@ class Join extends Component {
         )
     }
 }
-
 // ReactDOM.render(<Join/>, document.getElementById('join'));
-
 export default Join

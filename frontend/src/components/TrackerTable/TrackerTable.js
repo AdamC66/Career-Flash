@@ -14,6 +14,15 @@ function TrackerTable({ applications }) {
         {date:'Sept 4',
         company: 'Reddit',
         position: 'Full Stack Dev'},
+        {date:'Aug 30',
+        company: 'GAdventures',
+        position: 'API Dev'},
+        {date:'Sept 6',
+        company: 'PagerDuty',
+        position: 'Mobile Dev'},
+        {date:'Sept 9',
+        company: 'some company',
+        position: 'Mobile Dev'},
     ]
     let filters = [
         {name: 'All', value:'all'},
