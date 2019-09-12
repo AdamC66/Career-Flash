@@ -6,7 +6,7 @@ function ApplicationItem({date, companyName, position}) {
         <>
          <div className="job-app">
     
-            <span className = 'date'> {date} </span>
+            <span className = 'date'><h4> {date} </h4></span>
             <span className="company-logo"><img className='company-logo-img' src={`//logo.clearbit.com/${companyName}.com?size=60`} onError={(e)=>{e.target.onerror = null; e.target.src=placeholder}} alt=""></img></span>
             <span className = 'company-name'> {companyName} </span>
             <span className = 'position'> {position} </span>
