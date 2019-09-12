@@ -14,9 +14,9 @@ import './bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import 'jquery/dist/jquery.min.js'
 ReactDOM.render(
-    
+ 
 <div>
-    <script src="https://unpkg.com/react/umd/react.production.min.js" crossorigin />
+    <script src="https://unpkg.com/react/umd/react.production.min.js" crossOrigin='true' />
     <Header/>
     <Router>
         <Switch>
