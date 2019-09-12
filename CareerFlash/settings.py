@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,22 +40,31 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'CareerFlash',
-    'corsheaders',
     'rest_framework',
-    'knox',
+    'rest_framework.authtoken',
     'phone_field',
 ]
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ALLOW_CREDENTIALS = True 
+
+# CORS_ORIGIN_WHITELIST = ['http://localhost:3000']
+
+# CORS_ORIGIN_WHITELIST = (
+#     'http://localhost:3000'
+# )
 
 ROOT_URLCONF = 'CareerFlash.urls'
 
@@ -76,9 +86,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'CareerFlash.wsgi.application'
 
+
+
+# May need
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': 
-    ('knox.auth.TokenAuthentication')
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        # Do not touch, working out sessions
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.IsAdminUser',
+        'rest_framework.permissions.AllowAny',
+    ),
 }
 
 
@@ -131,4 +151,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-CORS_ORIGIN_WHITELIST = ['http://localhost:3000']
+
+

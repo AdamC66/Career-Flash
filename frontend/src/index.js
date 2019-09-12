@@ -6,18 +6,21 @@ import Join from './pages/join/Join';
 import Login from './pages/login/Login';
 import Tracker from './pages/tracker/Tracker';
 import * as serviceWorker from './serviceWorker';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
+
+
 ReactDOM.render(
 <div>
     <Header/>
     <Router>
         <Switch>
-        <Route exact path='/login' component={Login} />
-        <Route exact path='/join' component={Join} />
-        <Route exact path='/tracker' component={Tracker} />
-        <Route path='/' component={App} />
+            <Route exact path='/login' component={Login} />
+            <Route exact path='/join' component={Join} />
+            <Route exact path='/tracker' component={Tracker} />
+            <Route path='/' component={App} />
         </Switch>
     </Router>
     <Footer/>

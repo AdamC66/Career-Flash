@@ -21,10 +21,10 @@ from . import api
 from django.views.decorators.csrf import csrf_exempt
 from django.conf.urls import url
 from rest_framework import routers
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-    TokenRefreshView,
-)
+# from rest_framework_simplejwt.views import (
+#     TokenObtainPairView,
+#     TokenRefreshView,
+# )
 from rest_framework.authtoken import views as auth_views
 
 
@@ -43,8 +43,8 @@ urlpatterns = [
     path('api/it/', csrf_exempt(views.ApiView.as_view())),
     path('api-token-auth/', auth_views.obtain_auth_token, name='api-token-auth'),
     # path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^api/token/$', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    url(r'^api/token/refresh/$', TokenRefreshView.as_view(), name='token_refresh'),
+    # url(r'^api/token/$', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    # url(r'^api/token/refresh/$', TokenRefreshView.as_view(), name='token_refresh'),
     # Put the API and admin routes about so they don't get eaten by the matcher?
     # must be catch-all for pushState to work
     # url(r'^', views.FrontendAppView.as_view()),

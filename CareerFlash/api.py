@@ -17,11 +17,20 @@ from rest_framework import viewsets, permissions
 from django.views.generic import View
 from CareerFlash.serializers import *
 from CareerFlash.models import *
+from django.db.models import Q
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.response import Response
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    # permission_classes = [permissions.IsAuthenticated]
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = [permissions.IsAuthenticated]
+
+    def list(self, request):
+        queryset = User.objects.filter(Q(username=request.user.username)).all()
+        serializer = UserSerializer(queryset, many = True)
+        return Response(serializer.data)
 
 class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
