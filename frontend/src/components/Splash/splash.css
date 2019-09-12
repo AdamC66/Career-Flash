@@ -21,8 +21,8 @@
 
 .splashimg .about{
     position: absolute;
-    top: 30%;
-    left: 50%; 
+    top: 30vh;
+    left: 50vw; 
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     color: white;

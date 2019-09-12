@@ -19,8 +19,7 @@ function Tracker() {
 
     return (
         <div>
-        <button onClick={()=>setModalOpen(true)}> Open Modal </button>
-            <TrackerTable applications={applications}/>
+            <TrackerTable applications={applications} setModalOpen={setModalOpen}/>
             
             <NewAppModal setModalOpen={setModalOpen} modalOpen={modalOpen} />
         </div>
