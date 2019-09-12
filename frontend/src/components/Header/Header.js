@@ -1,7 +1,8 @@
  import React from 'react'
 import logo from './img/careerflash-logo--white---421x160.png'
 import './Header.css'
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBell, faUser } from '@fortawesome/free-solid-svg-icons'
 function header() {
     return (
 
@@ -14,19 +15,19 @@ function header() {
     <div className="collapse navbar-collapse" id="navbarColor02">
         <ul className="navbar-nav mr-auto">
         <li className="nav-item">
-            <a className="nav-link" href="/">Home</a>
+            <h4><a className="nav-link" href="/">Home</a></h4>
         </li>
         <li className="nav-item">
-            <a className="nav-link" href="/">About</a>
+        <h4><a className="nav-link" href="/">About</a></h4>
         </li>
         <li className="nav-item">
-            <a className="nav-link" href="/profile">Profile</a>
-        </li>
-        <li className="nav-item">
-            <a className="nav-link" href="/tracker">Tracker</a>
+        <h4><a className="nav-link" href="/tracker">Tracker</a></h4>
         </li>
         </ul>
+        <h2 className="nav-item"><a className="nav-link" href="/tracker"><FontAwesomeIcon icon={faBell} color="rgba(255,255,255,0.5)" /></a></h2>
+        <h2 className="nav-item"><a className="nav-link" href="/profile"><FontAwesomeIcon icon={faUser} color="rgba(255,255,255,0.5)"/></a></h2>
     </div>
+   
     </nav>
  
     )

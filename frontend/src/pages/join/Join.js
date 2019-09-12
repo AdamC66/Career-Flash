@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import './join.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope, faKey } from '@fortawesome/free-solid-svg-icons'
 class Join extends Component {
     state = {   
         username: '',
@@ -56,11 +58,11 @@ class Join extends Component {
                     <form className='"card text-white bg-dark mb-3"' onSubmit={this.handleSubmit}>
                         <h2 className='card-header'>Create Account</h2>
                         <div className='card-body'>
-                        <label for='email'><b>Email: </b>
+                        <label for='email'><b><FontAwesomeIcon icon={faEnvelope} color="white"/> Email: </b>
                         <input type='text' value={this.state.email} placeholder = 'Email' name='email' onChange = {this.handleEmail}required/>
                         </label>
                         <br/><br/>
-                        <label for='password'><b>Password: </b></label>
+                        <label for='password'><b><FontAwesomeIcon icon={faKey} color="white"/> Password:  </b></label>
                         <input type='password' value={this.state.password} placeholder = 'Password' name='password' onChange = {this.handlePassword} required/>
                         <br/><br/>
                         <label for='password'><b>Confirm Password: </b></label>
