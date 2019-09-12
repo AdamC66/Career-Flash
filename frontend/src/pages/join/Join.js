@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import './join.css'
+import main_url from '../../config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faKey } from '@fortawesome/free-solid-svg-icons'
 class Join extends Component {
@@ -10,18 +11,10 @@ class Join extends Component {
         password: '',
     }
 
-    handleEmail = (event) => {
+    handleChange = (event) => {
         this.setState({
-            email: event.target.value,
-            username: event.target.value
+            [event.target.name]: event.target.value 
         })
-    }
-
-    handlePassword = (event) => {
-        this.setState({
-            password: event.target.value
-        })
-        
     }
 
     confirmPassword = (event) => {
