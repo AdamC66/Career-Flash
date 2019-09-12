@@ -24,8 +24,12 @@ from rest_framework.response import Response
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    authentication_classes = (TokenAuthentication,)
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny, permissions.IsAuthenticated,]
+
+    def get_permissions(self):
+        if self.request.method == 'POST':
+            self.permission_classes = (permissions.AllowAny,)
+        return super(UserViewSet, self).get_permissions()
 
     def list(self, request):
         queryset = User.objects.filter(Q(username=request.user.username)).all()

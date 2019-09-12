@@ -9,6 +9,7 @@ class Join extends Component {
         username: '',
         email: '',
         password: '',
+        body: window.localStorage["token"]
     }
 
     handleChange = (event) => {
@@ -44,6 +45,10 @@ class Join extends Component {
         event.preventDefault();
     }
 
+    displayToken = () => {
+        console.log(this.state.body)
+    }
+
     render() {
         return (
             <div className='container card border-primary mb-3'>
@@ -52,11 +57,11 @@ class Join extends Component {
                         <h2 className='card-header'>Create Account</h2>
                         <div className='card-body'>
                         <label for='email'><b><FontAwesomeIcon icon={faEnvelope} color="white"/> Email: </b>
-                        <input type='text' value={this.state.email} placeholder = 'Email' name='email' onChange = {this.handleEmail}required/>
+                        <input type='text' value={this.state.email} placeholder = 'Email' name='email' onChange = {this.handleChange}required/>
                         </label>
                         <br/><br/>
                         <label for='password'><b><FontAwesomeIcon icon={faKey} color="white"/> Password:  </b></label>
-                        <input type='password' value={this.state.password} placeholder = 'Password' name='password' onChange = {this.handlePassword} required/>
+                        <input type='password' value={this.state.password} placeholder = 'Password' name='password' onChange = {this.handleChange} required/>
                         <br/><br/>
                         <label for='password'><b>Confirm Password: </b></label>
                         <input type='password'  placeholder = 'Confirm Password' name='confirmPassword' onChange = {this.confirmPassword}required/>
@@ -64,6 +69,7 @@ class Join extends Component {
                         <input type='submit' value='Sign-up'/>
                         <p>You can use Career Flash and all it's features as an individual user, you sill have access to all our features</p>
                         </div>
+                        <button onClick = {this.displayToken}>Display</button>
                     </form>
             </div>
         )
