@@ -16,6 +16,10 @@ class Login extends Component {
         })
     }
 
+    handleLogOut = () => {
+        window.localStorage['token'] = null
+    }
+    
     handleSubmit = (event) => {
         const user = {
             username: this.state.email,
@@ -38,7 +42,6 @@ class Login extends Component {
 
     getInfo = () => {
         const loginToken = window.localStorage['token']
-        // console.log(loginToken['token'])
 
         axios.get('http://localhost:8000/api/users/', {
             headers: {
