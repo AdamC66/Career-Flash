@@ -1,14 +1,14 @@
 .application-board{
-    width:80%;
+    width:75%;
     height: 1000px;
-    background: rgba(120,100,100,0.4);
     margin: 1em auto;
     text-align: center;
     border-radius: 10px;
+    background: rgba(91, 93, 97,1);
 }
 
 .table-title{
-    background: grey;
+    background: #343a40;
     width:100;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -20,4 +20,10 @@
     font-size: 32px;
     padding: 0.5em;
     color:white;
+}
+
+#newapp{
+    display: inline-block;
+    border-radius: 10px;
+    margin: 5px auto;
 }

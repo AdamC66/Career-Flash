@@ -12,10 +12,6 @@
     cursor: pointer;
 } */
 
-.active{
-    background: rgba(56, 248, 78, 0.637)
-}
-
 .filters {
     margin: 1em 0;
     padding-left: 1.5em;
@@ -29,16 +25,12 @@
     text-transform: capitalize;
 }
 
-.filters input {
-    display: none;
+#filterlist{
+    background: rgba(91, 93, 97,1);
+    margin: 0 auto;
 }
 
-.filters label:hover {
-    cursor: pointer;
-    border-bottom: 3px solid black;
-}
-
-.filters input:checked + label {
-    border-bottom: 3px solid black;
-    background: rgba(56, 248, 78, 0.637);
+#filteritem{
+    border: 1px solid white;
+    margin: 0 auto;
 }

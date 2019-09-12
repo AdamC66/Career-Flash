@@ -6,7 +6,7 @@ const Filters = ({ filters, setFilter }) => {
 
   return (
     <section id="filterCategories">
-      <ul className="filters">
+      <ul className="nav nav-tabs" id="filterlist">
         { filterElements }
       </ul>
     </section>

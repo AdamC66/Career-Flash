@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import './join.css'
 import main_url from '../../config';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope, faKey } from '@fortawesome/free-solid-svg-icons'
 class Join extends Component {
     state = {   
         username: '',
@@ -44,28 +46,28 @@ class Join extends Component {
 
     render() {
         return (
-            <div className='container'>
+            <div className='container card border-primary mb-3'>
                 <h1>JOIN NOW</h1>
-                    <form className='join-user' onSubmit={this.handleSubmit}>
-                        <h2>Create Account</h2>
-                        <label for='email'><b>Email: </b>
-                        <input type='text' value={this.state.email} placeholder = 'Email' name='email' onChange = {this.handleChange}required/>
+                    <form className='"card text-white bg-dark mb-3"' onSubmit={this.handleSubmit}>
+                        <h2 className='card-header'>Create Account</h2>
+                        <div className='card-body'>
+                        <label for='email'><b><FontAwesomeIcon icon={faEnvelope} color="white"/> Email: </b>
+                        <input type='text' value={this.state.email} placeholder = 'Email' name='email' onChange = {this.handleEmail}required/>
                         </label>
                         <br/><br/>
-                        <label for='password'><b>Password: </b></label>
-                        <input type='password' value={this.state.password} placeholder = 'Password' name='password' onChange = {this.handleChange} required/>
+                        <label for='password'><b><FontAwesomeIcon icon={faKey} color="white"/> Password:  </b></label>
+                        <input type='password' value={this.state.password} placeholder = 'Password' name='password' onChange = {this.handlePassword} required/>
                         <br/><br/>
                         <label for='password'><b>Confirm Password: </b></label>
                         <input type='password'  placeholder = 'Confirm Password' name='confirmPassword' onChange = {this.confirmPassword}required/>
                         <br/><br/>
                         <input type='submit' value='Sign-up'/>
                         <p>You can use Career Flash and all it's features as an individual user, you sill have access to all our features</p>
+                        </div>
                     </form>
             </div>
         )
     }
 }
-
 // ReactDOM.render(<Join/>, document.getElementById('join'));
-
 export default Join

@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import './tracker.css'
 import TrackerTable from '../../components/TrackerTable/TrackerTable'
 import axios from 'axios';
-
+import NewAppModal from '../../components/NewAppModal/NewAppModal'
 
 function Tracker() {
     const [applications, setApplications] = useState('')
+    const [modalOpen, setModalOpen] = useState(false)
 
     const GET_APPS = () => {
         axios.get("/api/it/", {})
@@ -18,7 +19,9 @@ function Tracker() {
 
     return (
         <div>
-            <TrackerTable applications={applications}/>
+            <TrackerTable applications={applications} setModalOpen={setModalOpen}/>
+            
+            <NewAppModal setModalOpen={setModalOpen} modalOpen={modalOpen} />
         </div>
     )
 }

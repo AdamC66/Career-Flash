@@ -6,30 +6,29 @@
     width:100%;
 }
 .splashimg .btn {
-    position: absolute;
+    /* position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    background-color: #555;
+    -ms-transform: translate(-50%, -50%); */
     color: white;
     font-size: 24px;
     padding: 24px 36px;
     border: none;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 10px;
   }
 
 .splashimg .about{
     position: absolute;
-    top: 20%;
-    left: 50%; 
+    top: 30vh;
+    left: 50vw; 
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     color: white;
     background-color: rgba(100,100,100,0.5);
     padding: 10px 100px;
-    border-radius: 5px;
+    border-radius: 10px;
   }
   h1{
       font-size: 48pxl;

@@ -3,7 +3,7 @@ import './TrackerTable.css'
 import ApplicationItem from '../ApplicationItem/ApplicationItem'
 import Filter from '../Filter/Filter'
 
-function TrackerTable({ applications }) {
+function TrackerTable({ applications, setModalOpen }) {
     
     const [myfilter, setFilter] = useState('all');
 
@@ -14,6 +14,15 @@ function TrackerTable({ applications }) {
         {date:'Sept 4',
         company: 'Reddit',
         position: 'Full Stack Dev'},
+        {date:'Aug 30',
+        company: 'GAdventures',
+        position: 'API Dev'},
+        {date:'Sept 6',
+        company: 'PagerDuty',
+        position: 'Mobile Dev'},
+        {date:'Sept 9',
+        company: 'some company',
+        position: 'Mobile Dev'},
     ]
     let filters = [
         {name: 'All', value:'all'},
@@ -28,10 +37,11 @@ function TrackerTable({ applications }) {
         <>
             <section className="application-board">
                 <div className='table-title'>
-                <h1>My Job Applications</h1>
+                <div class="card-header"><h1>My Job Applications</h1></div>
                 <h2>{myfilter}</h2>
                 </div>
                 <Filter filters={ filters } setFilter={ setFilter }/>
+                <button id="newapp" className="btn btn-primary" onClick={()=>setModalOpen(true)}> Add Application </button>
                 { appElements }
             </section>
         </>

@@ -9,9 +9,11 @@ const FilterItem = ({ filter, id, setFilter }) => {
 
 
   return (
-    <li>
-      <input type="radio" name="category" className="filter-selector"  id={ id }/>
-      <label htmlFor={ id } onClick={ (event)=>handleClick(event)}>{ name }</label>
+    <li className="nav-item" id="filteritem">
+
+      <a className="nav-link" data-toggle="tab" href="#home" onClick={ (event)=>handleClick(event)}>{ name }</a>
+
+      
     </li>
       );
 };
