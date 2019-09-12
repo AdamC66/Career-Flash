@@ -12,10 +12,6 @@
     cursor: pointer;
 } */
 
-.active{
-    background: rgba(56, 248, 78, 0.637)
-}
-
 .filters {
     margin: 1em 0;
     padding-left: 1.5em;
@@ -40,5 +36,4 @@
 
 .filters input:checked + label {
     border-bottom: 3px solid black;
-    background: rgba(56, 248, 78, 0.637);
 }

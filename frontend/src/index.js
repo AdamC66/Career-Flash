@@ -10,9 +10,13 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import 'typeface-roboto';
-
+import './bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.min.js'
+import 'jquery/dist/jquery.min.js'
 ReactDOM.render(
+    
 <div>
+    <script src="https://unpkg.com/react/umd/react.production.min.js" crossorigin />
     <Header/>
     <Router>
         <Switch>

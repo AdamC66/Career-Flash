@@ -12,7 +12,7 @@ function Profile() {
         <div className='profile-content'>
         <h2>{userInfo.name}'s Profile</h2>    
         <div className='profile-pic-wrapper'>
-                <img className='profile-pic' src={userInfo.profilepic}/>
+                <img className='profile-pic' src={userInfo.profilepic} alt=""/>
         </div>
         <h3>Brand Statement</h3>
         <textarea className='brand-statement' value={userInfo.brandStatement} onChange={(e)=>setUserInfo({brandStatement: e.target.value})}></textarea>

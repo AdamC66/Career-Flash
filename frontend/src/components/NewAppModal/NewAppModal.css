@@ -48,6 +48,8 @@
 
 .company-logo-modal img{
     border-radius: 50%;
+    width: 100%;
+    height: 100%;
 }
 
 .modal-close{
@@ -94,5 +96,4 @@
 
 .filters input:checked + label {
     border-bottom: 3px solid black;
-    background: rgba(56, 248, 78, 0.637);
 }

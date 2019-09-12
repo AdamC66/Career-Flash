@@ -1,13 +1,18 @@
 .job-app{
     display: flex;
     justify-content: space-between;
-    background: rgba(120,100,100,0.3);
+    background: #343a40;
     width: 90%;
     margin: 0 auto;
     font-size: 24px;
     border-radius: 10px;
     margin-bottom: 0.5em;
     line-height: 3.5em;
+}
+
+.company-logo-img{
+    border-radius: 50%;
+    margin: 5px;
 }
 
 .job-app > .date{

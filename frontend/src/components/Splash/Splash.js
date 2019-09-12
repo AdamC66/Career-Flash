@@ -8,12 +8,13 @@ function Splash() {
             <div className = 'splashimg'>
                 <div className='about'>
                 <h1>Welcome to Career Flash</h1>
-                <h3>Your Job Search Control Center</h3>
+                <h4>Your Job Search Control Center</h4>
+                <Link to = '/join'>
+                <button className="btn btn-primary" value="join" >Join Now</button>
+                </Link>
                 </div>
                 <img src={splash} alt=""/>
-                <Link to = '/join'>
-                <button className="btn" value="join" >Join Now</button>
-                </Link>
+                
             </div>
         </div>
     )

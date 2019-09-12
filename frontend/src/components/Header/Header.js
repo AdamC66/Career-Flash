@@ -1,35 +1,34 @@
  import React from 'react'
-import './Header.css'
 import logo from './img/careerflash-logo--white---421x160.png'
+import './Header.css'
 
 function header() {
     return (
-        <header>
-        <nav>
-            <div className ='nav-left'>
-                <div className = 'logo'>
-                    <a href="/">
-                    <img src={logo} alt=""/>
-                    </a>
-                </div>
-                <ul className="menu">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/tracker">Tracker</a></li>
-                    <li><a href="/">About</a></li>
-                </ul>
-            </div>
-            <div className = 'nav-center'>
 
-            </div>
-            <div className = 'nav-right'>
-                <ul className="menu">
-                    <li><a href="/profile">Profile</a></li>
-                    <li><a href="/">Notifications</a></li>
-                    <li><a href="/">Login</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div className='logo'> <a class="navbar-brand" href="/"><img src={logo} alt=""></img></a> </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor02">
+        <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/">About</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/profile">Profile</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/tracker">Tracker</a>
+        </li>
+        </ul>
+    </div>
+    </nav>
+ 
     )
 }
 

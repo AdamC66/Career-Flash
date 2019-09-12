@@ -3,7 +3,7 @@ import './NewAppModal.css'
 import Modal from 'react-modal';
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
-
+import placeholder from '../../img/placeholderimg.png'
 function NewAppModal({setModalOpen, modalOpen}) {
     const [companyName, setCompanyName] = useState('');
     const [position, setPosition] = useState('');
@@ -54,7 +54,7 @@ return(
 
     <div className="info" id='infoitems'>
     <div className='company-logo-modal '>
-        <img src={`//logo.clearbit.com/${companyName}.com?size=80`} alt="logo"></img>
+        <img src={`//logo.clearbit.com/${companyName}.com?size=80`} onError={(e)=>{e.target.onerror = null; e.target.src=placeholder}} alt=""></img>
     </div>
     <h2>Company Name</h2>    
     <input type="text" name="company-name" placeholder="Company Name" onChange={e => setCompanyName(e.target.value)} />

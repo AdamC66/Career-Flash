@@ -37,8 +37,7 @@ function TrackerTable({ applications }) {
         <>
             <section className="application-board">
                 <div className='table-title'>
-                <h1>My Job Applications</h1>
-                <h2>{myfilter}</h2>
+                <div class="card-header"><h1>My Job Applications</h1></div>
                 </div>
                 <Filter filters={ filters } setFilter={ setFilter }/>
                 { appElements }
