@@ -58,4 +58,7 @@ target/
 
 *.env
 *.sqlite3
+settings.json
+keys.json
 node_modules
+

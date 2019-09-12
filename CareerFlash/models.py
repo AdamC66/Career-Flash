@@ -3,7 +3,7 @@ from django.contrib.auth.models import User, Group
 from django.core.validators import ( MinLengthValidator, MaxLengthValidator, MinValueValidator, URLValidator)
 from phone_field import PhoneField
 
-
+# Possibly not needed but don't delete yet
 class Profile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='profile_users')
 

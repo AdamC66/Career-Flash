@@ -12,16 +12,10 @@
     grid-column-start: 1;
     grid-column-end: 3;
 }
-.join-org{
-    grid-column-start: 1;
-    width: 70%;
-    background: rgba(100,0,0,0.2);
-    text-align: center;
-    margin: 0 auto;
-    padding-bottom: 1em;
-}
+
 .join-user{
-    grid-column-start: 2;
+    grid-column-start: 1;
+    grid-column-end: 3;
     width: 70%;
     background: rgba(100,0,0,0.2);
     text-align: center;
