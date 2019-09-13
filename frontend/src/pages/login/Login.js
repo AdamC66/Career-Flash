@@ -40,6 +40,7 @@ class Login extends Component {
             console.log(e)
         }).then(()=>{
                 this.props.history.push('/profile')
+                window.location.reload()
         })
         
         event.preventDefault();
