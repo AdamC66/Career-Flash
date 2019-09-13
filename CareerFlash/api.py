@@ -52,9 +52,9 @@ class ApplicationViewSet(viewsets.ModelViewSet):
         serializer.save(owner=self.request.user)
 
 
-class SubmittalViewSet(viewsets.ModelViewSet):
-    serializer_class = SubmittalSerializer
-    queryset = Submittal.objects.all()
+class ProfileViewSet(viewsets.ModelViewSet):
+    serializer_class = ProfileSerializer
+    queryset = Profile.objects.all()
 
 class CommentResumeViewSet(viewsets.ModelViewSet):
     serializer_class = CommentResumeSerializer

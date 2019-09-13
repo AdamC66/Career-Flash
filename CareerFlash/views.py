@@ -78,7 +78,7 @@ class ApiView(View):
 
     def get(self, request):
         return JsonResponse({
-            "it": "THIS IS COMING FROM DJANGO!!!!!"
+            "it": "THIS IS OUR FIRST DJANGO REQUEST :c"
         })
 
     @csrf_exempt

@@ -5,7 +5,7 @@ from CareerFlash.models import *
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('pk', 'username', 'first_name', 'last_name', 'email', 'groups', 'password')
+        fields = ('id', 'username', 'first_name', 'last_name', 'email', 'groups', 'password')
 
     def create(self, validated_data):
         user = super(UserSerializer, self).create(validated_data)
@@ -18,16 +18,16 @@ class GroupSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Group
-        fields = ('pk', 'name', 'users')
+        fields = ('id', 'name', 'users')
 
 class ApplicationSerailizer(serializers.ModelSerializer):
     class Meta:
         model = Application
-        fields = ('id', 'company', 'position', 'description', 'notes', 'contact_name', 'contact_phone', 'contact_email', 'date_submitted')
+        fields = ('id', 'company', 'position', 'description', 'notes', 'contact_name', 'contact_phone', 'contact_email', 'date_submitted', 'status')
 
-class SubmittalSerializer(serializers.ModelSerializer):
+class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Submittal
+        model = Profile
         fields = ('id', 'brand_statement', 'resume', 'cover_letter', 'github', 'linkedin', 'portfolio')
 
 class CommentResumeSerializer(serializers.ModelSerializer):
