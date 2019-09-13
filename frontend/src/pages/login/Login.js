@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import main_url from '../../config'
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope, faKey } from '@fortawesome/free-solid-svg-icons'
 class Login extends Component {
     state = {   
         email: '',
@@ -55,20 +56,20 @@ class Login extends Component {
 
     render() {
         return(
-            <div className='container'>
+            <div className='card text-white bg-secondary mb-3' style={{width: "80%", margin:"0 auto", textAlign:"center"}}>
                 <h1>Login</h1>
-                    <form className='join-user' onSubmit = {this.handleSubmit}>
+                    <form className='card bg-primary mb-3' style={{width: "80%", margin:"0 auto"}} onSubmit = {this.handleSubmit}>
                         <br/>
-                        <label htmlFor='email'><b>Email: </b>
-                        <input type='text' value={this.state.email} placeholder = 'Email' name='email' onChange = {this.handleChange}required/>
+                        <label htmlFor='email'><b><FontAwesomeIcon icon={faEnvelope} color="white"/>Email: </b>
+                        <input type='text' className="form-control" style={{width: "60%", margin:"0 auto"}} value={this.state.email} placeholder = 'Email' name='email' onChange = {this.handleChange}required/>
                         </label>
-                        <br/><br/>
-                        <label htmlFor='password'><b>Password: </b></label>
-                        <input type='password' value={this.state.password} placeholder = 'Password' name='password' onChange = {this.handleChange} required/>
-                        <br/><br/>
-                        <input type='submit' value='Sign-up'/>
+                        <br/>
+                        <label htmlFor='password'><b><FontAwesomeIcon icon={faKey} color="white"/>Password: </b></label>
+                        <input type='password' className="form-control" style={{width: "60%", margin:"0 auto"}} value={this.state.password} placeholder = 'Password' name='password' onChange = {this.handleChange} required/>
+                        <br/>
+                        <input className="btn btn-secondary" style={{width: "60%", margin:"20px auto"}}  type='submit' value='Login'/>
                     </form>
-                <button onClick = {this.getInfo}>test</button>
+                <button className="btn btn-primary" style={{width: "60%", margin:"20px auto"}} onClick = {this.getInfo}>test</button>
                 <h1>{this.state.body}</h1>
             </div>
         )
