@@ -1,17 +1,17 @@
- import React, {useState} from 'react'
+import React, {useState} from 'react'
 import logo from './img/careerflash-logo--white---421x160.png'
 import './Header.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBell, faUser } from '@fortawesome/free-solid-svg-icons'
 import Axios from 'axios';
+import main_url from '../../config';
 
 function Header() {
     const [userToken, setUserToken] = useState(window.localStorage['token'])
     const [userName, setUserName] = useState('')
     const [loginOutButton, setLoginOutButton] = useState(<h5><a className="dropdown-item" href="/login">Login</a></h5>)
-
-    if(userToken){
-        Axios.get('http://localhost:8000/api/users/', {
+    if(userToken != 'null'){
+        main_url.get('/api/users/', {
             headers: {
                 Authorization: `Token ${userToken}` 
             }
@@ -23,8 +23,11 @@ function Header() {
         })
     }
 
-    const handleLogout = () =>{
-        window.localStorage['token']=""
+    const handleLogOut = () => {
+        window.localStorage['token'] = null
+        console.log('Logged out successfully')
+        console.log(window.localStorage['token'])
+        this.props.history.push('/')
         window.location.reload()
     }
     return (
