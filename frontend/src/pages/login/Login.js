@@ -36,6 +36,10 @@ class Login extends Component {
             //     token: res.data['token'],
             // })
             // console.log(this.state.token)
+        }).catch(e =>{
+            console.log(e)
+        }).then(()=>{
+                this.props.history.push('/profile')
         })
         
         event.preventDefault();
