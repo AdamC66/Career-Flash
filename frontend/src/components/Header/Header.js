@@ -40,7 +40,7 @@ function Header() {
         </ul>
         <h2 className="nav-item"><a className="nav-link" href="/tracker"><FontAwesomeIcon icon={faBell}  color="rgba(255,255,255,0.5)" /></a></h2>
         <h2 className="nav-item dropdown" role='button'><a href="#" className="nav-link dropdown-toggle" role="button" data-toggle="dropdown"><FontAwesomeIcon icon={faUser} color="rgba(255,255,255,0.5)"/> {userName}</a>
-        <div className="dropdown-menu" x-placement="bottom-start" style={{position: 'absolute', transform: 'translate3d(0px, 39px, 0px)', top: '0px', left: '0px', willChange: 'transform'}}>
+        <div className="dropdown-menu" x-placement="bottom-start" style={{position: 'absolute', transform: 'translate3d(100px, 45px, 0px)', top: '0px', left: '0px', willChange: 'transform'}}>
         <h5><a className="dropdown-item" href="/profile">Profile</a></h5>
         <h5><a className="dropdown-item" href="/tracker">Tracker</a>></h5>
         <div className="dropdown-divider"></div>
