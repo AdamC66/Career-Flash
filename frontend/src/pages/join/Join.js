@@ -34,6 +34,10 @@ class Join extends Component {
         }
     }
 
+    createLogin = () => {
+        
+    }
+
     handleSubmit = (event) => {
         const user = {
             username: this.state.email,
@@ -46,11 +50,28 @@ class Join extends Component {
 
         main_url.post("/api/users/", user)
             .then(res => {
-                console.log(res);
-                console.log(res.data);
+                const loginInfo = {
+                    username: this.state.email,
+                    password: this.state.password
+                }
+        
+                console.log(loginInfo)
+        
+                main_url.post("/api-token-auth/", loginInfo)
+                .then(res => {
+                    window.localStorage['token'] = res.data['token']
+                }).catch(e => {
+                    console.log(e)
+                }).then(() => {
+                    if(window.localStorage['token'] != 'null'){
+                        this.props.history.push('/profile')
+                    }
+                })
             }).catch(e => {
                 console.log(e);
+                alert('Entry field issues') // make better alert
             })
+            
         event.preventDefault();
     }
 
