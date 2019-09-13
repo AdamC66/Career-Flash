@@ -30,8 +30,7 @@ function Header() {
         window.localStorage['token'] = null
         console.log('Logged out successfully')
         console.log(window.localStorage['token'])
-        this.props.history.push('/')
-        window.location.reload()
+        window.location.href = '/'
     }
     return (
 
