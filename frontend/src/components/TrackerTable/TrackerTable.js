@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './TrackerTable.css'
 import ApplicationItem from '../ApplicationItem/ApplicationItem'
 import Filter from '../Filter/Filter'
@@ -6,7 +6,7 @@ import main_url from '../../config.js'
 function TrackerTable({ setModalOpen }) {
     
     const [myfilter, setFilter] = useState('all');
-    const [applications, setApplications] = useState({})
+    const [applications, setApplications] = useState([])
     let applicationstest=[
         {date:'Sept 2',
         company: 'Google',
@@ -31,17 +31,19 @@ function TrackerTable({ setModalOpen }) {
         {name: 'Offer',value:'offer'},
         {name: 'Rejected', value:'rejected'}    
     ]
-
-    const GET_APPS = () => {
-        main_url.get("/applications", {})
+    useEffect(() => {
+        let userToken = window.localStorage['token']
+        main_url.get("/api/applications/",{
+            headers: {
+                Authorization: `Token ${userToken}` 
+            }})
           .then((response) => {
               console.log("__GET APP CALLED")
               setApplications(response.data)
               console.log(applications)
-            }).catch((e) => console.log("Error:", e))
-        }
-    GET_APPS()
-    const appElements = applicationstest.map((application, i)=><ApplicationItem key={i} id={i} date={application.date} companyName={application.company} position={application.position}/>)
+            }).catch((e) => console.log("Error:", e))  
+    }, [])
+    const appElements = applications.map((application, i)=><ApplicationItem key={i} id={i} date={application.date_submitted} companyName={application.company} position={application.position}/>)
     return (
         <>
             <section className="application-board">

@@ -45,6 +45,11 @@ class ApplicationViewSet(viewsets.ModelViewSet):
     queryset = Application.objects.all()
     permission_classes = [permissions.IsAuthenticated]
 
+    def get_permissions(self):
+        if self.request.method == 'POST':
+            self.permission_classes = (permissions.IsAuthenticated,)
+        return super(ApplicationViewSet, self).get_permissions()
+
     def get_queryset(self):
         return self.request.user.job_applications.all()
 

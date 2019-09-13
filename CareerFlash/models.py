@@ -17,7 +17,7 @@ from phone_field import PhoneField
 #         return f"{self.name}"
 
 class Application(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="job_applications")
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="job_applications")
     company = models.CharField(max_length=255)
     position = models.CharField(max_length=255)
     description = models.TextField(null=True)

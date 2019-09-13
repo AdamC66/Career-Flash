@@ -4,26 +4,33 @@ import Modal from 'react-modal';
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
 import placeholder from '../../img/placeholderimg.png'
+import main_url from '../../config.js'
+import axios from 'axios'
 function NewAppModal({setModalOpen, modalOpen}) {
     const [companyName, setCompanyName] = useState('');
     const [position, setPosition] = useState('');
     const [description, setDescription] = useState('');
     const [date, setDate] = useState(new Date());
+    const [notes, setNotes] = useState('');
     const [contactName, setContactName] = useState('')
     const [contactEmail, setContactEmail] = useState('')
     const [contactPhone, setContactPhone] = useState('')
     
 const submitValue = () => {
     const frmdetails = {
-        'companyName' : companyName,
+        'company' : companyName,
         'position' : position,
         'description' : description,
-        'date' : date,
-        'contactName' : contactName,
-        'contactEmail': contactEmail,
-        'contactPhone': contactPhone,
+        'date_submitted' : date,
+        'notes': notes,
+        'contact_name' : contactName,
+        'contact_email': contactEmail,
+        'contact_phone': contactPhone,
+        'date_submitted': date,
+        'status': 'appsub'
     }
     console.log(frmdetails);
+    handleSubmit(frmdetails)
 }
 
 const handleTogglePage= (event) =>{
@@ -31,6 +38,19 @@ const handleTogglePage= (event) =>{
     let notes = document.querySelector('.notes')
     info.classList.toggle('hidden')
     notes.classList.toggle('hidden')
+}
+
+const handleSubmit = (frmdetails)=>{
+    let userToken = window.localStorage['token']
+    console.log(userToken)
+    axios.post("http://localhost:8000/api/applications/",
+        frmdetails,{
+        headers: {
+            Authorization: `Token ${userToken}`,
+            'Content-Type' : 'application/json' 
+        }
+        
+    })
 }
 
 return(
@@ -77,7 +97,7 @@ return(
     </div>
     <div className='notes hidden'>
     <h4 className="card-title"> Notes</h4>
-    <textarea name='description info' placeholder="Description" onChange={e => setDescription(e.target.value)}> </textarea>
+    <textarea name='description info' placeholder="Notes" onChange={e => setNotes(e.target.value)}> </textarea>
     
     <h4 className="card-title">Contact</h4>
     <input type="text" name='contact-name'  placeholder="Name" onChange={e => setContactName(e.target.value)} />

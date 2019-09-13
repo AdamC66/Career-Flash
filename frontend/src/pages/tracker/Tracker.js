@@ -4,12 +4,11 @@ import TrackerTable from '../../components/TrackerTable/TrackerTable'
 import NewAppModal from '../../components/NewAppModal/NewAppModal'
 
 function Tracker() {
-    const [applications, setApplications] = useState('')
     const [modalOpen, setModalOpen] = useState(false)
 
     return (
         <div>
-            <TrackerTable applications={applications} setModalOpen={setModalOpen}/>
+            <TrackerTable setModalOpen={setModalOpen}/>
             
             <NewAppModal setModalOpen={setModalOpen} modalOpen={modalOpen} />
         </div>
