@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import logo from './img/careerflash-logo--white---421x160.png'
 import './Header.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -10,18 +10,21 @@ function Header() {
     const [userToken, setUserToken] = useState(window.localStorage['token'])
     const [userName, setUserName] = useState('')
     const [loginOutButton, setLoginOutButton] = useState(<h5><a className="dropdown-item" href="/login">Login</a></h5>)
-    if(userToken != 'null'){
-        main_url.get('/api/users/', {
-            headers: {
-                Authorization: `Token ${userToken}` 
-            }
-        })
-        .then(res => {
-            setUserName(res.data[0].email)
-            console.log(res.data)
-            setLoginOutButton(<h5><a className="dropdown-item" href="#" onClick={handleLogOut}>Logout</a></h5>)
-        })
-    }
+    useEffect(() => {
+        if(userToken != 'null'){
+            main_url.get('/api/users/', {
+                headers: {
+                    Authorization: `Token ${userToken}` 
+                }
+            })
+            .then(res => {
+                setUserName(res.data[0].email)
+                console.log(res.data)
+                setLoginOutButton(<h5><a className="dropdown-item" href="#" onClick={handleLogOut}>Logout</a></h5>)
+            });
+        }
+    }, [])
+
 
     const handleLogOut = () => {
         window.localStorage['token'] = null
