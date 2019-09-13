@@ -32,7 +32,7 @@ router = routers.DefaultRouter()
 router.register(r'users', api.UserViewSet)
 router.register(r'groups', api.GroupViewSet)
 router.register(r'applications', api.ApplicationViewSet)
-router.register(r'submittals', api.SubmittalViewSet)
+router.register(r'profiles', api.ProfileViewSet)
 router.register(r'commentsresume', api.CommentResumeViewSet)
 router.register(r'commentscoverletter', api.CommentCoverLetterViewSet)
 
