@@ -7,23 +7,23 @@ function TrackerTable({ setModalOpen }) {
     
     const [myfilter, setFilter] = useState('all');
     const [applications, setApplications] = useState([])
-    let applicationstest=[
-        {date:'Sept 2',
-        company: 'Google',
-        position: 'Front End Dev'},
-        {date:'Sept 4',
-        company: 'Reddit',
-        position: 'Full Stack Dev'},
-        {date:'Aug 30',
-        company: 'GAdventures',
-        position: 'API Dev'},
-        {date:'Sept 6',
-        company: 'PagerDuty',
-        position: 'Mobile Dev'},
-        {date:'Sept 9',
-        company: 'some company',
-        position: 'Mobile Dev'},
-    ]
+    // let applicationstest=[
+    //     {date:'Sept 2',
+    //     company: 'Google',
+    //     position: 'Front End Dev'},
+    //     {date:'Sept 4',
+    //     company: 'Reddit',
+    //     position: 'Full Stack Dev'},
+    //     {date:'Aug 30',
+    //     company: 'GAdventures',
+    //     position: 'API Dev'},
+    //     {date:'Sept 6',
+    //     company: 'PagerDuty',
+    //     position: 'Mobile Dev'},
+    //     {date:'Sept 9',
+    //     company: 'some company',
+    //     position: 'Mobile Dev'},
+    // ]
     let filters = [
         {name: 'All', value:'all'},
         {name: 'Application Submitted', value: 'appSub'},
@@ -31,7 +31,7 @@ function TrackerTable({ setModalOpen }) {
         {name: 'Offer',value:'offer'},
         {name: 'Rejected', value:'rejected'}    
     ]
-    useEffect(() => {
+    useEffect((applications) => {
         let userToken = window.localStorage['token']
         main_url.get("/api/applications/",{
             headers: {
