@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import './TrackerTable.css'
 import ApplicationItem from '../ApplicationItem/ApplicationItem'
 import Filter from '../Filter/Filter'
-
-function TrackerTable({ applications, setModalOpen }) {
+import main_url from '../../config.js'
+function TrackerTable({ setModalOpen }) {
     
     const [myfilter, setFilter] = useState('all');
-
+    const [applications, setApplications] = useState({})
     let applicationstest=[
         {date:'Sept 2',
         company: 'Google',
@@ -32,12 +32,21 @@ function TrackerTable({ applications, setModalOpen }) {
         {name: 'Rejected', value:'rejected'}    
     ]
 
+    const GET_APPS = () => {
+        main_url.get("/applications", {})
+          .then((response) => {
+              console.log("__GET APP CALLED")
+              setApplications(response.data)
+              console.log(applications)
+            }).catch((e) => console.log("Error:", e))
+        }
+    GET_APPS()
     const appElements = applicationstest.map((application, i)=><ApplicationItem key={i} id={i} date={application.date} companyName={application.company} position={application.position}/>)
     return (
         <>
             <section className="application-board">
                 <div className='table-title'>
-                <div class="card-header"><h1>My Job Applications</h1></div>
+                <div className="card-header"><h1>My Job Applications</h1></div>
                 <h2>{myfilter}</h2>
                 </div>
                 <Filter filters={ filters } setFilter={ setFilter }/>

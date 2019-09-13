@@ -19,7 +19,7 @@ function Header() {
         .then(res => {
             setUserName(res.data[0].email)
             console.log(res.data)
-            setLoginOutButton(<h5><a className="dropdown-item" href="#" onClick={handleLogout}>Logout</a></h5>)
+            setLoginOutButton(<h5><a className="dropdown-item" href="#" onClick={handleLogOut}>Logout</a></h5>)
         })
     }
 

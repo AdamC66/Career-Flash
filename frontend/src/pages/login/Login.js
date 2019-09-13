@@ -32,7 +32,7 @@ class Login extends Component {
                 window.location.reload()
             } else {
                 alert('incorrect login, please try again')
-        })
+        }})
         event.preventDefault();
     }
 
