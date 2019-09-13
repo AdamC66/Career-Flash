@@ -1,9 +1,26 @@
- import React from 'react'
+ import React, {useState} from 'react'
 import logo from './img/careerflash-logo--white---421x160.png'
 import './Header.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBell, faUser } from '@fortawesome/free-solid-svg-icons'
-function header() {
+import Axios from 'axios';
+
+function Header() {
+    const [userToken, setUserToken] = useState(window.localStorage['token'])
+    const [userName, setUserName] = useState('')
+    if(userToken){
+        Axios.get('http://localhost:8000/api/users/', {
+            headers: {
+                Authorization: `Token ${userToken}` 
+            }
+        })
+        .then(res => {
+            setUserName(res.data[0].email)
+            console.log(res.data)
+        })
+    }
+
+
     return (
 
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -24,8 +41,8 @@ function header() {
         <h4><a className="nav-link" href="/tracker">Tracker</a></h4>
         </li>
         </ul>
-        <h2 className="nav-item"><a className="nav-link" href="/tracker"><FontAwesomeIcon icon={faBell} color="rgba(255,255,255,0.5)" /></a></h2>
-        <h2 className="nav-item"><a className="nav-link" href="/profile"><FontAwesomeIcon icon={faUser} color="rgba(255,255,255,0.5)"/></a></h2>
+        <h2 className="nav-item"><a className="nav-link" href="/tracker"><FontAwesomeIcon icon={faBell}  color="rgba(255,255,255,0.5)" /></a></h2>
+        <h2 className="nav-item"><a className="nav-link" href="/profile"><FontAwesomeIcon icon={faUser} color="rgba(255,255,255,0.5)"/> {userName}</a></h2>
     </div>
    
     </nav>
@@ -33,4 +50,4 @@ function header() {
     )
 }
 
-export default header
+export default Header

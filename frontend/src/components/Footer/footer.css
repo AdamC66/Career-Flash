@@ -5,11 +5,20 @@
     left: 0;
     background-color: #343a40;
     width: 100vw;
-    height: 3em;
+    height: 6em;
     overflow: hidden;
     margin-top: 6em;
 }
 
 .footer h3{
     color: white;
+}
+
+.footerlogo-wrapper{
+    width: 10em;
+    margin: 5px auto;
+}
+
+.footerlogo-wrapper img{
+    max-width: 100%;
 }
