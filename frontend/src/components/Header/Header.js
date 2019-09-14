@@ -6,7 +6,7 @@ import { faBell, faUser } from '@fortawesome/free-solid-svg-icons'
 import main_url from '../../config';
 
 function Header() {
-    const [userToken, setUserToken] = useState('')
+    const [userToken, setUserToken] = useState(window.localStorage['token'])
     const [userName, setUserName] = useState('')
     const [loginOutButton, setLoginOutButton] = useState(<h5><a className="dropdown-item" href="/login">Login</a></h5>)
     
