@@ -2,8 +2,8 @@
     text-align: center;
 }
 .profile-pic-wrapper{
-    width: 10em;
-    height: 10em;
+    width: 15em;
+    height: 15em;
     border-radius: 50%;
     display: block;
     margin: 0 auto;
@@ -19,4 +19,78 @@
     width: 400px;
     height: 150px;
     margin: 10px 0px;
+}
+
+.brand-statement-wrapper{
+    background: rgba(255,255,255,0.3);
+    padding: 5px;
+    width: 95%;
+    height: 5em;
+    margin-bottom: 10px;
+
+}
+
+#profile-header{
+    width: 80%;
+    margin: 10px auto;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 3em 18em;
+}
+
+#profile-name{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    text-align: center;
+}
+
+#profile-card1{
+    grid-column-start: 1;
+}
+#profile-card2{
+    grid-column-start: 2;
+    text-align: left;
+
+}
+.fab{
+    color: white;
+}
+
+.fas{
+    color: white;
+}
+
+.card-body h5{
+    margin-left: 20px;
+}
+
+h5 > a{
+    color: white;
+}
+
+.document-wrapper{
+    width: 80%;
+    height: 50em;
+    background-color: #343a40;
+    margin: 0 auto;
+    display:grid;
+    padding: 10px;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+}
+
+.resume-wrapper{
+    grid-column-start: 1;
+    width: 100%;
+    height: 100%;
+    color: white;
+    margin: 0 auto;
+}
+
+.coverletter-wrapper{
+    grid-column-start: 2;
+    width: 100%;
+    height: 100%;
+    color: white;
+    margin: 0 auto;
 }

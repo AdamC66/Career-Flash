@@ -5,7 +5,7 @@ import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
 import placeholder from '../../img/placeholderimg.png'
 import main_url from '../../config.js'
-import axios from 'axios'
+
 function NewAppModal({setModalOpen, modalOpen}) {
     const [companyName, setCompanyName] = useState('');
     const [position, setPosition] = useState('');
@@ -26,7 +26,6 @@ const submitValue = () => {
         'contact_name' : contactName,
         'contact_email': contactEmail,
         'contact_phone': contactPhone,
-        'date_submitted': date,
         'status': 'appsub'
     }
     console.log(frmdetails);
@@ -43,7 +42,7 @@ const handleTogglePage= (event) =>{
 const handleSubmit = (frmdetails)=>{
     let userToken = window.localStorage['token']
     console.log(userToken)
-    axios.post("http://localhost:8000/api/applications/",
+    main_url.post("/api/applications/",
         frmdetails,{
         headers: {
             Authorization: `Token ${userToken}`,

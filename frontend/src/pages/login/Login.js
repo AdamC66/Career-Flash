@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import axios from 'axios'
 import main_url from '../../config'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faKey } from '@fortawesome/free-solid-svg-icons'
@@ -27,7 +26,7 @@ class Login extends Component {
         }).catch(e => {
             console.log(e)
         }).then(() => {
-            if(window.localStorage['token'] != 'null'){
+            if(window.localStorage['token'] !== 'null'){
                 this.props.history.push('/profile')
                 window.location.reload()
             } else {

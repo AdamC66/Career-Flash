@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import axios from 'axios'
 import './join.css'
 import main_url from '../../config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -63,7 +62,7 @@ class Join extends Component {
                 }).catch(e => {
                     console.log(e)
                 }).then(() => {
-                    if(window.localStorage['token'] != 'null'){
+                    if(window.localStorage['token'] !== 'null'){
                         this.props.history.push('/profile')
                     }
                 })
