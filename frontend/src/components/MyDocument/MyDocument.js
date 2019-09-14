@@ -28,7 +28,7 @@ export default class MyDocument extends Component {
               file={this.props.path}
               onLoadSuccess={this.onDocumentLoadSuccess}
             >
-              <Page pageNumber={pageNumber} width={400} />
+              <Page pageNumber={pageNumber} width={this.props.width} />
             </Document>
           </div>
   

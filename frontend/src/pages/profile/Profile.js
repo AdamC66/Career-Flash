@@ -30,11 +30,11 @@ function Profile() {
             <div className="document-wrapper">
                 <div className="resume-wrapper">
                     Resume Here
-                    <MyDocument path="test.pdf"/>
+                    <MyDocument path="test.pdf" width={400}/>
                 </div>
                 <div className="coverletter-wrapper">
                     Cover Letter Here
-                    <MyDocument path="test2.pdf"/>
+                    <MyDocument path="test2.pdf" width={400}/>
                 </div>
 
             </div>
