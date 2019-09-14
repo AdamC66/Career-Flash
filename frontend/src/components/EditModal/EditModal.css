@@ -1,0 +1,38 @@
+.editmodal{
+    position: absolute;
+    top: 7.5%;
+    left: 25%;
+    margin: 0 auto;
+    width: 50%;
+    height: 85%;
+    text-align: center;
+    color: white;
+}
+.editmodal h4{
+    margin: 10px 0px 3px 0px;
+    color: white;
+}
+
+.profileupload{
+    margin-bottom: 10px;
+}
+
+.profile-pic-wrapper-small{
+    width: 8em;
+    height: 8em;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 30px auto; 
+}
+
+.profile-pic{
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 50%
+}
+
+#test{
+    width: 400px;
+    height: 80px;
+    margin: 5px 0px;
+}
