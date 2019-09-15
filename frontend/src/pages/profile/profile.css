@@ -17,8 +17,8 @@
 
 .brand-statement{
     width: 400px;
-    height: 150px;
-    margin: 10px 0px;
+    height: 80px;
+    margin: 5px 0px;
 }
 
 .brand-statement-wrapper{
@@ -93,4 +93,11 @@ h5 > a{
     height: 100%;
     color: white;
     margin: 0 auto;
+}
+
+.editbutton{
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 10px 40px;
 }

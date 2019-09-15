@@ -15,7 +15,7 @@ function NewAppModal({setModalOpen, modalOpen}) {
     const [contactName, setContactName] = useState('')
     const [contactEmail, setContactEmail] = useState('')
     const [contactPhone, setContactPhone] = useState('')
-    
+
 const submitValue = () => {
     const frmdetails = {
         'company' : companyName,

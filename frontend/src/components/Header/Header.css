@@ -9,3 +9,7 @@
     max-height: 100%;
 }
 
+#name > a{
+    color: rgba(255, 255, 255, 0.5);;
+}
+
