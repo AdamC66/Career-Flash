@@ -5,25 +5,30 @@ import Filter from '../Filter/Filter'
 import main_url from '../../config.js'
 function TrackerTable({ setModalOpen }) {
     
-    const [myfilter, setFilter] = useState('all');
+    const [myFilter, setFilter] = useState('all');
     const [applications, setApplications] = useState([])
-    // let applicationstest=[
-    //     {date:'Sept 2',
-    //     company: 'Google',
-    //     position: 'Front End Dev'},
-    //     {date:'Sept 4',
-    //     company: 'Reddit',
-    //     position: 'Full Stack Dev'},
-    //     {date:'Aug 30',
-    //     company: 'GAdventures',
-    //     position: 'API Dev'},
-    //     {date:'Sept 6',
-    //     company: 'PagerDuty',
-    //     position: 'Mobile Dev'},
-    //     {date:'Sept 9',
-    //     company: 'some company',
-    //     position: 'Mobile Dev'},
-    // ]
+    let applicationstest=[
+        {date:'Sept 2',
+        company: 'Google',
+        position: 'Front End Dev',
+        status: 'appSub'},
+        {date:'Sept 4',
+        company: 'Reddit',
+        position: 'Full Stack Dev',
+        status: 'appSub'},
+        {date:'Aug 30',
+        company: 'GAdventures',
+        position: 'API Dev',
+        status: 'offer'},
+        {date:'Sept 6',
+        company: 'PagerDuty',
+        position: 'Mobile Dev',
+        status: 'interview'},
+        {date:'Sept 9',
+        company: 'some company',
+        position: 'Mobile Dev',
+        status: 'interview'},
+    ]
     let filters = [
         {name: 'All', value:'all'},
         {name: 'Application Submitted', value: 'appSub'},
@@ -43,17 +48,28 @@ function TrackerTable({ setModalOpen }) {
               console.log(applications)
             }).catch((e) => console.log("Error:", e))  
     }, [])
-    const appElements = applications.map((application, i)=><ApplicationItem key={i} id={i} date={application.date_submitted} companyName={application.company} position={application.position}/>)
+
+    const filterApps = () =>{
+        let appElements = null
+        if(myFilter !== "all"){
+            let filteredapps = applicationstest.filter(application => application.status===myFilter)
+            appElements = filteredapps.map((application, i)=><ApplicationItem key={i} id={i} date={application.date_submitted} companyName={application.company} position={application.position}/>)
+        }else{
+            appElements = applicationstest.map((application, i)=><ApplicationItem key={i} id={i} date={application.date_submitted} companyName={application.company} position={application.position}/>)
+        }
+        return appElements
+        }
+    
     return (
         <>
             <section className="application-board">
                 <div className='table-title'>
                 <div className="card-header"><h1>My Job Applications</h1></div>
-                <h2>{myfilter}</h2>
+                <h2>{myFilter}</h2>
                 </div>
                 <Filter filters={ filters } setFilter={ setFilter }/>
                 <button id="newapp" className="btn btn-primary" onClick={()=>setModalOpen(true)}> Add Application </button>
-                { appElements }
+                { filterApps() }
             </section>
         </>
     )
