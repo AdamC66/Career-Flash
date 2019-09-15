@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import logo from './img/careerflash-logo--white---421x160.png'
 import './Header.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -9,8 +9,8 @@ function Header() {
     const [userToken, setUserToken] = useState(window.localStorage['token'])
     const [userName, setUserName] = useState('')
     const [loginOutButton, setLoginOutButton] = useState(<h5><a className="dropdown-item" href="/login">Login</a></h5>)
-    
-    useEffect(() => {
+
+    const checkLogin = () => {
         setUserToken(window.localStorage['token'])
         if(userToken !== 'null'){
             main_url.get('/api/users/', {
@@ -24,15 +24,19 @@ function Header() {
                 setLoginOutButton(<h5><a className="dropdown-item" href="/" onClick={handleLogOut}>Logout</a></h5>)
             });
         }
-    }, [])
+    }
 
 
-    const handleLogOut = () => {
+    const handleLogOut = (event) => {
         window.localStorage['token'] = null
         console.log('Logged out successfully')
         console.log(window.localStorage['token'])
         window.location.href = '/'
+        event.preventDefault()
     }
+
+    window.addEventListener('load', checkLogin) 
+
     return (
 
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">

@@ -1,104 +1,89 @@
-import React, {Component} from 'react'
+import React, {useState} from 'react'
 import './join.css'
 import main_url from '../../config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faKey } from '@fortawesome/free-solid-svg-icons'
-class Join extends Component {
-    state = {   
-        username: '',
-        email: '',
-        first_name: '',
-        last_name: '',
-        password: '',
-        passClass: ''
-    }
+function Join() {
+    const [email, setEmail] = useState('');
+    const [first_name, setFirstName] = useState('');
+    const [last_name, setLastName] = useState('');
+    const [password, setPassword] = useState('');
+    const [passClass, setPassClass] = useState('');
 
-    handleChange = (event) => {
-        this.setState({
-            [event.target.name]: event.target.value 
-        })
-    }
-
-    confirmPassword = (event) => {
-        if (this.state.password !== event.target.value){
+    const confirmPassword = (event) => {
+        if (password !== event.target.value){
             console.log('password not right')
-            this.setState({
-                passClass: 'wrong_pass'
-            })
+            setPassClass('wrong_pass');
         } else {
             console.log('password matches');
-            this.setState({
-                passClass: 'correct'
-            })
-        }
-    }
-
-    createLogin = () => {
-        
-    }
-
-    handleSubmit = (event) => {
-        const user = {
-            username: this.state.email,
-            first_name: this.state.first_name,
-            last_name: this.state.last_name,
-            email: this.state.email,
-            groups: [],
-            password: this.state.password
+            setPassClass('correct');
+            }
         }
 
-        main_url.post("/api/users/", user)
-            .then(res => {
-                const loginInfo = {
-                    username: this.state.email,
-                    password: this.state.password
-                }
-        
-                console.log(loginInfo)
-        
-                main_url.post("/api-token-auth/", loginInfo)
-                .then(res => {
-                    window.localStorage['token'] = res.data['token']
+
+    const handleSubmit = (event) => {
+        if (passClass !== 'correct') {
+            alert('please ensure that your password matches');
+        } else {
+            const user = {
+                username: email,
+                first_name: first_name,
+                last_name: last_name,
+                email: email,
+                groups: [],
+                password: password
+            }
+
+            main_url.post("/api/users/", user)
+                .then(() => {
+                    const loginInfo = {
+                        username: email,
+                        password: password
+                    }
+                    main_url.post("/api-token-auth/", loginInfo)
+                    .then(res => {
+                        window.localStorage['token'] = res.data['token']
+                    }).catch(e => {
+                        console.log(e)
+                        alert('token error, please check that your credentials are correct')
+                    }).then(() => {
+                        if(window.localStorage['token'] !== 'null'){
+                            window.location.href = '/profile';
+                        }
+                    })
                 }).catch(e => {
                     console.log(e)
-                }).then(() => {
-                    if(window.localStorage['token'] !== 'null'){
-                        this.props.history.push('/profile')
-                    }
+                    alert('Please ensure that you have the correct email')
                 })
-            }).catch(e => {
-                console.log(e);
-                alert('Entry field issues') // make better alert
-            })
+            }
             
         event.preventDefault();
     }
 
-    render() {
         return (
             <div className='container card border-primary mb-3'>
                 <h1>JOIN NOW</h1>
-                <form className='"card text-white bg-dark mb-3"' onSubmit={this.handleSubmit}>
+                <form className='"card text-white bg-dark mb-3"' onSubmit={handleSubmit}>
                     <h2 className='card-header'>Create Account</h2>
                     <div className='card-body'>
                     <label for='email'><b><FontAwesomeIcon icon={faEnvelope} color="white"/> Email: </b>
-                    <input type='text' value={this.state.email} placeholder = 'Email' name='email' onChange = {this.handleChange}required/>
+                    <input type='text' value={email} placeholder = 'Email' name='email' onChange = {(e)=> setEmail(e.target.value)}required/>
                     </label>
                     <br/><br/>
                     <label for='first_name'><b>First Name: </b>
-                    <input type='text' value={this.state.first_name} placeholder = 'First Name' name='first_name' onChange = {this.handleChange}required/>
+                    <input type='text' value={first_name} placeholder = 'First Name' name='first_name' onChange = {(e)=> setFirstName(e.target.value)}required/>
                     </label>
                     <br/><br/>
                     <label for='first_name'><b>Last Name: </b>
-                    <input type='text' value={this.state.last_name} placeholder = 'Last Name' name='last_name' onChange = {this.handleChange}required/>
+                    <input type='text' value={last_name} placeholder = 'Last Name' name='last_name' onChange = {(e)=> setLastName(e.target.value)}required/>
                     </label>
                     <br/><br/>
                     <label for='password'><b><FontAwesomeIcon icon={faKey} color="white"/>Password:  </b>
-                    <input type='password' value={this.state.password} placeholder = 'Password' name='password' onChange = {this.handleChange}required/>
+                    <input type='password' value={password} placeholder = 'Password' name='password' onChange = {(e)=> setPassword(e.target.value)}required/>
                     </label>
                     <br/><br/>
                     <label for='password'><b>Confirm Password: </b>
-                    <input type='password' className={this.state.passClass}  placeholder = 'Confirm Password' name='confirmPassword' onChange = {this.confirmPassword}required/>
+                    <input type='password' className={passClass}  placeholder = 'Confirm Password' name='confirmPassword' onChange = {confirmPassword}required/>
                     </label>
                     <br/><br/>
                     <input type='submit' value='Sign-up'/>
@@ -108,6 +93,5 @@ class Join extends Component {
             </div>
         )
     }
-}
 // ReactDOM.render(<Join/>, document.getElementById('join'));
 export default Join
