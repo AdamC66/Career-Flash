@@ -3,41 +3,43 @@ import './TrackerTable.css'
 import ApplicationItem from '../ApplicationItem/ApplicationItem'
 import Filter from '../Filter/Filter'
 import main_url from '../../config.js'
+import EditApplicationModal from "../EditApplicationModal/EditApplicationModal"
+
 function TrackerTable({ setModalOpen }) {
-    
+    const [editModalOpen, setEditModalOpen] = useState(false)
     const [myFilter, setFilter] = useState('all');
-    const [applications, setApplications] = useState([])
-
-
-    let applicationstest=[
+    const [applications, setApplications] = useState(
+        [
         {date_submitted:'Sept 2',
-        company: 'Google',
+        companyName: 'Google',
         position: 'Front End Dev',
-        status: 'appSub'},
+        status: 'Application Submitted'},
         {date_submitted:'Sept 4',
-        company: 'Reddit',
+        companyName: 'Reddit',
         position: 'Full Stack Dev',
-        status: 'appSub'},
+        status: 'Application Submitted'},
         {date_submitted:'Aug 30',
-        company: 'GAdventures',
+        companyName: 'GAdventures',
         position: 'API Dev',
-        status: 'offer'},
+        status: 'Offer'},
         {date_submitted:'Sept 6',
-        company: 'PagerDuty',
+        companyName: 'PagerDuty',
         position: 'Mobile Dev',
-        status: 'interview'},
+        status: 'Interview'},
         {date_submitted:'Sept 9',
-        company: 'some company',
+        companyName: 'some company',
         position: 'Mobile Dev',
-        status: 'interview'},
-    ]
+        status: 'Interview'},
+    ])
+
     let filters = [
         {name: 'All', value:'all'},
-        {name: 'Application Submitted', value: 'appSub'},
-        {name: 'Interview', value: 'interview'},
-        {name: 'Offer',value:'offer'},
-        {name: 'Rejected', value:'rejected'}    
+        {name: 'Application Submitted', value: 'Application Submitted'},
+        {name: 'Interview', value: 'Interview'},
+        {name: 'Offer',value:'Offer'},
+        {name: 'Rejected', value:'Rejected'}    
     ]
+
     useEffect((applications) => {
         let userToken = window.localStorage['token']
         main_url.get("/api/applications/",{
@@ -51,13 +53,25 @@ function TrackerTable({ setModalOpen }) {
             }).catch((e) => console.log("Error:", e))  
     }, [])
 
+
+    ///I KNOW CREATING A NEW ARRAY AND RESETTING THE WHOLE STATE ISNT THE BEST WAY
+    // TO DO THIS BUT THIS WORKS FOR NOW AND I CANT COME UP WITH THE BETTER OPTION AT THIS POINT
+    const handleFieldChange = (index) => e => {
+        console.log('__HANDLE FIELD CHANGE -- index', index);
+        let newarr= [...applications]
+        console.log("__NEW ARR__", newarr)
+        console.log(newarr[index])
+        newarr[index].status = e.target.value
+        setApplications(newarr)
+    }
+
     const filterApps = () =>{
         let appElements = null
         if(myFilter !== "all"){
-            let filteredapps = applicationstest.filter(application => application.status===myFilter)
-            appElements = filteredapps.map((application, i)=><ApplicationItem key={i} id={i} status={application.status} date={application.date_submitted} companyName={application.company} position={application.position}/>)
+            let filteredapps = applications.filter(application => application.status===myFilter)
+            appElements = filteredapps.map((application, i)=><ApplicationItem key={i} id={i} myindex={applications.indexOf(application)} application={application} handleFieldChange={handleFieldChange}/>)
         }else{
-            appElements = applicationstest.map((application, i)=><ApplicationItem key={i} id={i} status={application.status} setModalOpen={setModalOpen} date={application.date_submitted} companyName={application.company} position={application.position}/>)
+            appElements = applications.map((application, i)=><ApplicationItem key={i} id={i} myindex={i} application={application} handleFieldChange={handleFieldChange}/>)
         }
         return appElements
         }
