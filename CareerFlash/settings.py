@@ -87,11 +87,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'CareerFlash.wsgi.application'
 
 
-
-# May need
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        # Do not touch, working out sessions
         'rest_framework.authentication.TokenAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': (
