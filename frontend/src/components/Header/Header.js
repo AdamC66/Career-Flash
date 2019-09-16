@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import logo from './img/careerflash-logo--white---421x160.png'
 import './Header.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -9,8 +9,8 @@ function Header() {
     const [userToken, setUserToken] = useState(window.localStorage['token'])
     const [userName, setUserName] = useState('')
     const [loginOutButton, setLoginOutButton] = useState(<h5><a className="dropdown-item" href="/login">Login</a></h5>)
-    
-    useEffect(() => {
+
+    const checkLogin = () => {
         setUserToken(window.localStorage['token'])
         if(userToken !== 'null'){
             main_url.get('/api/users/', {
@@ -24,15 +24,19 @@ function Header() {
                 setLoginOutButton(<h5><a className="dropdown-item" href="/" onClick={handleLogOut}>Logout</a></h5>)
             });
         }
-    }, [])
+    }
 
 
-    const handleLogOut = () => {
+    const handleLogOut = (event) => {
         window.localStorage['token'] = null
         console.log('Logged out successfully')
         console.log(window.localStorage['token'])
         window.location.href = '/'
+        event.preventDefault()
     }
+
+    window.addEventListener('load', checkLogin) 
+
     return (
 
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -43,12 +47,15 @@ function Header() {
 
     <div className="collapse navbar-collapse" id="navbarColor02">
         <ul className="navbar-nav mr-auto">
-        <li className="nav-item">
-            <h4><a className="nav-link" href="/">Home</a></h4>
-        </li>
-        <li className="nav-item">
-        <h4><a className="nav-link" href="/">About</a></h4>
-        </li>
+            <li className="nav-item">
+                <h4><a className="nav-link" href="/">Home</a></h4>
+            </li>
+            <li className="nav-item">
+                <h4><a className="nav-link" href="/about">About</a></h4>
+            </li>
+            <li className="nav-item">
+                <h4><a className="nav-link" href="/contact">Contact</a></h4>
+            </li>
         </ul>
         <h2 className="nav-item"><a className="nav-link" href="/tracker"><FontAwesomeIcon icon={faBell}  color="rgba(255,255,255,0.5)" /></a></h2>
         <h2 className="nav-item dropdown" id="name" role='button'><a href="#" className="nav-link dropdown-toggle" role="button" data-toggle="dropdown"><FontAwesomeIcon icon={faUser} color="rgba(255,255,255,0.5)"/> {userName}</a>
