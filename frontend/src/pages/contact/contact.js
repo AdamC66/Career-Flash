@@ -9,23 +9,23 @@ function Contact()  {
     const[message, setMessage] = useState('');
     
     const handleSubmit = (event) => {
-        const user = {
-            username: email,
-            password: password
-        }
+        // const user = {
+        //     username: email,
+        //     password: password
+        // }
 
-        main_url.post("/api-token-auth/", user)
-        .then(res => {
-            window.localStorage['token'] = res.data['token']
-            console.log(window.localStorage['token'])
-        }).catch(() => {
-            alert('Incorrect login credentials, please try again');
-            window.location.reload()
-        })
-        .then(() => {
-            if(window.localStorage['token'] !== 'null'){
-                window.location.href = '/profile'
-            }});
+        // main_url.post("/api-token-auth/", user)
+        // .then(res => {
+        //     window.localStorage['token'] = res.data['token']
+        //     console.log(window.localStorage['token'])
+        // }).catch(() => {
+        //     alert('Incorrect login credentials, please try again');
+        //     window.location.reload()
+        // })
+        // .then(() => {
+        //     if(window.localStorage['token'] !== 'null'){
+        //         window.location.href = '/profile'
+        //     }});
         event.preventDefault();
         }
         
@@ -46,11 +46,10 @@ function Contact()  {
                     <textarea name='message' className="form-control" style={{width: "60%", margin:"0 auto"}} value={message} placeholder="Message" onChange={e => setMessage(e.target.value)}> </textarea>
                     <br/>
                     <input className="btn btn-secondary" style={{width: "60%", margin:"20px auto"}}  type='submit' value='Submit'/>
+                    </label>
                 </form>
             </div>
         )
     }
-
-}
 
 export default Contact;
