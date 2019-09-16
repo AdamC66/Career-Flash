@@ -10,8 +10,8 @@ function Profile() {
     const [userName, setUserName] = useState('John Cena')
     const [userProfilePic, setUserProfilePic] = useState('https://statics.sportskeeda.com/editor/2018/08/bd960-1534053592-800.jpg')
     const [userBrandStatement, setUserBrandStatement] = useState("You cant see me")
-    const [githubLink, setGithubLink] = useState("github.com")
-    const [linkedinLink, setLinkedinLink] = useState("linkedin.com")
+    const [githubLink, setGithubLink] = useState("https://github.com")
+    const [linkedinLink, setLinkedinLink] = useState("https://linkedin.com")
     const [portfolioLink, setPortfolioLink] = useState("")
     const [modalOpen, setModalOpen] = useState('')
 

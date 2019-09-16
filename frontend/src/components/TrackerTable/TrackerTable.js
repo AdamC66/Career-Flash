@@ -67,7 +67,6 @@ function TrackerTable({ setModalOpen }) {
             <section className="application-board">
                 <div className='table-title'>
                 <div className="card-header"><h1>My Job Applications</h1></div>
-                <h2>{myFilter}</h2>
                 </div>
                 <Filter filters={ filters } setFilter={ setFilter }/>
                 <button id="newapp" className="btn btn-primary"> Add Application </button>
