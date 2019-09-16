@@ -104,8 +104,7 @@ function Profile() {
             </div>
             <div className="document-wrapper">
                 <div className="resume-wrapper">
-                    Resume Here
-                    
+                    Resume Here 
                     <MyDocument path={resumeLink} width={400}/>
                 </div>
                 <div className="coverletter-wrapper">
