@@ -33,6 +33,7 @@ class Application(models.Model):
 
 class Profile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='profiles_user')
+    profile_picture = models.FileField(blank=True, null=True, upload_to='frontend/public/tempdocs/pictures')
     brand_statement = models.TextField(blank=True, null=True, max_length=500)
     resume = models.FileField(blank=True, null=True, upload_to='frontend/public/tempdocs/resumes/')
     cover_letter = models.FileField(blank=True, null=True, upload_to='frontend/public/tempdocs/coverletters/')
