@@ -7,6 +7,7 @@ import Login from './pages/login/Login';
 import Tracker from './pages/tracker/Tracker';
 import Profile from './pages/profile/Profile'
 import Document from './pages/document/Document'
+import Contact from './pages/contact/Contact'
 import * as serviceWorker from './serviceWorker';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -31,6 +32,7 @@ ReactDOM.render(
             <Route exact path='/tracker' component={Tracker} />
             <Route exact path='/profile' component={Profile} />
             <Route exact path='/document' component={Document} />
+            <Route exact path='/contact' component={Contact} />
             <Route path='/' component={App} />
         </Switch>
     </Router>
