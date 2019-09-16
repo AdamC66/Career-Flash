@@ -18,7 +18,7 @@ function Login()  {
             console.log(window.localStorage['token'])
         }).catch(() => {
             alert('Incorrect login credentials, please try again');
-            window.location.reload()
+            setPassword('');
         })
         .then(() => {
             if(window.localStorage['token'] !== 'null'){
