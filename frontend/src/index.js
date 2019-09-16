@@ -7,8 +7,8 @@ import Login from './pages/login/Login';
 import Tracker from './pages/tracker/Tracker';
 import Profile from './pages/profile/Profile'
 import Document from './pages/document/Document'
-import Contact from './pages/contact/contact'
-import About from './pages/about/about'
+import Contact from './pages/contact/Contact'
+import About from './pages/about/About'
 import * as serviceWorker from './serviceWorker';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
