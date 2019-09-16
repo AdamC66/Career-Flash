@@ -65,8 +65,8 @@ function Profile() {
                 console.log(res.data)
                 
             });
-        }
-    }
+        };
+    };
     
     window.addEventListener('load', checkLogin) 
 
@@ -83,6 +83,7 @@ function Profile() {
             githubLink = {githubLink}
             linkedinLink = {linkedinLink}
             portfolioLink = {portfolioLink}
+            userToken = {window.localStorage['token']}
             />
 
             <div className="card text-white bg-dark mb-3" id="profile-header" onMouseEnter={()=>handleEditButton()} onMouseLeave={()=>handleEditButton()}>
