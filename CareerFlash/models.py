@@ -32,7 +32,7 @@ class Application(models.Model):
         return f"{self.company} {self.position} submitted on {self.date_submitted}"
 
 class Profile(models.Model):
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='profiles_user')
+    owner = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profiles_user')
     brand_statement = models.TextField(null=True, max_length=500, blank=True)
     resume = models.FileField(null=True, upload_to='',blank=True)
     cover_letter = models.FileField(null=True, upload_to='',blank=True)

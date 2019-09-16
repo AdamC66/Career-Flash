@@ -36,7 +36,6 @@ function Profile() {
                 setLinkedinLink(res.data[0].linkedin);
                 setPortfolioLink(res.data[0].portfolio);
                 console.log(res.data)
-                // setLoginOutButton(<h5><a className="dropdown-item" href="/" onClick={handleLogOut}>Logout</a></h5>)
             });
             main_url.get('/api/users', {
                 headers: {
@@ -44,25 +43,10 @@ function Profile() {
                 }
             })
             .then(res => {
-                setUserName(res.data[0].username)
+                setUserName(res.data[0].first_name)
             })
         }
     }
-
-    const givePDF = () => {
-       const userToken = window.localStorage['token']
-        if(userToken !== 'null'){
-            main_url.get('/api/profiles/', {
-                headers: {
-                    Authorization: `Token ${userToken}` 
-                }
-            })
-            .then(res => {
-                console.log(res.data)
-                
-            });
-        };
-    };
     
     window.addEventListener('load', checkLogin) 
 
@@ -110,7 +94,6 @@ function Profile() {
                 </div>
 
             </div>
-            <button onClick={givePDF}>Test</button>
         </div>
         
     )

@@ -63,7 +63,8 @@ class ProfileViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
-        return self.request.user.profiles_user.all()
+        return super(ProfileViewSet, self).get_queryset().filter(
+            owner=self.request.user)
 
 class CommentResumeViewSet(viewsets.ModelViewSet):
     serializer_class = CommentResumeSerializer
