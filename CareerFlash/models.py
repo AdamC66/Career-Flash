@@ -34,8 +34,8 @@ class Application(models.Model):
 class Profile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='profiles_user')
     brand_statement = models.TextField(null=True, max_length=500)
-    resume = models.FileField(null=True, upload_to='')
-    cover_letter = models.FileField(null=True, upload_to='')
+    resume = models.FileField(null=True, upload_to='/frontend/public/tempdocs/resumes')
+    cover_letter = models.FileField(null=True, upload_to='/frontend/public/tempdocs/coverletters')
     github = models.URLField(null=True, validators=[URLValidator])
     linkedin = models.URLField(null=True, validators=[URLValidator])
     portfolio = models.URLField(null=True, validators=[URLValidator])
