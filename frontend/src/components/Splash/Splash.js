@@ -10,7 +10,10 @@ function Splash() {
                 <h1>Welcome to Career Flash</h1>
                 <h4>Your Job Search Control Center</h4>
                 <Link to = '/join'>
-                <button className="btn btn-primary" value="join" >Join Now</button>
+                <button className="btn btn-primary" value="join" style={{marginRight: '5px'}}>Join Now</button>
+                </Link>
+                <Link to = '/login'>
+                <button className="btn btn-primary" value="login" style={{marginLeft: '5px'}}>Login</button>
                 </Link>
                 </div>
                 <img src={splash} alt=""/>

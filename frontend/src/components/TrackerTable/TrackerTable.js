@@ -7,24 +7,26 @@ function TrackerTable({ setModalOpen }) {
     
     const [myFilter, setFilter] = useState('all');
     const [applications, setApplications] = useState([])
+
+
     let applicationstest=[
-        {date:'Sept 2',
+        {date_submitted:'Sept 2',
         company: 'Google',
         position: 'Front End Dev',
         status: 'appSub'},
-        {date:'Sept 4',
+        {date_submitted:'Sept 4',
         company: 'Reddit',
         position: 'Full Stack Dev',
         status: 'appSub'},
-        {date:'Aug 30',
+        {date_submitted:'Aug 30',
         company: 'GAdventures',
         position: 'API Dev',
         status: 'offer'},
-        {date:'Sept 6',
+        {date_submitted:'Sept 6',
         company: 'PagerDuty',
         position: 'Mobile Dev',
         status: 'interview'},
-        {date:'Sept 9',
+        {date_submitted:'Sept 9',
         company: 'some company',
         position: 'Mobile Dev',
         status: 'interview'},
@@ -53,9 +55,9 @@ function TrackerTable({ setModalOpen }) {
         let appElements = null
         if(myFilter !== "all"){
             let filteredapps = applicationstest.filter(application => application.status===myFilter)
-            appElements = filteredapps.map((application, i)=><ApplicationItem key={i} id={i} date={application.date_submitted} companyName={application.company} position={application.position}/>)
+            appElements = filteredapps.map((application, i)=><ApplicationItem key={i} id={i} status={application.status} date={application.date_submitted} companyName={application.company} position={application.position}/>)
         }else{
-            appElements = applicationstest.map((application, i)=><ApplicationItem key={i} id={i} date={application.date_submitted} companyName={application.company} position={application.position}/>)
+            appElements = applicationstest.map((application, i)=><ApplicationItem key={i} id={i} status={application.status} setModalOpen={setModalOpen} date={application.date_submitted} companyName={application.company} position={application.position}/>)
         }
         return appElements
         }
@@ -65,10 +67,9 @@ function TrackerTable({ setModalOpen }) {
             <section className="application-board">
                 <div className='table-title'>
                 <div className="card-header"><h1>My Job Applications</h1></div>
-                <h2>{myFilter}</h2>
                 </div>
                 <Filter filters={ filters } setFilter={ setFilter }/>
-                <button id="newapp" className="btn btn-primary" onClick={()=>setModalOpen(true)}> Add Application </button>
+                <button id="newapp" className="btn btn-primary"> Add Application </button>
                 { filterApps() }
             </section>
         </>

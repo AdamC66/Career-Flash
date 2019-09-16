@@ -1,13 +1,19 @@
-.job-app{
+.userData{
     display: flex;
     justify-content: space-between;
     background: #343a40;
     width: 90%;
     margin: 0 auto;
     font-size: 24px;
-    border-radius: 10px;
     margin-bottom: 0.5em;
-    line-height: 3.5em;
+}
+
+.submittal-status{
+    margin: 0 auto;
+}
+
+.brand-statement{
+    width: 200px;
 }
 
 .company-logo-img{
@@ -15,18 +21,13 @@
     margin: 5px;
 }
 
-.job-app > .date{
-    font-size: 24px;
-    background: white;
-    height: 3.5em;
-    width: 3.5em;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px; 
+.card-header > h2{
+    color: white;
 }
 
-.circle{
+.Statuscircle{
     border-radius: 50%;
     height: 2em;
     width: 2em;
-    margin: 0.5em 1em;
+    margin: 0.5em auto;
 }

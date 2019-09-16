@@ -10,8 +10,8 @@ function Profile() {
     const [userName, setUserName] = useState('John Cena')
     const [userProfilePic, setUserProfilePic] = useState('https://statics.sportskeeda.com/editor/2018/08/bd960-1534053592-800.jpg')
     const [userBrandStatement, setUserBrandStatement] = useState("You cant see me")
-    const [githubLink, setGithubLink] = useState("github.com")
-    const [linkedinLink, setLinkedinLink] = useState("linkedin.com")
+    const [githubLink, setGithubLink] = useState("https://github.com")
+    const [linkedinLink, setLinkedinLink] = useState("https://linkedin.com")
     const [portfolioLink, setPortfolioLink] = useState("")
     const [resumeLink, setResumeLink] = useState ("")
     const [coverLink, setCoverLink] = useState ("")
@@ -37,10 +37,13 @@ function Profile() {
                 setGithubLink(res.data[0].github);
                 setLinkedinLink(res.data[0].linkedin);
                 setPortfolioLink(res.data[0].portfolio);
-                setResumeLink(res.data[0].resume.substr(50));
-                setCoverLink(res.data[0].cover_letter.substr(50));
+                if (res.data[0].resume){
+                    setResumeLink(res.data[0].resume.substr(50));
+                }
+                if (res.data[0].cover_letter){
+                    setCoverLink(res.data[0].cover_letter.substr(50));
+                }
                 console.log(res.data)
-                // setLoginOutButton(<h5><a className="dropdown-item" href="/" onClick={handleLogOut}>Logout</a></h5>)
             });
             main_url.get('/api/users', {
                 headers: {
@@ -48,25 +51,10 @@ function Profile() {
                 }
             })
             .then(res => {
-                setUserName(res.data[0].username)
+                setUserName(res.data[0].first_name)
             })
         }
     }
-
-    const givePDF = () => {
-       const userToken = window.localStorage['token']
-        if(userToken !== 'null'){
-            main_url.get('/api/profiles/', {
-                headers: {
-                    Authorization: `Token ${userToken}` 
-                }
-            })
-            .then(res => {
-                console.log(res.data)
-                
-            });
-        };
-    };
     
     window.addEventListener('load', checkLogin) 
 
@@ -114,7 +102,6 @@ function Profile() {
                 </div>
 
             </div>
-            <button onClick={givePDF}>Test</button>
         </div>
         
     )
