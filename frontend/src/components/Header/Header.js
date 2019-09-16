@@ -51,10 +51,10 @@ function Header() {
                 <h4><a className="nav-link" href="/">Home</a></h4>
             </li>
             <li className="nav-item">
-                <h4><a className="nav-link" href="/">About</a></h4>
+                <h4><a className="nav-link" href="/about">About</a></h4>
             </li>
             <li className="nav-item">
-                <h4><a className="nav-link" href="/">Contact</a></h4>
+                <h4><a className="nav-link" href="/contact">Contact</a></h4>
             </li>
         </ul>
         <h2 className="nav-item"><a className="nav-link" href="/tracker"><FontAwesomeIcon icon={faBell}  color="rgba(255,255,255,0.5)" /></a></h2>

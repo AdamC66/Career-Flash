@@ -9,25 +9,25 @@ function Contact()  {
     const[message, setMessage] = useState('');
     
     const handleSubmit = (event) => {
-        // const user = {
-        //     username: email,
-        //     password: password
-        // }
+        const user = {
+            username: email,
+            password: password
+        }
 
-        // main_url.post("/api-token-auth/", user)
-        // .then(res => {
-        //     window.localStorage['token'] = res.data['token']
-        //     console.log(window.localStorage['token'])
-        // }).catch(() => {
-        //     alert('Incorrect login credentials, please try again');
-        //     window.location.reload()
-        // })
-        // .then(() => {
-        //     if(window.localStorage['token'] !== 'null'){
-        //         window.location.href = '/profile'
-        //     }});
-        // event.preventDefault();
-        // }
+        main_url.post("/api-token-auth/", user)
+        .then(res => {
+            window.localStorage['token'] = res.data['token']
+            console.log(window.localStorage['token'])
+        }).catch(() => {
+            alert('Incorrect login credentials, please try again');
+            window.location.reload()
+        })
+        .then(() => {
+            if(window.localStorage['token'] !== 'null'){
+                window.location.href = '/profile'
+            }});
+        event.preventDefault();
+        }
         
         return(
             <div className='card text-white bg-secondary mb-3' style={{width: "80%", margin:"0 auto", textAlign:"center"}}>
@@ -50,5 +50,7 @@ function Contact()  {
             </div>
         )
     }
+
+}
 
 export default Contact;
