@@ -37,8 +37,12 @@ function Profile() {
                 setGithubLink(res.data[0].github);
                 setLinkedinLink(res.data[0].linkedin);
                 setPortfolioLink(res.data[0].portfolio);
-                setResumeLink(res.data[0].resume.substr(50));
-                setCoverLink(res.data[0].cover_letter.substr(50));
+                if (res.data[0].resume){
+                    setResumeLink(res.data[0].resume.substr(50));
+                }
+                if (res.data[0].cover_letter){
+                    setCoverLink(res.data[0].cover_letter.substr(50));
+                }
                 console.log(res.data)
                 // setLoginOutButton(<h5><a className="dropdown-item" href="/" onClick={handleLogOut}>Logout</a></h5>)
             });
