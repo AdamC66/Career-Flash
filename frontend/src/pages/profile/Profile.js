@@ -13,6 +13,8 @@ function Profile() {
     const [githubLink, setGithubLink] = useState("github.com")
     const [linkedinLink, setLinkedinLink] = useState("linkedin.com")
     const [portfolioLink, setPortfolioLink] = useState("")
+    const [resumeLink, setResumeLink] = useState ("")
+    const [coverLink, setCoverLink] = useState ("")
     const [modalOpen, setModalOpen] = useState('')
 
     const handleEditButton = ()=>{
@@ -35,6 +37,8 @@ function Profile() {
                 setGithubLink(res.data[0].github);
                 setLinkedinLink(res.data[0].linkedin);
                 setPortfolioLink(res.data[0].portfolio);
+                setResumeLink(res.data[0].resume.substr(50));
+                setCoverLink(res.data[0].cover_letter.substr(50));
                 console.log(res.data)
                 // setLoginOutButton(<h5><a className="dropdown-item" href="/" onClick={handleLogOut}>Logout</a></h5>)
             });
@@ -100,12 +104,12 @@ function Profile() {
             </div>
             <div className="document-wrapper">
                 <div className="resume-wrapper">
-                    Resume Here
-                    <MyDocument path="test.pdf" width={400}/>
+                    Resume Here 
+                    <MyDocument path={resumeLink} width={400}/>
                 </div>
                 <div className="coverletter-wrapper">
                     Cover Letter Here
-                    <MyDocument path="test2.pdf" width={400}/>
+                    <MyDocument path={coverLink} width={400}/>
                 </div>
 
             </div>
