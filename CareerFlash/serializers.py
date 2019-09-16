@@ -30,6 +30,7 @@ class ProfileSerializer(serializers.ModelSerializer):
         model = Profile
         fields = ('owner', 'brand_statement', 'resume', 'cover_letter', 'github', 'linkedin', 'portfolio')
 
+
 class CommentResumeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment_Resume

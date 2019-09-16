@@ -20,13 +20,13 @@ class Application(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="job_applications")
     company = models.CharField(max_length=255)
     position = models.CharField(max_length=255)
-    description = models.TextField(null=True)
-    notes = models.TextField(null=True)
-    contact_name = models.CharField(max_length=255, null=True)
-    contact_email = models.CharField(max_length=255, null=True)
-    contact_phone = PhoneField(blank=True, help_text='Contact phone number')
+    description = models.TextField(blank=True, null=True,)
+    notes = models.TextField(blank=True, null=True,)
+    contact_name = models.CharField(max_length=255, blank=True, null=True)
+    contact_email = models.CharField(max_length=255, blank=True, null=True)
+    contact_phone = PhoneField(blank=True, null=True, help_text='Contact phone number')
     date_submitted = models.DateTimeField(auto_now_add=True)
-    status = models.CharField(max_length=255, null=True)
+    status = models.CharField(max_length=255, blank=True, null=True)
 
     def __str__(self):
         return f"{self.company} {self.position} submitted on {self.date_submitted}"
@@ -39,6 +39,7 @@ class Profile(models.Model):
     github = models.URLField(null=True, validators=[URLValidator],blank=True)
     linkedin = models.URLField(null=True, validators=[URLValidator],blank=True)
     portfolio = models.URLField(null=True, validators=[URLValidator],blank=True)
+
 
     def __str__(self):
         return f"{self.brand_statement}"
