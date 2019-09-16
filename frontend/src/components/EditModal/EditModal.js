@@ -3,15 +3,28 @@ import './EditModal.css'
 import Modal from 'react-modal';
 import "react-datepicker/dist/react-datepicker.css";
 import placeholder from '../../img/placeholderimg.png'
+import main_url from '../../config';
 
 function EditModal({modalOpen, setModalOpen, setUserProfilePic, setUserBrandStatement, setGithubLink, setLinkedinLink, setPortfolioLink,
-    userProfilePic, userBrandStatement, githubLink, linkedinLink, portfolioLink
+    userProfilePic, userBrandStatement, githubLink, linkedinLink, portfolioLink, userToken
 }) {
 
     const submitValue = () => {
         const frmdetails = {
             setUserProfilePic, setUserBrandStatement, setGithubLink, setLinkedinLink, setPortfolioLink
         }
+
+        const userProfile = {
+            brand_statement: userBrandStatement,
+            github: githubLink,
+            linkedin: linkedinLink,
+            portfolio: portfolioLink,
+        }
+        main_url.post('/api/profiles/', userProfile ,{
+            headers: {
+                Authorization: `Token ${userToken}`,
+            }
+        });
         console.log(frmdetails);
         setModalOpen(false)
     }

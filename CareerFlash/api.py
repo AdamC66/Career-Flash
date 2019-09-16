@@ -43,7 +43,7 @@ class GroupViewSet(viewsets.ModelViewSet):
 class ApplicationViewSet(viewsets.ModelViewSet):
     serializer_class = ApplicationSerailizer
     queryset = Application.objects.all()
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny, permissions.IsAuthenticated]
 
     def get_permissions(self):
         if self.request.method == 'POST':
@@ -60,6 +60,10 @@ class ApplicationViewSet(viewsets.ModelViewSet):
 class ProfileViewSet(viewsets.ModelViewSet):
     serializer_class = ProfileSerializer
     queryset = Profile.objects.all()
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return self.request.user.profiles_user.all()
 
 class CommentResumeViewSet(viewsets.ModelViewSet):
     serializer_class = CommentResumeSerializer
