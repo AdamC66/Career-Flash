@@ -1,29 +1,47 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './EditModal.css'
 import Modal from 'react-modal';
 import "react-datepicker/dist/react-datepicker.css";
 import placeholder from '../../img/placeholderimg.png'
 import main_url from '../../config';
+import { faUserInjured } from '@fortawesome/free-solid-svg-icons';
 
 function EditModal({modalOpen, setModalOpen, setUserProfilePic, setUserBrandStatement, setGithubLink, setLinkedinLink, setPortfolioLink,
-    userProfilePic, userBrandStatement, githubLink, linkedinLink, portfolioLink, userToken
+    userProfilePic, userBrandStatement, githubLink, linkedinLink, portfolioLink, userToken, userID
 }) {
-
+    
     const submitValue = () => {
         const frmdetails = {
             setUserProfilePic, setUserBrandStatement, setGithubLink, setLinkedinLink, setPortfolioLink
         }
 
         const userProfile = {
+            owner: userID,
             brand_statement: userBrandStatement,
             github: githubLink,
             linkedin: linkedinLink,
             portfolio: portfolioLink,
         }
-        main_url.post('/api/profiles/', userProfile ,{
+
+        main_url.get('/api/profiles/', {
             headers: {
                 Authorization: `Token ${userToken}`,
             }
+        }).then(res => {
+            console.log(res.data[0])
+            if (!res.data[0]) {
+                main_url.post('/api/profiles/', userProfile ,{
+                    headers: {
+                        Authorization: `Token ${userToken}`,
+                    }
+                });
+            } else {
+                main_url.put('/api/profiles/1', userProfile ,{
+                    headers: {
+                        Authorization: `Token ${userToken}`,
+                    }
+                });
+            };
         });
         console.log(frmdetails);
         setModalOpen(false)
