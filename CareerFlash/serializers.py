@@ -14,11 +14,10 @@ class UserSerializer(serializers.ModelSerializer):
         return user
 
 class GroupSerializer(serializers.ModelSerializer):
-    users = UserSerializer(many=True)
-
+    # users = UserSerializer(many=True)
     class Meta:
         model = Group
-        fields = ('id', 'name', 'users')
+        fields = ('id', 'name')
 
 class ApplicationSerailizer(serializers.ModelSerializer):
     class Meta:

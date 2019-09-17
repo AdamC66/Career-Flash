@@ -31,6 +31,18 @@ class UserViewSet(viewsets.ModelViewSet):
 class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    def get_queryset(self):
+        return self.request.user.groups.all()
+
+class GroupUserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all().filter(id=1)
+    serializer_class = UserSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return User.objects.all().filter(groups__id=1) #filter(groups=1)
+
 
 class ApplicationViewSet(viewsets.ModelViewSet):
     serializer_class = ApplicationSerailizer

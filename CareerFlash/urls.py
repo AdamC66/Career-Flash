@@ -31,6 +31,7 @@ from rest_framework.authtoken import views as auth_views
 router = routers.DefaultRouter()
 router.register(r'users', api.UserViewSet)
 router.register(r'groups', api.GroupViewSet)
+router.register(r'groupusers', api.GroupUserViewSet)
 router.register(r'applications', api.ApplicationViewSet)
 router.register(r'profiles', api.ProfileViewSet)
 router.register(r'commentsresume', api.CommentResumeViewSet)
