@@ -1,10 +1,8 @@
 import React, {useState} from 'react'
 import '../NewAppModal/NewAppModal.css'
 import Modal from 'react-modal';
-import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
 import placeholder from '../../img/placeholderimg.png'
-import main_url from '../../config.js'
 
 function EditApplicationModal({application,index, handleUpdateApp, setEditModalOpen, editModalOpen}) {
     const [applicationdata, setApplicationData] = useState(application)
@@ -73,13 +71,7 @@ return(
     <input type="text" name='position'  defaultValue={applicationdata.position} onChange={e => setApplicationData({...application, position: e.target.value})} />
     <h4 className="card-title">Description</h4>
     <textarea name='description' defaultValue={applicationdata.description} onChange={e => setApplicationData({...application, description: e.target.value})}> </textarea>
- 
-    <h4 className="card-title">Date</h4>
-    <DatePicker
-    
-        selected={applicationdata.date_submitted}
-        onChange={(date)=> setApplicationData({...application, date_submitted: date})}
-    />
+
 
     </div>
     <div className='notes hidden'>
