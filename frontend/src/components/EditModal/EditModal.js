@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react'
 import './EditModal.css'
 import Modal from 'react-modal';
 import "react-datepicker/dist/react-datepicker.css";
-import placeholder from '../../img/placeholderimg.png'
 import main_url from '../../config';
 import { faUserInjured } from '@fortawesome/free-solid-svg-icons';
 

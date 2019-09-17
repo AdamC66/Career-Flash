@@ -31,10 +31,7 @@ const handleTogglePage= (event) =>{
 }
 
 const handleSubmit = (frmdetails)=>{
-    let userToken = window.localStorage['token']
-
-    handleUpdateApp(frmdetails, index)
-    
+    handleUpdateApp(frmdetails, index) 
     setEditModalOpen(false)
 }
 
