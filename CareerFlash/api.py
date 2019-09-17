@@ -66,11 +66,11 @@ class CommentResumeViewSet(viewsets.ModelViewSet):
 
     def get_permissions(self):
         if self.request.method == 'POST':
-            self.permission_classes = (permissions.IsAuthenticated,)
+            self.permission_classes = (permissions.IsAuthenticated)
         return super(CommentResumeViewSet, self).get_permissions()
 
     def get_queryset(self):
-        return self.request.user.Comment_Resume.all()
+        return self.request.user.comments_resume.all()
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
@@ -78,3 +78,15 @@ class CommentResumeViewSet(viewsets.ModelViewSet):
 class CommentCoverLetterViewSet(viewsets.ModelViewSet):
     serializer_class = CommentCoverLetterSerializer
     queryset = Comment_Cover_Letter.objects.all()
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_permissions(self):
+        if self.request.method == 'POST':
+            self.permission_classes = (permissions.IsAuthenticated)
+        return super(CommentCoverLetterViewSet, self).get_permissions()
+
+    def get_queryset(self):
+        return self.request.user.comments_coverletter.all()
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)

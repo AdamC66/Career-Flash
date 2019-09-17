@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import MyDocument from '../../components/MyDocument/MyDocument';
 import CommentsBar from '../../components/CommentsBar/CommentsBar';
 import './document.css'
@@ -19,6 +19,22 @@ export default function Document() {
     const [resumeLink, setResumeLink] = useState ("test.pdf")
     const [coverLink, setCoverLink] = useState ("test2.pdf")
 
+    
+    useEffect(() => {
+        let userToken = window.localStorage['token']
+        main_url.get('/api/commentsresume/',{
+            headers: {
+                Authorization: `Token ${userToken}` 
+            }})
+          .then((response) => {
+              setComments(response.data)
+            }).catch((e) =>{
+                console.log("Error:", e)
+                setComments([])
+
+            }) 
+    }, [])
+            
     const checkLogin = () => {
         const userToken = window.localStorage['token']
         if(userToken !== 'null'){
@@ -37,43 +53,62 @@ export default function Document() {
                 console.log(res.data)
             });
         }}
-    
 
-    let myDoc = <MyDocument path={documentType == "resume" ? resumeLink : coverLink} width={600}/>
+    const getComments = (doc) =>{
+        const userToken = window.localStorage['token']
+        let url = ''
+        if(doc === "resume"){
+            url = "/api/commentsresume/"
+        }else{
+            url = '/api/commentscoverletter/'
+        }
+        main_url.get(url ,{
+            headers: {
+                Authorization: `Token ${userToken}` 
+            }}).then((response) => {
+              setComments(response.data)
+            }).catch((e) =>{
+                setComments([])
+            }) 
+    }
+
+
+    let myDoc = <MyDocument path={documentType === "resume" ? resumeLink : coverLink} width={600}/>
 
     const handleChange = (doc) =>{
         setDocumentType(doc)
-        if (doc == "coverLetter"){
+        if (doc === "coverLetter"){
             console.log(doc)
+            getComments(doc)
             myDoc = <MyDocument path={coverLink} width={600}/>
         }else{
             console.log(doc)
+            getComments(doc)
             myDoc = <MyDocument path={resumeLink} width={600}/>
         }
     }
 
     
     const handleSubmit = (newComment) =>{
-        //AXIOS POST HERE
-        // setComments([...comments, newComment])
         let userToken = window.localStorage['token']
+        let url = ''
         if(documentType === "resume"){
-            main_url.post("/api/commentsresume/",
-            newComment,{
+            url = "/api/commentsresume/"
+        }else if (documentType === 'coverLetter'){
+            url = '/api/commentscoverletter/'
+        }
+            main_url.post(url, newComment,{
             headers: {
                 Authorization: `Token ${userToken}`,
                 'Content-Type' : 'application/json' 
             }
             
+        }).then((response)=>{
+            setComments([...comments, newComment])
+        }).catch((e)=>{
+            console.log(e) 
+            alert("Sorry there was an error posting your comment")
         })
-            .then((response)=>{
-                setComments([...comments, newComment])
-            }).catch((e)=>{
-                console.log(e) 
-                alert("Sorry there was an error posting your comment")
-            })
-        }
-
     }
 
 

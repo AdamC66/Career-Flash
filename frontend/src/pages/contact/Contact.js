@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
-import main_url from '../../config'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope, faKey } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope} from '@fortawesome/free-solid-svg-icons'
 
 function Contact()  {
     const[name, setName] = useState ('');

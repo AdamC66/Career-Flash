@@ -1,8 +1,7 @@
-import React, {useState} from 'react'
+import React from 'react'
 import './EditModal.css'
 import Modal from 'react-modal';
 import "react-datepicker/dist/react-datepicker.css";
-import placeholder from '../../img/placeholderimg.png'
 import main_url from '../../config';
 
 function EditModal({modalOpen, setModalOpen, setUserProfilePic, setUserBrandStatement, setGithubLink, setLinkedinLink, setPortfolioLink,
