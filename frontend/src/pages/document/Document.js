@@ -37,6 +37,8 @@ export default function Document() {
                 console.log(res.data)
             });
         }}
+    
+
     let myDoc = <MyDocument path={documentType == "resume" ? resumeLink : coverLink} width={600}/>
 
     const handleChange = (doc) =>{
@@ -53,11 +55,28 @@ export default function Document() {
     
     const handleSubmit = (newComment) =>{
         //AXIOS POST HERE
-        
-        setComments([...comments, newComment])
-
+        // setComments([...comments, newComment])
+        let userToken = window.localStorage['token']
+        if(documentType === "resume"){
+            main_url.post("/api/commentsresume/",
+            newComment,{
+            headers: {
+                Authorization: `Token ${userToken}`,
+                'Content-Type' : 'application/json' 
+            }
+            
+        })
+            .then((response)=>{
+                setComments([...comments, newComment])
+            }).catch((e)=>{
+                console.log(e) 
+                alert("Sorry there was an error posting your comment")
+            })
+        }
 
     }
+
+
 
     return (
         <div className="document-main-container">

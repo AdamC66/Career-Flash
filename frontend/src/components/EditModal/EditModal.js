@@ -35,7 +35,7 @@ function EditModal({modalOpen, setModalOpen, setUserProfilePic, setUserBrandStat
         className='editmodal'>
         <div className="card text-white bg-dark mb-3">
             <button className='modal-close info' onClick={()=>setModalOpen(false)}>X</button>  
-            <div class="card-header">
+            <div className="card-header">
             <h1 className="card-title">Edit Profile</h1>
             </div>
 
