@@ -8,14 +8,20 @@ export default class MyDocument extends Component {
       this.setState({ numPages });
     };
   
-    goToPrevPage = () =>
-      this.setState(state => ({ pageNumber: state.pageNumber - 1 }));
-    goToNextPage = () =>
-      this.setState(state => ({ pageNumber: state.pageNumber + 1 }));
-  
+    goToPrevPage = () =>{
+      if(this.state.numPages > this.state.pageNumber){
+        this.setState(state => ({ pageNumber: state.pageNumber - 1 }));
+    }
+  }
+    goToNextPage = () =>{
+      if(this.state.numPages < this.state.pageNumber){
+        this.setState(state => ({ pageNumber: state.pageNumber + 1 }));
+      }
+    }
+
     render() {
       const { pageNumber, numPages } = this.state;
-  
+      
       return (
         <div>
           <nav>

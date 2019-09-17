@@ -49,6 +49,16 @@ export default function Document() {
             myDoc = <MyDocument path={resumeLink} width={600}/>
         }
     }
+
+    
+    const handleSubmit = (newComment) =>{
+        //AXIOS POST HERE
+        
+        setComments([...comments, newComment])
+
+
+    }
+
     return (
         <div className="document-main-container">
         
@@ -58,7 +68,7 @@ export default function Document() {
             { myDoc }
             </div>
             <div className="comment-container">
-                <CommentsBar comments={comments}/>
+                <CommentsBar comments={comments} handleSubmit={handleSubmit}/>
             </div>
         </div>
     )
