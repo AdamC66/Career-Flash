@@ -3,10 +3,10 @@ import './TrackerTable.css'
 import ApplicationItem from '../ApplicationItem/ApplicationItem'
 import Filter from '../Filter/Filter'
 import main_url from '../../config.js'
-import EditApplicationModal from "../EditApplicationModal/EditApplicationModal"
+
 
 function TrackerTable({ setModalOpen }) {
-    const [editModalOpen, setEditModalOpen] = useState(false)
+
     const [myFilter, setFilter] = useState('all');
     const [applications, setApplications] = useState(
         [
@@ -65,25 +65,33 @@ function TrackerTable({ setModalOpen }) {
         setApplications(newarr)
     }
 
+    const handleUpdateApp = (frmdetails, index) =>{
+        let newarr= [...applications]
+        newarr[index] = frmdetails
+        setApplications(newarr)
+    }
+    
+
     const filterApps = () =>{
         let appElements = null
         if(myFilter !== "all"){
             let filteredapps = applications.filter(application => application.status===myFilter)
-            appElements = filteredapps.map((application, i)=><ApplicationItem key={i} id={i} myindex={applications.indexOf(application)} application={application} handleFieldChange={handleFieldChange}/>)
+            appElements = filteredapps.map((application, i)=><ApplicationItem key={i} id={i} handleUpdateApp={handleUpdateApp} myindex={applications.indexOf(application)} application={application} handleFieldChange={handleFieldChange}/>)
         }else{
-            appElements = applications.map((application, i)=><ApplicationItem key={i} id={i} myindex={i} application={application} handleFieldChange={handleFieldChange}/>)
+            appElements = applications.map((application, i)=><ApplicationItem key={i} id={i} handleUpdateApp={handleUpdateApp} myindex={i} application={application} handleFieldChange={handleFieldChange}/>)
         }
         return appElements
         }
-    
+
     return (
         <>
+            
             <section className="application-board">
                 <div className='table-title'>
                 <div className="card-header"><h1>My Job Applications</h1></div>
                 </div>
                 <Filter filters={ filters } setFilter={ setFilter }/>
-                <button id="newapp" className="btn btn-primary"> Add Application </button>
+                <button id="newapp" className="btn btn-primary" onClick={()=>setModalOpen(true)}> Add Application </button>
                 { filterApps() }
             </section>
         </>
