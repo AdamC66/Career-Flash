@@ -62,6 +62,19 @@ class CommentResumeViewSet(viewsets.ModelViewSet):
     serializer_class = CommentResumeSerializer
     queryset = Comment_Resume.objects.all()
 
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_permissions(self):
+        if self.request.method == 'POST':
+            self.permission_classes = (permissions.IsAuthenticated,)
+        return super(CommentResumeViewSet, self).get_permissions()
+
+    def get_queryset(self):
+        return self.request.user.Comment_Resume.all()
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
 class CommentCoverLetterViewSet(viewsets.ModelViewSet):
     serializer_class = CommentCoverLetterSerializer
     queryset = Comment_Cover_Letter.objects.all()

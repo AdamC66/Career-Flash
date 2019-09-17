@@ -15,7 +15,7 @@ function Profile() {
     const [portfolioLink, setPortfolioLink] = useState("")
     const [resumeLink, setResumeLink] = useState ("")
     const [coverLink, setCoverLink] = useState ("")
-    const [modalOpen, setModalOpen] = useState('')
+    const [modalOpen, setModalOpen] = useState(false)
 
     const handleEditButton = ()=>{
         let editButton = document.querySelector(".editbutton")
@@ -33,6 +33,7 @@ function Profile() {
             })
             .then(res => {
                 console.log(res.data[0])
+                if (res.data[0]){
                 setUserBrandStatement(res.data[0].brand_statement);
                 setGithubLink(res.data[0].github);
                 setLinkedinLink(res.data[0].linkedin);
@@ -44,6 +45,7 @@ function Profile() {
                     setCoverLink(res.data[0].cover_letter.substr(50));
                 }
                 console.log(res.data)
+            }
             });
             main_url.get('/api/users', {
                 headers: {
