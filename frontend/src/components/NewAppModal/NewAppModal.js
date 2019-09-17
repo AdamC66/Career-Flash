@@ -26,7 +26,7 @@ const submitValue = () => {
         'contact_name' : contactName,
         'contact_email': contactEmail,
         'contact_phone': contactPhone,
-        'status': 'appsub'
+        'status': 'Application Submitted'
     }
     console.log(frmdetails);
     handleSubmit(frmdetails)
@@ -51,6 +51,7 @@ const handleSubmit = (frmdetails)=>{
         
     })
 }
+
 
 return(
     <Modal

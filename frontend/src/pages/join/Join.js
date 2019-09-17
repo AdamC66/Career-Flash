@@ -9,6 +9,7 @@ function Join() {
     const [last_name, setLastName] = useState('');
     const [password, setPassword] = useState('');
     const [passClass, setPassClass] = useState('');
+    const [userID, setUserID] = useState('');
 
     const confirmPassword = (event) => {
         if (password !== event.target.value){
@@ -43,6 +44,9 @@ function Join() {
                     main_url.post("/api-token-auth/", loginInfo)
                     .then(res => {
                         window.localStorage['token'] = res.data['token']
+                        main_url.get("/api/users", window.locationStorage['token']).then(res => {setUserID(res.data[0].id)})
+                        const profile = {owner: userID}
+                        main_url.post('/api/profiles/', profile, {headers: window.localStorage['token']})
                     }).catch(e => {
                         console.log(e)
                         alert('token error, please check that your credentials are correct')
