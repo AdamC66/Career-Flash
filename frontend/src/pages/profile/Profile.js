@@ -16,6 +16,7 @@ function Profile() {
     const [resumeLink, setResumeLink] = useState ("")
     const [coverLink, setCoverLink] = useState ("")
     const [modalOpen, setModalOpen] = useState(false)
+    const [userID, setUserID] = useState('')
 
     const handleEditButton = ()=>{
         let editButton = document.querySelector(".editbutton")
@@ -54,6 +55,7 @@ function Profile() {
             })
             .then(res => {
                 setUserName(res.data[0].first_name)
+                setUserID(res.data[0].id)
             })
         }
     }
@@ -74,6 +76,7 @@ function Profile() {
             linkedinLink = {linkedinLink}
             portfolioLink = {portfolioLink}
             userToken = {window.localStorage['token']}
+            userID = {userID}
             />
 
             <div className="card text-white bg-dark mb-3" id="profile-header" onMouseEnter={()=>handleEditButton()} onMouseLeave={()=>handleEditButton()}>

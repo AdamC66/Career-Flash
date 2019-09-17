@@ -1,17 +1,14 @@
 # Will clear out later
 import logging
 import os
-from django.urls import reverse 
-from django.conf import settings
-import json
-import requests
 from django.contrib.auth.models import User, Group
-from rest_framework import viewsets, permissions
+from rest_framework import viewsets, permissions, status
 from CareerFlash.serializers import *
 from CareerFlash.models import *
 from django.db.models import Q
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.response import Response
+from rest_framework.decorators import action
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
@@ -69,6 +66,18 @@ class ProfileViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         return super(ProfileViewSet, self).get_queryset().filter(
             owner=self.request.user)
+
+    # @action(detail=True, methods = ['put'], name='Update Profile')
+    # def update_profile(self, request, pk = None):
+    #     if self.request.method == 'PUT':
+    #         profile = self.get_object()
+    #         serializer = ProfileSerializer(data=request.data)
+    #         if serializer.is_valid():
+    #             profile.update_profile(serializer.data)
+    #             profile.save()
+    #             return Response({'status': 'Updated profile'})
+    #         else: 
+    #             return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
 
 class CommentResumeViewSet(viewsets.ModelViewSet):
     serializer_class = CommentResumeSerializer
