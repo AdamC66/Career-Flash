@@ -8,28 +8,8 @@ import main_url from '../../config.js'
 function TrackerTable({ setModalOpen }) {
 
     const [myFilter, setFilter] = useState('all');
-    const [applications, setApplications] = useState([ 
-        ///TAKE THIS STUFF OUT IT MESSES WITH THE EDIT MODAL      
-    {date_submitted:'Sept 2',
-    company: 'Google',
-    position: 'Front End Dev',
-    status: 'Application Submitted'},
-    {date_submitted:'Sept 4',
-    company: 'Reddit',
-    position: 'Full Stack Dev',
-    status: 'Application Submitted'},
-    {date_submitted:'Aug 30',
-    company: 'GAdventures',
-    position: 'API Dev',
-    status: 'Offer'},
-    {date_submitted:'Sept 6',
-    company: 'PagerDuty',
-    position: 'Mobile Dev',
-    status: 'Interview'},
-    {date_submitted:'Sept 9',
-    company: 'some company',
-    position: 'Mobile Dev',
-    status: 'Interview'},])
+    const [applications, setApplications] = useState([]) 
+        ///TAKE THIS STUFF OUT IT MESSES WITH THE EDIT MODAL\
 
     let filters = [
         {name: 'All', value:'all'},

@@ -11,7 +11,7 @@ function ApplicationItem({ application, handleFieldChange, myindex, handleUpdate
         Rejected: 'red'
     }
     const [editModalOpen, setEditModalOpen] = useState(false)
-    console.log(application)
+    // console.log(application)
     return (
         <>
         <EditApplicationModal application={application} index={myindex} setEditModalOpen={setEditModalOpen} editModalOpen={editModalOpen} handleUpdateApp={handleUpdateApp}/>

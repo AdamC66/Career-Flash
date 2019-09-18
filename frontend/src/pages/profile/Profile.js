@@ -99,9 +99,9 @@ function Profile() {
                         <p>{userBrandStatement} </p> 
                         <button className="hidden editbutton" onClick={()=>setModalOpen(true)}> Edit </button>
                     </div>
-                    <h5><div className='icon'><img src={githubicon} alt=""/></div><a href={githubLink} target="_blank"> {githubLink.slice(8,)}</a></h5>
-                    <h5><div className='icon'> <img src={linkedinicon} alt=""/> </div><a href={linkedinLink} target="_blank">{linkedinLink.slice(8,)}</a></h5>
-                    <h5><div className='icon'><img src={portfolioicon} alt=""/></div><a href={portfolioLink} target="_blank"> {portfolioLink.slice(9,)}</a></h5>
+                    <h5><div className='icon'><img src={githubicon} alt=""/></div><a href={githubLink}>{githubLink.slice(8,)}</a></h5>
+                    <h5><div className='icon'> <img src={linkedinicon} alt=""/> </div><a href={linkedinLink}>{linkedinLink.slice(8,)}</a></h5>
+                    <h5><div className='icon'><img src={portfolioicon} alt=""/></div><a href={portfolioLink}> {portfolioLink.slice(9,)}</a></h5>
                 </div>
             </div>
             <div className="document-wrapper">
