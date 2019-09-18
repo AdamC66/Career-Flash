@@ -60,18 +60,18 @@ function Join() {
                                 Authorization: `Token ${window.localStorage['token']}`
                             }
                         }
-                    )})
-                    })
-                    
-                    .then(() => {
+                    ).then(() => {
                         if(window.localStorage['token'] !== 'null'){
                             window.location.href = '/profile';
                         }
+                    }
+                    )})
                     })
                 }).catch(e => {
                     console.log(e)
                     alert('Please ensure that you have the correct email')
                 })
+
             }
             
         event.preventDefault();

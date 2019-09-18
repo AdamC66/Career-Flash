@@ -16,6 +16,7 @@ function EditModal({modalOpen, setModalOpen, setUserProfilePic, setUserBrandStat
 
         const userProfile = {
             owner: userID,
+            profile_pic: userProfilePic,
             brand_statement: userBrandStatement,
             github: githubLink,
             linkedin: linkedinLink,
@@ -59,7 +60,8 @@ function EditModal({modalOpen, setModalOpen, setUserProfilePic, setUserBrandStat
         <div class="card-body">
                 <div className='profile-pic-wrapper-small'>
                     <img className='profile-pic' src={userProfilePic} alt=""/>
-                    <input className="profileupload" type='file'/>
+                    {/* <input className="profileupload" type='file'/> */}
+                    <input className='profilePic'type='text' name="profilePic" onChange={(e)=>setUserProfilePic(e.target.value)}/>
                 </div>
             <h4>Brand Statement</h4>
             <textarea className='brand-statement-area' id="test" value={userBrandStatement} name="brandStatement" onChange={(e)=>setUserBrandStatement(e.target.value)}></textarea>
