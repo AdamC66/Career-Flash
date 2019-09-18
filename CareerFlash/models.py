@@ -3,19 +3,6 @@ from django.contrib.auth.models import User
 from django.core.validators import ( MinLengthValidator, MaxLengthValidator, MinValueValidator, URLValidator)
 from phone_field import PhoneField
 
-# Possibly not needed but don't delete yet
-# class Profile(models.Model):
-#     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='profile_users')
-
-#     def __str__(self):
-#         return f"{self.first_name} {self.last_name}"
-
-# class Organization_Profile(models.Model):
-#     group = models.ForeignKey(Group, on_delete=models.CASCADE, related_name="profile_orgs")
-
-#     def __str__(self):
-#         return f"{self.name}"
-
 class Application(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="job_applications")
     company = models.CharField(max_length=255)

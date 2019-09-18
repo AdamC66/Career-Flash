@@ -22,7 +22,7 @@ function Login()  {
         })
         .then(() => {
             if(window.localStorage['token'] !== 'null'){
-                window.location.href = '/profile'
+                window.location.href = '/'
             }});
         event.preventDefault();
         }

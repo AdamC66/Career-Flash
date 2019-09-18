@@ -44,6 +44,26 @@ function Join() {
                     .then(res => {
                         window.localStorage['token'] = res.data['token']
                     }).then(() => {
+                        main_url.get("/api/users/", {
+                            headers: {
+                                Authorization: `Token ${window.localStorage['token']}`
+                            }
+                        }
+                    ).then(res => {
+                        const profileCreate = {
+                            owner: res.data[0].id,
+                            github: 'https://github.com',
+                            linkedin: 'https://linked.com'
+                        }
+                        main_url.post('/api/profiles/', profileCreate, {
+                            headers: {
+                                Authorization: `Token ${window.localStorage['token']}`
+                            }
+                        }
+                    )})
+                    })
+                    
+                    .then(() => {
                         if(window.localStorage['token'] !== 'null'){
                             window.location.href = '/profile';
                         }
