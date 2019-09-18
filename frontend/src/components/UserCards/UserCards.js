@@ -3,7 +3,9 @@ import UserCard from './UserCard'
 
 
 function UserCards({users}) {
-    console.log('__IM IN USERCARD', users)
+    console.log('__IM IN USERCARDS THESE ARE MY USERS', users)
+    
+
     let userCards = users.map((user, i)=><UserCard user={user} key={i} id={i}/>)
                
     return (

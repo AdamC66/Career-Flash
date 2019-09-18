@@ -22,7 +22,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.conf.urls import url
 from rest_framework import routers
 from rest_framework.authtoken import views as auth_views
-
+from django.conf import settings
+from django.conf.urls.static import static
 
 router = routers.DefaultRouter()
 router.register(r'users', api.UserViewSet)
@@ -39,4 +40,4 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('api/it/', csrf_exempt(views.ApiView.as_view())),
     path('api-token-auth/', auth_views.obtain_auth_token, name='api-token-auth'),
-]
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

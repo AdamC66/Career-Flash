@@ -5,19 +5,22 @@ import './dashboard.css'
 import main_url from '../../config';
 
 function Dashboard() {
-    const userProfilePic = "https://laughingsquid.com/wp-content/uploads/2018/12/Danny-DeVito-Eats-Hard-Boiled-Egg.png"
+    const userProfilePic = "https://i.ytimg.com/vi/AHzw4QvE2Do/maxresdefault.jpg"
     const [groups, setGroups] = useState([])
     const [users, setUsers] = useState([])
     const [activeGroup, setActiveGroup] = useState(1)
-    
+    const [userProfiles, setUserProfiles] = useState([])
+
     useEffect(() => {
         getGroups()
         getUsers()
+        updateTable(activeGroup)
     }, [])
     const updateTable = (id)=> {
-        
         setActiveGroup(id)
-        getUsers()
+        setUsers([])
+        getUsers(id)
+        userCards = <div/>
     }        
     const getGroups = () =>{
         let userToken = window.localStorage['token']
@@ -30,13 +33,14 @@ function Dashboard() {
             setGroups(res.data)
             setActiveGroup(res.data[0].id)
             console.log(res.data)
-            console.log(groups)
+            console.log('GROUPS ARE:',groups)
             
         })
     }
-    const getUsers = () =>{
+    const getUsers = (id) =>{
         let userToken = window.localStorage['token']
-        main_url.get(`/api/groupusers?group_id=${activeGroup}`, {
+        console.log(`__GETTING USERS FROM__ - /api/groupusers?group_id=${id}`)
+        main_url.get(`/api/groupusers?group_id=${id}`, {
             headers: {
                 Authorization: `Token ${userToken}` 
             }
