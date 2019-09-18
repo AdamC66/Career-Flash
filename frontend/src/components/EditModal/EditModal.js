@@ -16,13 +16,13 @@ function EditModal({modalOpen, setModalOpen, setUserProfilePic, setUserBrandStat
 
         const userProfile = {
             owner: userID,
-            profile_pic: userProfilePic,
+            profile_picture: userProfilePic,
             brand_statement: userBrandStatement,
             github: githubLink,
             linkedin: linkedinLink,
             portfolio: portfolioLink,
         }
-
+        console.log(userProfile.profile_picture)
         main_url.get('/api/profiles/', {
             headers: {
                 Authorization: `Token ${userToken}`,
@@ -62,7 +62,7 @@ function EditModal({modalOpen, setModalOpen, setUserProfilePic, setUserBrandStat
                     <img className='profile-pic' src={userProfilePic} alt=""/>
                 </div>
             <p>Image URL:</p>
-            <input className='profileupload'type='text' name="profilePic" onChange={(e)=>setUserProfilePic(e.target.value)}/>
+            <input className='profileupload' type='text' name="profilePic" onChange={(e)=>setUserProfilePic(e.target.value)}/>
             <h4>Brand Statement</h4>
             <textarea className='brand-statement-area' id="test" value={userBrandStatement} name="brandStatement" onChange={(e)=>setUserBrandStatement(e.target.value)}></textarea>
             <h4>Resume</h4>

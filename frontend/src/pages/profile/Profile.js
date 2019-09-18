@@ -52,6 +52,7 @@ function Profile() {
                 setPortfolioLink(res.data[0].portfolio);
                 setUserName(res.data[0].user_name)
                 setProfileID(res.data[0].id)
+                setUserProfilePic(res.data[0].profile_picture)
                 console.log(res.data[0])
                 if (res.data[0].resume){
                     setResumeLink(res.data[0].resume.substr(50));
