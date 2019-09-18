@@ -27,7 +27,7 @@ class ApplicationSerailizer(serializers.ModelSerializer):
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields = ('owner', 'brand_statement', 'resume', 'cover_letter', 'github', 'linkedin', 'portfolio')
+        fields = ('owner', 'brand_statement', 'resume', 'cover_letter', 'github', 'linkedin', 'portfolio', 'id')
 
 
 class CommentResumeSerializer(serializers.ModelSerializer):
