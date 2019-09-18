@@ -2,11 +2,10 @@
 import logging
 import os
 from django.contrib.auth.models import User, Group
-from rest_framework import viewsets, permissions, status
+from rest_framework import viewsets, permissions
 from CareerFlash.serializers import *
 from CareerFlash.models import *
 from django.db.models import Q
-from rest_framework.authentication import TokenAuthentication
 from rest_framework.response import Response
 from rest_framework.decorators import action
 
@@ -78,18 +77,6 @@ class ProfileViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(owner__id=user_id)
         serializer = ProfileSerializer(queryset, many=True)
         return Response(data=serializer.data)
-
-    # @action(detail=True, methods = ['put'], name='Update Profile')
-    # def update_profile(self, request, pk = None):
-    #     if self.request.method == 'PUT':
-    #         profile = self.get_object()
-    #         serializer = ProfileSerializer(data=request.data)
-    #         if serializer.is_valid():
-    #             profile.update_profile(serializer.data)
-    #             profile.save()
-    #             return Response({'status': 'Updated profile'})
-    #         else: 
-    #             return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
 
 class CommentResumeViewSet(viewsets.ModelViewSet):
     serializer_class = CommentResumeSerializer
