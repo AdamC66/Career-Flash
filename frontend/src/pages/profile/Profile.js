@@ -4,7 +4,9 @@ import MyDocument from '../../components/MyDocument/MyDocument';
 import '../../../node_modules/font-awesome/css/font-awesome.min.css'; 
 import EditModal from '../../components/EditModal/EditModal';
 import main_url from '../../config';
-
+import githubicon from './github.jpg'
+import linkedinicon from './linkedin.png'
+import portfolioicon from './portfolio.png'
 
 function Profile() {
     const [userName, setUserName] = useState('John Cena')
@@ -91,9 +93,9 @@ function Profile() {
                         <p>{userBrandStatement} </p> 
                         <button className="hidden editbutton" onClick={()=>setModalOpen(true)}> Edit </button>
                     </div>
-                    <h5><i className="fab fa-github"></i><a href={githubLink}>{githubLink}</a></h5>
-                    <h5><i className="fab fa-linkedin"></i><a href={linkedinLink}>{linkedinLink}</a></h5>
-                    <h5><i className="fas fa-desktop"></i><a href={portfolioLink}>{portfolioLink}</a></h5>
+                    <h5><div className='icon'><img src={githubicon} alt=""/></div><a href={githubLink}> {githubLink}</a></h5>
+                    <h5><div className='icon'> <img src={linkedinicon} alt=""/> </div><a href={linkedinLink}>{linkedinLink}</a></h5>
+                    <h5><div className='icon'><img src={portfolioicon} alt=""/></div><a href={portfolioLink}> {portfolioLink}</a></h5>
                 </div>
             </div>
             <div className="document-wrapper">
