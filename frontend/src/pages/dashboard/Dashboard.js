@@ -9,15 +9,16 @@ function Dashboard() {
     const [groups, setGroups] = useState([])
     const [users, setUsers] = useState([])
     const [activeGroup, setActiveGroup] = useState(1)
-    
+    const [userProfiles, setUserProfiles] = useState([])
+
     useEffect(() => {
         getGroups()
         getUsers()
     }, [])
     const updateTable = (id)=> {
-        
-        setActiveGroup(id)
-        getUsers()
+        setTimeout(setActiveGroup(id),500)
+        setTimeout(getUsers(),500)
+        userCards = []
     }        
     const getGroups = () =>{
         let userToken = window.localStorage['token']
@@ -30,12 +31,13 @@ function Dashboard() {
             setGroups(res.data)
             setActiveGroup(res.data[0].id)
             console.log(res.data)
-            console.log(groups)
+            console.log('GROUPS ARE:',groups)
             
         })
     }
     const getUsers = () =>{
         let userToken = window.localStorage['token']
+        console.log(`__GETTING USERS FROM__ - /api/groupusers?group_id=${activeGroup}`)
         main_url.get(`/api/groupusers?group_id=${activeGroup}`, {
             headers: {
                 Authorization: `Token ${userToken}` 
