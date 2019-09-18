@@ -15,7 +15,7 @@ function Profile() {
     const [userBrandStatement, setUserBrandStatement] = useState("You cant see me")
     const [githubLink, setGithubLink] = useState("https://github.com")
     const [linkedinLink, setLinkedinLink] = useState("https://linkedin.com")
-    const [portfolioLink, setPortfolioLink] = useState("1234567Portfolio Link")
+    const [portfolioLink, setPortfolioLink] = useState("Portfolio Link")
     const [resumeLink, setResumeLink] = useState ("")
     const [coverLink, setCoverLink] = useState ("")
     const [modalOpen, setModalOpen] = useState(false)

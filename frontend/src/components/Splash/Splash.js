@@ -14,7 +14,6 @@ function Splash() {
     </>);
 
     const checkLogin = () => {
-        console.log(`This User: ${window.localStorage['token']}`)
         if (window.localStorage['token'] !== 'null'){
             setLoggedInLinks(
                 <Link to = '/dashboard'>

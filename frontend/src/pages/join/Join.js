@@ -9,14 +9,15 @@ function Join() {
     const [last_name, setLastName] = useState('');
     const [password, setPassword] = useState('');
     const [passClass, setPassClass] = useState('');
+    const [confirmPass, setConfirmPass] = useState('hidden-pw');
     
     const confirmPassword = (event) => {
         if (password !== event.target.value){
-            console.log('password not right')
-            setPassClass('wrong_pass');
+            setPassClass('error-pass');
+            setConfirmPass('pass-not-match')
         } else {
-            console.log('password matches');
-            setPassClass('correct');
+            setPassClass('');
+            setConfirmPass('hidden-pw')
             }
         }
 
@@ -53,7 +54,8 @@ function Join() {
                         const profileCreate = {
                             owner: res.data[0].id,
                             github: 'https://github.com',
-                            linkedin: 'https://linked.com'
+                            linkedin: 'https://linked.com',
+                            portfolio: 'https://PorfolioLink.com'
                         }
                         main_url.post('/api/profiles/', profileCreate, {
                             headers: {
@@ -91,24 +93,25 @@ function Join() {
             <form className='"card text-white bg-dark mb-3"' onSubmit={handleSubmit}>
                 <h2 className='card-header'>Create Account</h2>
                 <div className='card-body'>
-                <label for='email'><b><FontAwesomeIcon icon={faEnvelope} color="white"/> Email: </b>
+                <label htmlFor='email'><b><FontAwesomeIcon icon={faEnvelope} color="white"/> Email: </b>
                 <input type='text' value={email} placeholder = 'Email' name='email' onChange = {(e)=> setEmail(e.target.value)}required/>
                 </label>
                 <br/><br/>
-                <label for='first_name'><b>First Name: </b>
+                <label htmlFor='first_name'><b>First Name: </b>
                 <input type='text' value={first_name} placeholder = 'First Name' name='first_name' onChange = {(e)=> setFirstName(e.target.value)}required/>
                 </label>
                 <br/><br/>
-                <label for='first_name'><b>Last Name: </b>
+                <label htmlFor='first_name'><b>Last Name: </b>
                 <input type='text' value={last_name} placeholder = 'Last Name' name='last_name' onChange = {(e)=> setLastName(e.target.value)}required/>
                 </label>
                 <br/><br/>
-                <label for='password'><b><FontAwesomeIcon icon={faKey} color="white"/>Password:  </b>
+                <label htmlFor='password'><b><FontAwesomeIcon icon={faKey} color="white"/>Password:  </b>
                 <input type='password' value={password} placeholder = 'Password' name='password' onChange = {(e)=> setPassword(e.target.value)}required/>
                 </label>
                 <br/><br/>
-                <label for='password'><b>Confirm Password: </b>
+                <label htmlFor='password'><b>Confirm Password: </b>
                 <input type='password' className={passClass}  placeholder = 'Confirm Password' name='confirmPassword' onChange = {confirmPassword}required/>
+                <p className={confirmPass}>Password does not match</p>
                 </label>
                 <br/><br/>
                 <input type='submit' value='Sign-up'/>
