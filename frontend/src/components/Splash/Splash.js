@@ -14,8 +14,8 @@ function Splash() {
     </>);
 
     const checkLogin = () => {
-        const userToken = window.localStorage['token'];
-        if (userToken !== null){
+        console.log(`This User: ${window.localStorage['token']}`)
+        if (window.localStorage['token'] !== 'null'){
             setLoggedInLinks(
                 <Link to = '/dashboard'>
                     <button className="btn btn-primary" value="join" style={{marginRight: '5px'}}>Dashboard</button>
