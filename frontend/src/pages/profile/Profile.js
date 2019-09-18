@@ -7,6 +7,7 @@ import main_url from '../../config';
 import githubicon from './github.jpg'
 import linkedinicon from './linkedin.png'
 import portfolioicon from './portfolio.png'
+import Axios from 'axios'
 
 function Profile() {
     const [userName, setUserName] = useState('John Cena')
@@ -14,7 +15,7 @@ function Profile() {
     const [userBrandStatement, setUserBrandStatement] = useState("You cant see me")
     const [githubLink, setGithubLink] = useState("https://github.com")
     const [linkedinLink, setLinkedinLink] = useState("https://linkedin.com")
-    const [portfolioLink, setPortfolioLink] = useState("")
+    const [portfolioLink, setPortfolioLink] = useState("Portfolio Link")
     const [resumeLink, setResumeLink] = useState ("")
     const [coverLink, setCoverLink] = useState ("")
     const [modalOpen, setModalOpen] = useState(false)
@@ -28,14 +29,16 @@ function Profile() {
     
     const checkLogin = () => {
         const userToken = window.localStorage['token']
-        let url = '/api/profiles/'
+        let url = '/api/profiles'
         let search = window.location.search;
+        console.log('__Logging Search', search)
         if (search){
             url = `/api/profiles${search}`
+            console.log("__LOGGING URL", url)
         }
         console.log('URL', url)
         if(userToken !== 'null'){
-            main_url.get(url, {
+            Axios.get(`http://localhost:3000${url}`, {
                 headers: {
                     Authorization: `Token ${userToken}` 
                 }
@@ -102,9 +105,10 @@ function Profile() {
                         <p>{userBrandStatement} </p> 
                         <button className="hidden editbutton" onClick={()=>setModalOpen(true)}> Edit </button>
                     </div>
-                    <h5><div className='icon'><img src={githubicon} alt=""/></div><a href={githubLink}>{githubLink.slice(7,)}</a></h5>
-                    <h5><div className='icon'> <img src={linkedinicon} alt=""/> </div><a href={linkedinLink}>{linkedinLink.slice(7,)}</a></h5>
-                    <h5><div className='icon'><img src={portfolioicon} alt=""/></div><a href={portfolioLink}> {portfolioLink}</a></h5>
+                    <h5><div className='icon'><img src={githubicon} alt=""/></div><a href={githubLink}>{githubLink}</a></h5>
+                    <h5><div className='icon'> <img src={linkedinicon} alt=""/> </div><a href={linkedinLink}>{linkedinLink}</a></h5>
+                    <h5><div className='icon'><img src={portfolioicon} alt=""/></div><a href={portfolioLink}>{portfolioLink}</a></h5>
+
                 </div>
             </div>
             <div className="document-wrapper">

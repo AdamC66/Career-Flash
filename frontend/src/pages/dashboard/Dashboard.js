@@ -73,12 +73,14 @@ function Dashboard() {
                 <div className='profile-pic-wrapper'>
                 <img className='profile-pic' src={userProfilePic} alt=""/>
                 </div>
-                <h4>My Groups</h4>
+                <h4 class="card-title" style={{textAlign: 'center'}}>My Groups</h4>
                 { groupCards }
                 <button onClick={()=> setModalOpen(true)} className="btn btn-primary" style={{margin: '5px'}}> NewGroup </button>
             </div>
-            <section className="card bg-secondary mb-3">
-
+            <section style={{backgroundColor: 'rgba(170, 160, 170, 0.5)'}}>
+            <div className="card text-white bg-dark mb-3">
+            <h2 class="card-title" style={{textAlign: 'center'}}>Group Members </h2>
+            </div>
             { userCards }
             
             </section>
