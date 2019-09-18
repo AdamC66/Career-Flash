@@ -10,11 +10,11 @@ import portfolioicon from './portfolio.png'
 
 function Profile() {
     const [userName, setUserName] = useState('John Cena')
-    const [userProfilePic, setUserProfilePic] = useState('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png')
+    const [userProfilePic, setUserProfilePic] = useState('https://www.seekpng.com/png/detail/97-979180_danny-devito-my-hero-danny-devito-sticker.png')
     const [userBrandStatement, setUserBrandStatement] = useState("You cant see me")
     const [githubLink, setGithubLink] = useState("https://github.com")
     const [linkedinLink, setLinkedinLink] = useState("https://linkedin.com")
-    const [portfolioLink, setPortfolioLink] = useState("1234567Portfolio Link")
+    const [portfolioLink, setPortfolioLink] = useState("")
     const [resumeLink, setResumeLink] = useState ("")
     const [coverLink, setCoverLink] = useState ("")
     const [modalOpen, setModalOpen] = useState(false)
@@ -51,10 +51,10 @@ function Profile() {
                 setProfileID(res.data[0].id)
                 console.log(res.data[0])
                 if (res.data[0].resume){
-                    setResumeLink(res.data[0].resume.substr(50));
+                    setResumeLink(res.data[0].resume.substr(16));
                 }
                 if (res.data[0].cover_letter){
-                    setCoverLink(res.data[0].cover_letter.substr(50));
+                    setCoverLink(res.data[0].cover_letter.substr(15));
                 }
                 console.log(res.data)
             }
@@ -104,8 +104,7 @@ function Profile() {
                     </div>
                     <h5><div className='icon'><img src={githubicon} alt=""/></div><a href={githubLink}>{githubLink.slice(7,)}</a></h5>
                     <h5><div className='icon'> <img src={linkedinicon} alt=""/> </div><a href={linkedinLink}>{linkedinLink.slice(7,)}</a></h5>
-                    <h5><div className='icon'><img src={portfolioicon} alt=""/></div><a href={portfolioLink}>{portfolioLink}</a></h5>
-
+                    <h5><div className='icon'><img src={portfolioicon} alt=""/></div><a href={portfolioLink}> {portfolioLink}</a></h5>
                 </div>
             </div>
             <div className="document-wrapper">
