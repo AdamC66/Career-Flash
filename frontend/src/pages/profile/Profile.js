@@ -11,7 +11,7 @@ import Axios from 'axios'
 
 function Profile() {
     const [userName, setUserName] = useState('John Cena')
-    const [userProfilePic, setUserProfilePic] = useState('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png')
+    const [userProfilePic, setUserProfilePic] = useState('https://www.seekpng.com/png/detail/97-979180_danny-devito-my-hero-danny-devito-sticker.png')
     const [userBrandStatement, setUserBrandStatement] = useState("You cant see me")
     const [githubLink, setGithubLink] = useState("https://github.com")
     const [linkedinLink, setLinkedinLink] = useState("https://linkedin.com")
@@ -54,10 +54,10 @@ function Profile() {
                 setProfileID(res.data[0].id)
                 console.log(res.data[0])
                 if (res.data[0].resume){
-                    setResumeLink(res.data[0].resume.substr(50));
+                    setResumeLink(res.data[0].resume.substr(16));
                 }
                 if (res.data[0].cover_letter){
-                    setCoverLink(res.data[0].cover_letter.substr(50));
+                    setCoverLink(res.data[0].cover_letter.substr(15));
                 }
                 console.log(res.data)
             }
