@@ -3,13 +3,14 @@ import UserCards from '../../components/UserCards/UserCards'
 import GroupCard from '../../components/GroupCard/GroupCard'
 import './dashboard.css'
 import main_url from '../../config';
+import NewGroupModal from '../../components/NewGroupModal/NewGroupModal'
 
 function Dashboard() {
     const userProfilePic = "https://i.ytimg.com/vi/AHzw4QvE2Do/maxresdefault.jpg"
     const [groups, setGroups] = useState([])
     const [users, setUsers] = useState([])
     const [activeGroup, setActiveGroup] = useState(1)
-    const [userProfiles, setUserProfiles] = useState([])
+    const [modalOpen, setModalOpen] = useState(false)
 
     useEffect(() => {
         getGroups()
@@ -67,12 +68,14 @@ function Dashboard() {
     return (
 
         <div className="dashboard-main">
+            <NewGroupModal setModalOpen={setModalOpen} modalOpen={modalOpen} setGroups={setGroups}/>
             <div className="card text-white bg-dark mb-3">
                 <div className='profile-pic-wrapper'>
                 <img className='profile-pic' src={userProfilePic} alt=""/>
                 </div>
                 <h4>My Groups</h4>
                 { groupCards }
+                <button onClick={()=> setModalOpen(true)} className="btn btn-primary" style={{margin: '5px'}}> NewGroup </button>
             </div>
             <section className="card bg-secondary mb-3">
 

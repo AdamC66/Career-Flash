@@ -47,6 +47,7 @@ function Profile() {
                 setGithubLink(res.data[0].github);
                 setLinkedinLink(res.data[0].linkedin);
                 setPortfolioLink(res.data[0].portfolio);
+                setUserName(res.data[0].user_name)
                 if (res.data[0].resume){
                     setResumeLink(res.data[0].resume.substr(50));
                 }
@@ -62,7 +63,6 @@ function Profile() {
                 }
             })
             .then(res => {
-                setUserName(res.data[0].first_name)
                 setUserID(res.data[0].id)
             })
         }
@@ -99,9 +99,9 @@ function Profile() {
                         <p>{userBrandStatement} </p> 
                         <button className="hidden editbutton" onClick={()=>setModalOpen(true)}> Edit </button>
                     </div>
-                    <h5><div className='icon'><img src={githubicon} alt=""/></div><a href={githubLink}>{githubLink.slice(8,)}</a></h5>
-                    <h5><div className='icon'> <img src={linkedinicon} alt=""/> </div><a href={linkedinLink}>{linkedinLink.slice(8,)}</a></h5>
-                    <h5><div className='icon'><img src={portfolioicon} alt=""/></div><a href={portfolioLink}> {portfolioLink.slice(9,)}</a></h5>
+                    <h5><div className='icon'><img src={githubicon} alt=""/></div><a href={githubLink}>{githubLink.slice(7,)}</a></h5>
+                    <h5><div className='icon'> <img src={linkedinicon} alt=""/> </div><a href={linkedinLink}>{linkedinLink.slice(7,)}</a></h5>
+                    <h5><div className='icon'><img src={portfolioicon} alt=""/></div><a href={portfolioLink}> {portfolioLink.slice(7,)}</a></h5>
                 </div>
             </div>
             <div className="document-wrapper">

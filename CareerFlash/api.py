@@ -83,13 +83,24 @@ class ProfileViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         return super(ProfileViewSet, self).get_queryset().filter(
             owner=self.request.user)
+
     def list(self, request):
         user_id= request.GET.get('user_id', None)
         queryset = Profile.objects.all()
         if user_id:
             queryset = queryset.filter(owner__id=user_id)
-        serializer = ProfileSerializer(queryset, many=True)
-        return Response(data=serializer.data)
+            print("QUERYSET ", queryset)
+            print((queryset.first().owner.first_name))
+            serializer = ProfileSerializer(queryset, many=True)
+            serializer.data[0]['user_name']=(queryset.first().owner.first_name + " " + queryset.first().owner.last_name)
+            return Response(data=serializer.data)
+        else:
+            queryset = Profile.objects.filter(owner=self.request.user)
+            print("QUERYSET ", queryset)
+            print((queryset.first().owner.first_name))
+            serializer=ProfileSerializer(queryset, many=True)
+            serializer.data[0]['user_name']=(queryset.first().owner.first_name + " " + queryset.first().owner.last_name)
+            return Response(data=serializer.data,status=status.HTTP_200_OK)
 
 class CommentResumeViewSet(viewsets.ModelViewSet):
     serializer_class = CommentResumeSerializer
