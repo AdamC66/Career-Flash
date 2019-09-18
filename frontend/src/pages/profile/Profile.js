@@ -10,7 +10,7 @@ import portfolioicon from './portfolio.png'
 
 function Profile() {
     const [userName, setUserName] = useState('John Cena')
-    const [userProfilePic, setUserProfilePic] = useState('https://statics.sportskeeda.com/editor/2018/08/bd960-1534053592-800.jpg')
+    const [userProfilePic, setUserProfilePic] = useState('https://www.seekpng.com/png/detail/97-979180_danny-devito-my-hero-danny-devito-sticker.png')
     const [userBrandStatement, setUserBrandStatement] = useState("You cant see me")
     const [githubLink, setGithubLink] = useState("https://github.com")
     const [linkedinLink, setLinkedinLink] = useState("https://linkedin.com")

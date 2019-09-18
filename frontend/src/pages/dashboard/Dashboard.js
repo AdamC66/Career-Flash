@@ -5,7 +5,7 @@ import './dashboard.css'
 import main_url from '../../config';
 
 function Dashboard() {
-    const userProfilePic = "https://www.thesun.co.uk/wp-content/uploads/2018/10/NINTCHDBPICT0004443600951.jpg"
+    const userProfilePic = "https://laughingsquid.com/wp-content/uploads/2018/12/Danny-DeVito-Eats-Hard-Boiled-Egg.png"
     const [groups, setGroups] = useState([])
     const [users, setUsers] = useState([])
     const [activeGroup, setActiveGroup] = useState(1)
