@@ -9,7 +9,7 @@ function EditApplicationModal({application,index, handleUpdateApp, setEditModalO
 
 const submitValue = () => {
     const frmdetails = {
-        'companyName' : applicationdata.companyName,
+        'company' : applicationdata.company,
         'position' : applicationdata.position,
         'description' : applicationdata.description,
         'date_submitted' : applicationdata.date,
@@ -59,21 +59,21 @@ return(
 
     <div className="info" id='infoitems'>
     <div className='company-logo-modal '>
-        <img src={`//logo.clearbit.com/${applicationdata.companyName}.com?size=80`} onError={(e)=>{e.target.onerror = null; e.target.src=placeholder}} alt=""></img>
+        <img src={`//logo.clearbit.com/${applicationdata.company}.com?size=80`} onError={(e)=>{e.target.onerror = null; e.target.src=placeholder}} alt=""></img>
     </div>
-    <h4 className="card-title">Company Name</h4>    
-    <input type="text" name="company-name" defaultValue={applicationdata.companyName} onChange={e => setApplicationData({...application, companyName: e.target.value})} />
+    <h4 class="card-title">Company Name</h4>    
+    <input type="text" name="company-name" defaultValue={applicationdata.company} onChange={e => setApplicationData({...application, company: e.target.value})} />
 
     <h4 className="card-title">Position</h4>
     <input type="text" name='position'  defaultValue={applicationdata.position} onChange={e => setApplicationData({...application, position: e.target.value})} />
     <h4 className="card-title">Description</h4>
-    <textarea name='description' defaultValue={applicationdata.description} onChange={e => setApplicationData({...application, description: e.target.value})}> </textarea>
+    <textarea name='description' defaultValue={applicationdata.description} onChange={e => setApplicationData({...application, description: e.target.value})}/>
 
 
     </div>
     <div className='notes hidden'>
     <h4 className="card-title"> Notes</h4>
-    <textarea name='description info' defaultValue={applicationdata.notes} onChange={e => setApplicationData({...application, notes: e.target.value})}> </textarea>
+    <textarea name='description info' defaultValue={applicationdata.notes} onChange={e => setApplicationData({...application, notes: e.target.value})}/>
     
     <h4 className="card-title">Contact</h4>
     <input type="text" name='contact-name'  placeholder="Name" defaultValue={applicationdata.contact_name} onChange={e => setApplicationData({...application, contact_name: e.target.value})} />
