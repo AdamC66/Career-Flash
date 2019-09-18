@@ -20,6 +20,7 @@ class Application(models.Model):
 
 class Profile(models.Model):
     owner = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profiles_user')
+    profile_picture = models.URLField(null=True, validators=[URLValidator],blank=True)
     brand_statement = models.TextField(null=True, max_length=500, blank=True)
     resume = models.FileField(null=True, upload_to='',blank=True)
     cover_letter = models.FileField(null=True, upload_to='',blank=True)
