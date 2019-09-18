@@ -8,7 +8,7 @@ import main_url from '../../config';
 
 function Profile() {
     const [userName, setUserName] = useState('John Cena')
-    const [userProfilePic, setUserProfilePic] = useState('https://statics.sportskeeda.com/editor/2018/08/bd960-1534053592-800.jpg')
+    const [userProfilePic, setUserProfilePic] = useState('https://66.media.tumblr.com/21013e0f67dc281ffda213bb7d3b83bc/tumblr_o5e8kzoGl01uyie96o1_250.jpg')
     const [userBrandStatement, setUserBrandStatement] = useState("You cant see me")
     const [githubLink, setGithubLink] = useState("https://github.com")
     const [linkedinLink, setLinkedinLink] = useState("https://linkedin.com")
@@ -91,9 +91,9 @@ function Profile() {
                         <p>{userBrandStatement} </p> 
                         <button className="hidden editbutton" onClick={()=>setModalOpen(true)}> Edit </button>
                     </div>
-                    <h5><i className="fab fa-github"></i><a href={githubLink}>{githubLink}</a></h5>
-                    <h5><i className="fab fa-linkedin"></i><a href={linkedinLink}>{linkedinLink}</a></h5>
-                    <h5><i className="fas fa-desktop"></i><a href={portfolioLink}>{portfolioLink}</a></h5>
+                    <h5><i className="fab fa-github"></i><a href={githubLink} target="_blank">{githubLink.slice(8,)}</a></h5>
+                    <h5><i className="fab fa-linkedin"></i><a href={linkedinLink} target="_blank">{linkedinLink.slice(8,)}</a></h5>
+                    <h5><i className="fas fa-desktop"></i><a href={portfolioLink} target="_blank">{portfolioLink.slice(9,)}</a></h5>
                 </div>
             </div>
             <div className="document-wrapper">
