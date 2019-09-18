@@ -8,29 +8,8 @@ import main_url from '../../config.js'
 function TrackerTable({ setModalOpen }) {
 
     const [myFilter, setFilter] = useState('all');
-    const [applications, setApplications] = useState(
-        [
-        {date_submitted:'Sept 2',
-        companyName: 'Google',
-        position: 'Front End Dev',
-        status: 'Application Submitted'},
-        {date_submitted:'Sept 4',
-        companyName: 'Reddit',
-        position: 'Full Stack Dev',
-        status: 'Application Submitted'},
-        {date_submitted:'Aug 30',
-        companyName: 'GAdventures',
-        position: 'API Dev',
-        status: 'Offer'},
-        {date_submitted:'Sept 6',
-        companyName: 'PagerDuty',
-        position: 'Mobile Dev',
-        status: 'Interview'},
-        {date_submitted:'Sept 9',
-        companyName: 'some company',
-        position: 'Mobile Dev',
-        status: 'Interview'},
-    ])
+    const [applications, setApplications] = useState([]) 
+        ///TAKE THIS STUFF OUT IT MESSES WITH THE EDIT MODAL\
 
     let filters = [
         {name: 'All', value:'all'},
@@ -49,7 +28,7 @@ function TrackerTable({ setModalOpen }) {
           .then((response) => {
               console.log("__GET APP CALLED")
               setApplications(response.data)
-              console.log(applications)
+              console.log('MY APPLICATIONS!', applications)
             }).catch((e) => console.log("Error:", e))  
     }, [])
 
@@ -57,20 +36,31 @@ function TrackerTable({ setModalOpen }) {
     ///I KNOW CREATING A NEW ARRAY AND RESETTING THE WHOLE STATE ISNT THE BEST WAY
     // TO DO THIS BUT THIS WORKS FOR NOW AND I CANT COME UP WITH THE BETTER OPTION AT THIS POINT
     const handleFieldChange = (index) => e => {
+        let newarr= [...applications];
+        const userToken = window.localStorage['token']
+        const appID = newarr[index].id;
         console.log('__HANDLE FIELD CHANGE -- index', index);
-        let newarr= [...applications]
-        console.log("__NEW ARR__", newarr)
-        console.log(newarr[index])
-        newarr[index].status = e.target.value
-        setApplications(newarr)
+        console.log("__NEW ARR__", newarr);
+        console.log(newarr[index]);
+        newarr[index].status = e.target.value;
+        const apiUpdate = {
+            status: e.target.value,
+            company: newarr[index].company,
+            position: newarr[index].position
+        };
+        setApplications(newarr);
+        main_url.put(`/api/applications/${appID}/`, apiUpdate, {
+            headers: {
+                Authorization: `Token ${userToken}`
+            }
+        })
     }
 
     const handleUpdateApp = (frmdetails, index) =>{
         let newarr= [...applications]
         newarr[index] = frmdetails
         setApplications(newarr)
-    }
-    
+    }    
 
     const filterApps = () =>{
         let appElements = null
@@ -92,7 +82,9 @@ function TrackerTable({ setModalOpen }) {
                 </div>
                 <Filter filters={ filters } setFilter={ setFilter }/>
                 <button id="newapp" className="btn btn-primary" onClick={()=>setModalOpen(true)}> Add Application </button>
+                <div style={{overflowY: 'scroll', height: '700px'}}>
                 { filterApps() }
+                </div>
             </section>
         </>
     )

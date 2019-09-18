@@ -30,6 +30,7 @@ const submitValue = () => {
     }
     console.log(frmdetails);
     handleSubmit(frmdetails)
+    window.location.reload()
 }
 
 const handleTogglePage= (event) =>{
@@ -49,6 +50,8 @@ const handleSubmit = (frmdetails)=>{
             'Content-Type' : 'application/json' 
         }
         
+    }).then(()=>{
+        setModalOpen(false)
     })
 }
 
@@ -57,8 +60,9 @@ return(
     <Modal
         isOpen={modalOpen}
         contentLabel="Example Modal"
-        className='newAppModal'>
-    <div className="card text-white bg-dark mb-3">    
+        className='newAppModal'
+        >
+    <div className="card text-white bg-dark mb-3" style={{overflowY: 'scroll', height: '600px'}}>    
     <button className='modal-close info' onClick={()=>setModalOpen(false)}>X</button>
     <div class="card-header">
     <h1 className="card-title">New Application</h1>

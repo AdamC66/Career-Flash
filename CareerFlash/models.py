@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import User
 from django.core.validators import ( MinLengthValidator, MaxLengthValidator, MinValueValidator, URLValidator)
 from phone_field import PhoneField
 
@@ -48,3 +48,12 @@ class Comment_Cover_Letter(models.Model):
     
     def __str__(self):
         return f"{self.message}"
+
+class Orginization(models.Model):
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='owned_orgs')
+    name = models.CharField(max_length=255, unique=True)
+    members = models.ManyToManyField(User)
+    group_photo = models.ImageField(null=True, blank=True, upload_to='group_image')
+
+    def __str__(self):
+        return (self.name)

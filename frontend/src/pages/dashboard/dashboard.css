@@ -8,6 +8,10 @@
 .profile-pic-wrapper{
     margin-top:10px;
 }
+.profile-pic-wrapper img{
+    width: 100%;
+    height: 100%;
+}
 
 section{
     width: 95%;

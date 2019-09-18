@@ -62,6 +62,8 @@ function Header() {
         <div className="dropdown-menu" x-placement="bottom-start" style={{position: 'absolute', transform: 'translate3d(0, 45px, 0px)', top: '0px', left: '0px', willChange: 'transform'}}>
         <h5><a className="dropdown-item" href="/profile">Profile</a></h5>
         <h5><a className="dropdown-item" href="/tracker">Tracker</a></h5>
+        <h5><a className="dropdown-item" href="/document">My Documents</a></h5>
+        <h5><a className="dropdown-item" href="/dashboard">Dashboard</a></h5>
         <div className="dropdown-divider"></div>
         {loginOutButton}
       </div>

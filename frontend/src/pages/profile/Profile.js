@@ -4,11 +4,13 @@ import MyDocument from '../../components/MyDocument/MyDocument';
 import '../../../node_modules/font-awesome/css/font-awesome.min.css'; 
 import EditModal from '../../components/EditModal/EditModal';
 import main_url from '../../config';
-
+import githubicon from './github.jpg'
+import linkedinicon from './linkedin.png'
+import portfolioicon from './portfolio.png'
 
 function Profile() {
     const [userName, setUserName] = useState('John Cena')
-    const [userProfilePic, setUserProfilePic] = useState('https://66.media.tumblr.com/21013e0f67dc281ffda213bb7d3b83bc/tumblr_o5e8kzoGl01uyie96o1_250.jpg')
+    const [userProfilePic, setUserProfilePic] = useState('https://www.seekpng.com/png/detail/97-979180_danny-devito-my-hero-danny-devito-sticker.png')
     const [userBrandStatement, setUserBrandStatement] = useState("You cant see me")
     const [githubLink, setGithubLink] = useState("https://github.com")
     const [linkedinLink, setLinkedinLink] = useState("https://linkedin.com")
@@ -23,11 +25,17 @@ function Profile() {
         editButton.classList.toggle("hidden")
         
     }
-
+    
     const checkLogin = () => {
         const userToken = window.localStorage['token']
+        let url = '/api/profiles/'
+        let search = window.location.search;
+        if (search){
+            url = `/api/profiles${search}`
+        }
+        console.log('URL', url)
         if(userToken !== 'null'){
-            main_url.get('/api/profiles/', {
+            main_url.get(url, {
                 headers: {
                     Authorization: `Token ${userToken}` 
                 }
@@ -91,9 +99,9 @@ function Profile() {
                         <p>{userBrandStatement} </p> 
                         <button className="hidden editbutton" onClick={()=>setModalOpen(true)}> Edit </button>
                     </div>
-                    <h5><i className="fab fa-github"></i><a href={githubLink} target="_blank">{githubLink.slice(8,)}</a></h5>
-                    <h5><i className="fab fa-linkedin"></i><a href={linkedinLink} target="_blank">{linkedinLink.slice(8,)}</a></h5>
-                    <h5><i className="fas fa-desktop"></i><a href={portfolioLink} target="_blank">{portfolioLink.slice(9,)}</a></h5>
+                    <h5><div className='icon'><img src={githubicon} alt=""/></div><a href={githubLink}>{githubLink.slice(8,)}</a></h5>
+                    <h5><div className='icon'> <img src={linkedinicon} alt=""/> </div><a href={linkedinLink}>{linkedinLink.slice(8,)}</a></h5>
+                    <h5><div className='icon'><img src={portfolioicon} alt=""/></div><a href={portfolioLink}> {portfolioLink.slice(9,)}</a></h5>
                 </div>
             </div>
             <div className="document-wrapper">
