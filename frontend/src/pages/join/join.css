@@ -32,3 +32,15 @@
     cursor: pointer;
     border-radius: 5px;
 }
+
+.error-pass{
+    border-color: rgba(214, 56, 56);
+}
+
+.pass-not-match{
+    color: rgba(214, 56, 56);
+}
+
+.hidden-pw{
+    display: none;
+}

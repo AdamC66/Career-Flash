@@ -9,14 +9,17 @@ function Join() {
     const [last_name, setLastName] = useState('');
     const [password, setPassword] = useState('');
     const [passClass, setPassClass] = useState('');
+    const [confirmPass, setConfirmPass] = useState('hidden-pw');
     
     const confirmPassword = (event) => {
         if (password !== event.target.value){
             console.log('password not right')
-            setPassClass('wrong_pass');
+            setPassClass('error-pass');
+            setConfirmPass('pass-not-match')
         } else {
             console.log('password matches');
-            setPassClass('correct');
+            setPassClass('');
+            setConfirmPass('hidden-pw')
             }
         }
 
@@ -53,7 +56,8 @@ function Join() {
                         const profileCreate = {
                             owner: res.data[0].id,
                             github: 'https://github.com',
-                            linkedin: 'https://linked.com'
+                            linkedin: 'https://linked.com',
+                            portfolio: 'https://PorfolioLink.com'
                         }
                         main_url.post('/api/profiles/', profileCreate, {
                             headers: {
@@ -109,6 +113,7 @@ function Join() {
                 <br/><br/>
                 <label for='password'><b>Confirm Password: </b>
                 <input type='password' className={passClass}  placeholder = 'Confirm Password' name='confirmPassword' onChange = {confirmPassword}required/>
+                <p className={confirmPass}>Password does not match</p>
                 </label>
                 <br/><br/>
                 <input type='submit' value='Sign-up'/>

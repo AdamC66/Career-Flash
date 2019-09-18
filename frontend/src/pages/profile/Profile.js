@@ -14,7 +14,7 @@ function Profile() {
     const [userBrandStatement, setUserBrandStatement] = useState("You cant see me")
     const [githubLink, setGithubLink] = useState("https://github.com")
     const [linkedinLink, setLinkedinLink] = useState("https://linkedin.com")
-    const [portfolioLink, setPortfolioLink] = useState("1234567Portfolio Link")
+    const [portfolioLink, setPortfolioLink] = useState("Portfolio Link")
     const [resumeLink, setResumeLink] = useState ("")
     const [coverLink, setCoverLink] = useState ("")
     const [modalOpen, setModalOpen] = useState(false)
@@ -102,8 +102,8 @@ function Profile() {
                         <p>{userBrandStatement} </p> 
                         <button className="hidden editbutton" onClick={()=>setModalOpen(true)}> Edit </button>
                     </div>
-                    <h5><div className='icon'><img src={githubicon} alt=""/></div><a href={githubLink}>{githubLink.slice(7,)}</a></h5>
-                    <h5><div className='icon'> <img src={linkedinicon} alt=""/> </div><a href={linkedinLink}>{linkedinLink.slice(7,)}</a></h5>
+                    <h5><div className='icon'><img src={githubicon} alt=""/></div><a href={githubLink}>{githubLink}</a></h5>
+                    <h5><div className='icon'> <img src={linkedinicon} alt=""/> </div><a href={linkedinLink}>{linkedinLink}</a></h5>
                     <h5><div className='icon'><img src={portfolioicon} alt=""/></div><a href={portfolioLink}>{portfolioLink}</a></h5>
 
                 </div>
