@@ -11,17 +11,17 @@ function ApplicationItem({ application, handleFieldChange, myindex, handleUpdate
         Rejected: 'red'
     }
     const [editModalOpen, setEditModalOpen] = useState(false)
-
+    console.log(application)
     return (
         <>
         <EditApplicationModal application={application} index={myindex} setEditModalOpen={setEditModalOpen} editModalOpen={editModalOpen} handleUpdateApp={handleUpdateApp}/>
-        <div onClick={()=>setEditModalOpen(true)}>
+        <div >
         
          <div className="job-app" >
-            <span className = 'date'><h4> {application.date_submitted} </h4></span>
-            <span className="company-logo"><img className='company-logo-img' src={`//logo.clearbit.com/${application.companyName}.com?size=60`} onError={(e)=>{e.target.onerror = null; e.target.src=placeholder}} alt=""></img></span>
-            <span className = 'company-name'> {application.companyName} </span>
-            <span className = 'position'> {application.position} </span>
+            <span className = 'date' onClick={()=>setEditModalOpen(true)}><h4> {(application.date_submitted).substring(0,10)} </h4></span>
+            <span className="company-logo" onClick={()=>setEditModalOpen(true)}><img className='company-logo-img' src={`//logo.clearbit.com/${application.company}.com?size=60`} onError={(e)=>{e.target.onerror = null; e.target.src=placeholder}} alt=""></img></span>
+            <span className = 'company-name' onClick={()=>setEditModalOpen(true)}> {application.company} </span>
+            <span className = 'position' onClick={()=>setEditModalOpen(true)}> {application.position} </span>
             
             <div className="form-group">
                 <select className="form-control" id="Select1" value={application.status} onChange={handleFieldChange(myindex)}>

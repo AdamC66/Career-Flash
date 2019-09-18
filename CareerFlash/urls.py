@@ -21,10 +21,6 @@ from . import api
 from django.views.decorators.csrf import csrf_exempt
 from django.conf.urls import url
 from rest_framework import routers
-# from rest_framework_simplejwt.views import (
-#     TokenObtainPairView,
-#     TokenRefreshView,
-# )
 from rest_framework.authtoken import views as auth_views
 
 

@@ -2,11 +2,10 @@
 import logging
 import os
 from django.contrib.auth.models import User, Group
-from rest_framework import viewsets, permissions, status
+from rest_framework import viewsets, permissions
 from CareerFlash.serializers import *
 from CareerFlash.models import *
 from django.db.models import Q
-from rest_framework.authentication import TokenAuthentication
 from rest_framework.response import Response
 from rest_framework.decorators import action
 
@@ -33,13 +32,17 @@ class GroupViewSet(viewsets.ModelViewSet):
         return self.request.user.groups.all()
 
 class GroupUserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all().filter(id=1)
+    queryset = Group.objects.all()
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-    def get_queryset(self):
-        return Group.objects.filter(id=1).first().user_set().all()
-        #User.objects.all().filter(groups__id=1) #filter(groups=1)
+    def list(self, request):
+        group_id= request.GET.get('group_id', None)
+        queryset = User.objects.all()
+        if group_id:
+            queryset = queryset.filter(groups__id=group_id)
+        serializer = UserSerializer(queryset, many=True)
+        return Response(data=serializer.data)
 
 
 class ApplicationViewSet(viewsets.ModelViewSet):
@@ -67,18 +70,13 @@ class ProfileViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         return super(ProfileViewSet, self).get_queryset().filter(
             owner=self.request.user)
-
-    # @action(detail=True, methods = ['put'], name='Update Profile')
-    # def update_profile(self, request, pk = None):
-    #     if self.request.method == 'PUT':
-    #         profile = self.get_object()
-    #         serializer = ProfileSerializer(data=request.data)
-    #         if serializer.is_valid():
-    #             profile.update_profile(serializer.data)
-    #             profile.save()
-    #             return Response({'status': 'Updated profile'})
-    #         else: 
-    #             return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+    def list(self, request):
+        user_id= request.GET.get('user_id', None)
+        queryset = Profile.objects.all()
+        if user_id:
+            queryset = queryset.filter(owner__id=user_id)
+        serializer = ProfileSerializer(queryset, many=True)
+        return Response(data=serializer.data)
 
 class CommentResumeViewSet(viewsets.ModelViewSet):
     serializer_class = CommentResumeSerializer

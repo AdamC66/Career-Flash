@@ -9,8 +9,7 @@ function Join() {
     const [last_name, setLastName] = useState('');
     const [password, setPassword] = useState('');
     const [passClass, setPassClass] = useState('');
-    const [userID, setUserID] = useState('');
-
+    
     const confirmPassword = (event) => {
         if (password !== event.target.value){
             console.log('password not right')
