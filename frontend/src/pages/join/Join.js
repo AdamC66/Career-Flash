@@ -13,10 +13,12 @@ function Join() {
     
     const confirmPassword = (event) => {
         if (password !== event.target.value){
+            console.log('passwordDoesnt')
             setPassClass('error-pass');
             setConfirmPass('pass-not-match')
         } else {
-            setPassClass('');
+            console.log('passwordMatches')
+            setPassClass('correct');
             setConfirmPass('hidden-pw')
             }
         }
