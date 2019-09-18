@@ -38,7 +38,8 @@ class GroupUserViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
-        return User.objects.all().filter(groups__id=1) #filter(groups=1)
+        return Group.objects.filter(id=1).first().user_set().all()
+        #User.objects.all().filter(groups__id=1) #filter(groups=1)
 
 
 class ApplicationViewSet(viewsets.ModelViewSet):
