@@ -6,7 +6,7 @@ import main_url from '../../config';
 import { faUserInjured } from '@fortawesome/free-solid-svg-icons';
 
 function EditModal({modalOpen, setModalOpen, setUserProfilePic, setUserBrandStatement, setGithubLink, setLinkedinLink, setPortfolioLink,
-    userProfilePic, userBrandStatement, githubLink, linkedinLink, portfolioLink, userToken, userID
+    userProfilePic, userBrandStatement, githubLink, linkedinLink, portfolioLink, userToken, userID, profileid
 }) {
     
     const submitValue = () => {
@@ -36,7 +36,7 @@ function EditModal({modalOpen, setModalOpen, setUserProfilePic, setUserBrandStat
                     }
                 });
             } else {
-                main_url.put('/api/profiles/1', userProfile ,{
+                main_url.put(`/api/profiles/${profileid}/`, userProfile ,{
                     headers: {
                         Authorization: `Token ${userToken}`,
                     }

@@ -19,7 +19,7 @@ function Profile() {
     const [coverLink, setCoverLink] = useState ("")
     const [modalOpen, setModalOpen] = useState(false)
     const [userID, setUserID] = useState('')
-
+    const [profileid, setProfileID] = useState()
     const handleEditButton = ()=>{
         let editButton = document.querySelector(".editbutton")
         editButton.classList.toggle("hidden")
@@ -48,6 +48,8 @@ function Profile() {
                 setLinkedinLink(res.data[0].linkedin);
                 setPortfolioLink(res.data[0].portfolio);
                 setUserName(res.data[0].user_name)
+                setProfileID(res.data[0].id)
+                console.log(res.data[0])
                 if (res.data[0].resume){
                     setResumeLink(res.data[0].resume.substr(50));
                 }
@@ -74,6 +76,7 @@ function Profile() {
         <div className='profile-content'>
             <EditModal setModalOpen={setModalOpen} modalOpen={modalOpen} 
             setUserProfilePic = {setUserProfilePic}
+            profileid = {profileid}
             setUserBrandStatement = {setUserBrandStatement}
             setGithubLink = {setGithubLink}
             setLinkedinLink = {setLinkedinLink}
@@ -102,6 +105,7 @@ function Profile() {
                     <h5><div className='icon'><img src={githubicon} alt=""/></div><a href={githubLink}>{githubLink.slice(7,)}</a></h5>
                     <h5><div className='icon'> <img src={linkedinicon} alt=""/> </div><a href={linkedinLink}>{linkedinLink.slice(7,)}</a></h5>
                     <h5><div className='icon'><img src={portfolioicon} alt=""/></div><a href={portfolioLink}>{portfolioLink}</a></h5>
+
                 </div>
             </div>
             <div className="document-wrapper">
