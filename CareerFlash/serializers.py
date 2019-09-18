@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import User
 from CareerFlash.models import *
 
 class UserSerializer(serializers.ModelSerializer):
@@ -16,8 +16,8 @@ class UserSerializer(serializers.ModelSerializer):
 class GroupSerializer(serializers.ModelSerializer):
     # users = UserSerializer(many=True)
     class Meta:
-        model = Group
-        fields = ('id', 'name')
+        model = Orginization
+        fields = ('id', 'name', 'group_photo', 'members', 'owner')
 
 class ApplicationSerailizer(serializers.ModelSerializer):
     class Meta:

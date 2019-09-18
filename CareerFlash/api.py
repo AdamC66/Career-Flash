@@ -25,25 +25,37 @@ class UserViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
 class GroupViewSet(viewsets.ModelViewSet):
-    queryset = Group.objects.all()
+    queryset = Orginization.objects.all()
     serializer_class = GroupSerializer
     permission_classes = [permissions.IsAuthenticated]
     def get_queryset(self):
-        return self.request.user.groups.all()
+        if len(self.self.request.user.owned_orgs.all()) > 0:
+            return self.request.user.owned_orgs.all()
+        else:
+            return Response({"detail": "No Owned Orginizations Found."}, status=status.HTTP_404_NOT_FOUND)
+    def list(self, request):
+        queryset = Orginization.objects.filter(owner=request.user)
+        serializer = GroupSerializer(queryset, many=True)
+        if queryset: 
+            return  Response(data=serializer.data)
+        else:
+            return Response({"detail": "No Owned Orginizations Found."}, status=status.HTTP_404_NOT_FOUND)
 
 class GroupUserViewSet(viewsets.ModelViewSet):
-    queryset = Group.objects.all()
+    queryset = Orginization.objects.all()
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def list(self, request):
-        group_id= request.GET.get('group_id', None)
+        group_id = request.GET.get('group_id', None)
         queryset = User.objects.all()
         if group_id:
-            queryset = queryset.filter(groups__id=group_id)
+            queryset = queryset.filter(orginization=group_id)
         serializer = UserSerializer(queryset, many=True)
-        return Response(data=serializer.data)
-
+        if queryset: 
+            return  Response(data=serializer.data)
+        else:
+            return Response({"detail": "No Users Found."}, status=status.HTTP_404_NOT_FOUND)
 
 class ApplicationViewSet(viewsets.ModelViewSet):
     serializer_class = ApplicationSerailizer
