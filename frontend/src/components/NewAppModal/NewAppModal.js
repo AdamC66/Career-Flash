@@ -62,7 +62,7 @@ return(
         contentLabel="Example Modal"
         className='newAppModal'
         >
-    <div className="card text-white bg-dark mb-3">    
+    <div className="card text-white bg-dark mb-3"  style={{overflowY: 'scroll', height: '800px'}}>    
     <button className='modal-close info' onClick={()=>setModalOpen(false)}>X</button>
     <div class="card-header">
     <h1 className="card-title">New Application</h1>

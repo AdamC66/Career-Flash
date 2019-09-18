@@ -1,15 +1,34 @@
 import React, { useState, useEffect } from 'react'
 import './userCard.css'
+import main_url from '../../config.js'
 
-
-function UserCard({ user, getProfile }) {
-    let profile = {}
+function UserCard({ user }) {
+    let [profile, setProfile] = useState({})
     
     useEffect(() => {
-        profile = getProfile(user.id)
-    })
+        getProfile(user.id)
+    }, [])
     console.log("I'M USERCARD HERE's MY PROFILE", profile)
+    const getProfile = (i) =>{        
+        let userToken = window.localStorage['token']
+        console.log("USERCARD LOOKING FOR PROFILE AT", `api/profiles?user_id=${i}`)
 
+        main_url.get(`api/profiles?user_id=${i}`, {
+        headers: {
+            Authorization: `Token ${userToken}` 
+        }
+        }).then(res => {
+            if (res.data[0]){
+            console.log("USER PROFILE EXISTS FOR", user.first_name, '', user.last_name)
+            console.log('Here it is!', res.data)
+            setProfile(res.data[0])
+            }
+        }).catch(e=>{
+            console.log(e)
+            setProfile({})
+    
+        })
+        }
     const getColor = (field) =>{
         let color = 'red'
         if (profile){
