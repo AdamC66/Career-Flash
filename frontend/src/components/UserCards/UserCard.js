@@ -46,7 +46,7 @@ function UserCard({ user }) {
     return (
         <div className="card text-white bg-dark mb-3" style={{width: '95%', margin: '0 auto'}}>
             <div className="card-header">
-                <h2>{user.first_name} {user.last_name}</h2>
+                <h2><a href={`/profile?user_id=${user.id}`} style={{color: 'white'}}>{user.first_name} {user.last_name}</a></h2>
             </div>
             <div className="userData">
             <span className="submittal-status brand-statement"> Brand Statement

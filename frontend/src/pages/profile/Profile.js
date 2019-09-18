@@ -25,11 +25,17 @@ function Profile() {
         editButton.classList.toggle("hidden")
         
     }
-
+    
     const checkLogin = () => {
         const userToken = window.localStorage['token']
+        let url = '/api/profiles/'
+        let search = window.location.search;
+        if (search){
+            url = `/api/profiles${search}`
+        }
+        console.log('URL', url)
         if(userToken !== 'null'){
-            main_url.get('/api/profiles/', {
+            main_url.get(url, {
                 headers: {
                     Authorization: `Token ${userToken}` 
                 }
