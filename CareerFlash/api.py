@@ -71,6 +71,13 @@ class ProfileViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         return super(ProfileViewSet, self).get_queryset().filter(
             owner=self.request.user)
+    def list(self, request):
+        user_id= request.GET.get('user_id', None)
+        queryset = Profile.objects.all()
+        if user_id:
+            queryset = queryset.filter(owner__id=user_id)
+        serializer = ProfileSerializer(queryset, many=True)
+        return Response(data=serializer.data)
 
     # @action(detail=True, methods = ['put'], name='Update Profile')
     # def update_profile(self, request, pk = None):
