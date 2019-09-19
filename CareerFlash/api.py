@@ -8,7 +8,7 @@ from CareerFlash.models import *
 from django.db.models import Q
 from rest_framework.response import Response
 from rest_framework.decorators import action
-from rest_framework import status
+from rest_framework import status, parsers
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
@@ -82,7 +82,7 @@ class ProfileViewSet(viewsets.ModelViewSet):
     serializer_class = ProfileSerializer
     queryset = Profile.objects.all()
     permission_classes = [permissions.IsAuthenticated]
-
+    parser_classes = (parsers.MultiPartParser, parsers.FileUploadParser, )
     def get_queryset(self):
         return super(ProfileViewSet, self).get_queryset().filter(
             owner=self.request.user)
