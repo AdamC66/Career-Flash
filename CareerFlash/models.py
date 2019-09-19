@@ -45,6 +45,7 @@ class Comment_Cover_Letter(models.Model):
     message = models.TextField(validators=[MinLengthValidator(1), MaxLengthValidator(500)])
     comment_time = models.DateTimeField(auto_now_add=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments_coverletter')
+    
     # profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='comments_coverletter', null=True)
     
     def __str__(self):
