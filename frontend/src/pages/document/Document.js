@@ -45,10 +45,10 @@ export default function Document() {
             })
             .then(res => {
                 if (res.data[0].resume){
-                    setResumeLink(res.data[0].resume.substr(50));
+                    setResumeLink(res.data[0].resume.substr(16));
                 }
                 if (res.data[0].cover_letter){
-                    setCoverLink(res.data[0].cover_letter.substr(50));
+                    setCoverLink(res.data[0].cover_letter.substr(15));
                 }
                 console.log(res.data)
             });
@@ -111,7 +111,7 @@ export default function Document() {
         })
     }
 
-
+    window.addEventListener('load', checkLogin) 
 
     return (
         <div className="document-main-container">
