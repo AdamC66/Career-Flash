@@ -40,11 +40,11 @@ function Login()  {
             <h1>Login</h1>
             <form className='card bg-primary mb-3' style={{width: "80%", margin:"0 auto"}} onSubmit = {handleLogin}>
                 <br/>
-                <label htmlFor='email'><b><FontAwesomeIcon icon={faEnvelope} color="white"/>Email: </b>
+                <label htmlFor='email'><b><FontAwesomeIcon icon={faEnvelope} color="white"/> Email: </b>
                 <input type='text' className="form-control" style={{width: "60%", margin:"0 auto"}} value={email} placeholder = 'Email' name='email' onChange = {(e)=> setEmail(e.target.value)}required/>
                 </label>
                 <br/>
-                <label htmlFor='password'><b><FontAwesomeIcon icon={faKey} color="white"/>Password: </b></label>
+                <label htmlFor='password'><b><FontAwesomeIcon icon={faKey} color="white"/> Password: </b></label>
                 <input type='password' className="form-control" style={{width: "60%", margin:"0 auto"}} value={password} placeholder = 'Password' name='password' onChange = {(e)=> setPassword(e.target.value)} required/>
                 <br/>
                 <input className="btn btn-secondary" style={{width: "60%", margin:"20px auto"}}  type='submit' value='Login'/>

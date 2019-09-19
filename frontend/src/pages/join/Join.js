@@ -55,6 +55,7 @@ function Join() {
                     ).then(res => {
                         const profileCreate = {
                             owner: res.data[0].id,
+                            profile_picture: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png',
                             github: 'https://github.com',
                             linkedin: 'https://linked.com',
                             portfolio: 'https://PortfolioLink.com'
@@ -107,7 +108,7 @@ function Join() {
                 <input type='text' value={last_name} placeholder = 'Last Name' name='last_name' onChange = {(e)=> setLastName(e.target.value)}required/>
                 </label>
                 <br/><br/>
-                <label htmlFor='password'><b><FontAwesomeIcon icon={faKey} color="white"/>Password:  </b>
+                <label htmlFor='password'><b><FontAwesomeIcon icon={faKey} color="white"/> Password:  </b>
                 <input type='password' value={password} placeholder = 'Password' name='password' onChange = {(e)=> setPassword(e.target.value)}required/>
                 </label>
                 <br/><br/>

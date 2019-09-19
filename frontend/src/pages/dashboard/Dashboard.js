@@ -6,7 +6,7 @@ import main_url from '../../config';
 import NewGroupModal from '../../components/NewGroupModal/NewGroupModal'
 
 function Dashboard() {
-    const userProfilePic = "https://i.ytimg.com/vi/AHzw4QvE2Do/maxresdefault.jpg"
+    const userProfilePic = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
     const [groups, setGroups] = useState([])
     const [users, setUsers] = useState([])
     const [activeGroup, setActiveGroup] = useState(1)

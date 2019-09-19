@@ -31,12 +31,9 @@ function Profile() {
         const userToken = window.localStorage['token']
         let url = '/api/profiles'
         let search = window.location.search;
-        console.log('__Logging Search', search)
         if (search){
             url = `/api/profiles${search}`
-            console.log("__LOGGING URL", url)
         }
-        console.log('URL', url)
         if(userToken !== 'null'){
             Axios.get(`http://localhost:3000${url}`, {
                 headers: {
@@ -60,7 +57,6 @@ function Profile() {
                 if (res.data[0].cover_letter){
                     setCoverLink(res.data[0].cover_letter.substr(15));
                 }
-                console.log(res.data)
             }
             });
             main_url.get('/api/users', {

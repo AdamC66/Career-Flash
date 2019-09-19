@@ -9,8 +9,9 @@
     margin-top:10px;
 }
 .profile-pic-wrapper img{
-    width: 100%;
-    height: 100%;
+    margin-left: 17px;
+    width: 80%;
+    height: 80%;
 }
 
 section{
