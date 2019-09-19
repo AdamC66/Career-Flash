@@ -28,8 +28,8 @@ function Splash() {
     const checkLogin = () => {
         if (window.localStorage['token'] !== 'null'){
             setLoggedInLinks(
-                <Link to = '/dashboard'>
-                    <button className="btn btn-primary" value="join" style={{marginRight: '5px'}}>Dashboard</button>
+                <Link to = '/Tracker'>
+                    <button className="btn btn-primary" value="join" style={{marginRight: '5px'}}>Tracker</button>
                 </Link>
             )
         } 
