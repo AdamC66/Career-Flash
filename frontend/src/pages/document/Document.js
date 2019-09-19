@@ -3,6 +3,7 @@ import MyDocument from '../../components/MyDocument/MyDocument';
 import CommentsBar from '../../components/CommentsBar/CommentsBar';
 import './document.css'
 import main_url from '../../config';
+import Axios from 'axios';
 export default function Document() {
     const [comments, setComments] = useState([
         {
@@ -44,7 +45,7 @@ export default function Document() {
             url = `/api/profiles${search}`
         }
         if(userToken !== 'null'){
-            main_url.get(url, {
+            Axios.get(`http://localhost:8000/api/comments${search}`, {
                 headers: {
                     Authorization: `Token ${userToken}` 
                 }

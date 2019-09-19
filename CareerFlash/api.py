@@ -121,7 +121,7 @@ class CommentResumeViewSet(viewsets.ModelViewSet):
         serializer.save(owner=self.request.user, profile=self.request.user.profiles_user)
 
     def list(self, request):
-        profile_id= request.GET.get('profile_id', None)
+        profile_id= request.GET.get('user_id', None)
         queryset = Comment_Resume.objects.filter(profile=profile_id)
 
         if profile_id:
