@@ -53,14 +53,14 @@
 
 .modal-close{
     position: absolute;
-    top:-25px;
-    right: -25px;
-    width: 50px;
-    height: 50px;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     background-color: red;
     color: white;
-    font-size: 40px;
+    font-size: 22px;
 }
 
 .hidden{

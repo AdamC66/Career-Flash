@@ -57,7 +57,7 @@ function Join() {
                             owner: res.data[0].id,
                             github: 'https://github.com',
                             linkedin: 'https://linked.com',
-                            portfolio: 'https://PorfolioLink.com'
+                            portfolio: 'https://PortfolioLink.com'
                         }
                         main_url.post('/api/profiles/', profileCreate, {
                             headers: {
