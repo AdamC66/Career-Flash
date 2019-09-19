@@ -56,15 +56,15 @@ function Contact()  {
                 <h1>Contact Us</h1>
                 <form className='card bg-primary mb-3' style={{width: "80%", margin:"0 auto"}} onSubmit = {handleSubmit}>
                     <br/>
-                    <label htmlFor='name'><b><FontAwesomeIcon icon={faEnvelope} color="white"/>Name: </b>
+                    <label htmlFor='name'><b><FontAwesomeIcon icon={faEnvelope} color="white"/> Name: </b>
                     <input type='text' className="form-control" style={{width: "60%", margin:"0 auto"}} value={name} placeholder = 'Name' name='name' onChange = {(e)=> setName(e.target.value)}required/>
                     </label>
                     <br/>
-                    <label htmlFor='email'><b><FontAwesomeIcon icon={faEnvelope} color="white"/>Email: </b>
+                    <label htmlFor='email'><b><FontAwesomeIcon icon={faEnvelope} color="white"/> Email: </b>
                     <input type='text' className="form-control" style={{width: "60%", margin:"0 auto"}} value={email} placeholder = 'Email' name='email' onChange = {(e)=> setEmail(e.target.value)}required/>
                     </label>
                     <br/>
-                    <label htmlFor='message'><b><FontAwesomeIcon icon={faEnvelope} color="white"/>Message: </b>
+                    <label htmlFor='message'><b><FontAwesomeIcon icon={faEnvelope} color="white"/> Message: </b>
                     <textarea name='message' className="form-control" style={{width: "60%", margin:"0 auto"}} value={message} placeholder="Message" onChange={e => setMessage(e.target.value)}> </textarea>
                     <br/>
                     <input className="btn btn-secondary" style={{width: "60%", margin:"20px auto"}}  type='submit' value='Submit'/>

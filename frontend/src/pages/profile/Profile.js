@@ -10,12 +10,12 @@ import portfolioicon from './portfolio.png'
 import Axios from 'axios'
 
 function Profile() {
-    const [userName, setUserName] = useState('John Cena')
+    const [userName, setUserName] = useState('User Profile')
     const [userProfilePic, setUserProfilePic] = useState('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png')
-    const [userBrandStatement, setUserBrandStatement] = useState("You cant see me")
+    const [userBrandStatement, setUserBrandStatement] = useState("Brand statement goes here")
     const [githubLink, setGithubLink] = useState("https://github.com")
     const [linkedinLink, setLinkedinLink] = useState("https://linkedin.com")
-    const [portfolioLink, setPortfolioLink] = useState("1234567Portfolio Link")
+    const [portfolioLink, setPortfolioLink] = useState("Portfolio Link")
     const [resumeLink, setResumeLink] = useState ("")
     const [coverLink, setCoverLink] = useState ("")
     const [modalOpen, setModalOpen] = useState(false)
@@ -52,12 +52,13 @@ function Profile() {
                 setPortfolioLink(res.data[0].portfolio);
                 setUserName(res.data[0].user_name)
                 setProfileID(res.data[0].id)
+                setUserProfilePic(res.data[0].profile_picture)
                 console.log(res.data[0])
                 if (res.data[0].resume){
-                    setResumeLink(res.data[0].resume.substr(50));
+                    setResumeLink(res.data[0].resume.substr(16));
                 }
                 if (res.data[0].cover_letter){
-                    setCoverLink(res.data[0].cover_letter.substr(50));
+                    setCoverLink(res.data[0].cover_letter.substr(15));
                 }
                 console.log(res.data)
             }
@@ -93,7 +94,7 @@ function Profile() {
             userID = {userID}
             />
 
-            <div className="card text-white bg-dark mb-3" id="profile-header" onMouseEnter={()=>handleEditButton()} onMouseLeave={()=>handleEditButton()}>
+            <div className="card text-white bg-dark mb-3" id="profile-header"  onMouseEnter={()=>handleEditButton()} onMouseLeave={()=>handleEditButton()} >
                 <div id="profile-name"><h2 className="card-header" >{userName}'s Profile</h2></div>
                 <div className="card-body" id="profile-card1">
                     <div className='profile-pic-wrapper'>
