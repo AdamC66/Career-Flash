@@ -34,10 +34,12 @@ class CommentResumeSerializer(serializers.ModelSerializer):
     # first_name = serializers.StringRelatedField(source='user', read_only=True)
     class Meta:
         model = Comment_Resume
-        fields = ('id', 'message', 'comment_time', 'first_name', 'owner', 'username')
+        fields = ('id', 'message', 'comment_time', 'first_name', 'username', 'profile')
     
+
     first_name = serializers.SerializerMethodField('get_first_name')
     username = serializers.SerializerMethodField('get_username')
+
     def get_first_name(self, obj):
         return obj.owner.first_name
 
