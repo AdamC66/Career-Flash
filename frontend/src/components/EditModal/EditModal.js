@@ -22,8 +22,6 @@ function EditModal({modalOpen, setModalOpen, setUserProfilePic, setUserBrandStat
             github: githubLink,
             linkedin: linkedinLink,
             portfolio: portfolioLink,
-            resume: resume,
-            cover_letter: coverletter
         }
         console.log(userProfile.profile_picture)
         main_url.get('/api/profiles/', {
@@ -70,9 +68,9 @@ function EditModal({modalOpen, setModalOpen, setUserProfilePic, setUserBrandStat
             <h4>Brand Statement</h4>
             <textarea className='brand-statement-area' id="test" value={userBrandStatement} name="brandStatement" onChange={(e)=>setUserBrandStatement(e.target.value)}></textarea>
             <h4>Resume</h4>
-            <input type='file' value='' onChange={(e)=>setResume(e.target.files[0])}/>
+            <input type='file' value={resume} onChange={(e)=>setResume(e.target.files[0])}/>
             <h4>Cover Letter</h4>
-            <input type='file' value='' onChange={(e)=>setCoverletter(e.target.files[0])}/>/>
+            <input type='file' value={coverletter} onChange={(e)=>setCoverletter(e.target.files[0])}/>/>
             <h4>GitHub</h4>
             <input type='text' value={githubLink} name="githubLink" onChange={(e)=>setGithubLink(e.target.value)}/>
             <h4>LinkedIn</h4>

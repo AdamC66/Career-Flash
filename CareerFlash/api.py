@@ -82,7 +82,6 @@ class ProfileViewSet(viewsets.ModelViewSet):
     serializer_class = ProfileSerializer
     queryset = Profile.objects.all()
     permission_classes = [permissions.IsAuthenticated]
-    parser_classes = (parsers.MultiPartParser, parsers.FileUploadParser, )
     def get_queryset(self):
         return super(ProfileViewSet, self).get_queryset().filter(
             owner=self.request.user)
