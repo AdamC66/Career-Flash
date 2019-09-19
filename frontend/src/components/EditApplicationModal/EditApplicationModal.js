@@ -47,7 +47,7 @@ function EditApplicationModal({application,index, handleUpdateApp, setEditModalO
             isOpen={editModalOpen}
             contentLabel="Edit Application Modal"
             className='newAppModal'>
-        <div className="card text-white bg-dark mb-3">    
+        <div className="card text-white bg-dark mb-3" style={{overflowY: 'scroll', height: '600px', width: '500px'}}>    
         <button className='modal-close info' onClick={()=>setEditModalOpen(false)}>X</button>
         <div class="card-header">
         <h1 className="card-title">Edit Application</h1>

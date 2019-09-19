@@ -10,9 +10,9 @@ import portfolioicon from './portfolio.png'
 import Axios from 'axios'
 
 function Profile() {
-    const [userName, setUserName] = useState('John Cena')
+    const [userName, setUserName] = useState('User Profile')
     const [userProfilePic, setUserProfilePic] = useState('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png')
-    const [userBrandStatement, setUserBrandStatement] = useState("You cant see me")
+    const [userBrandStatement, setUserBrandStatement] = useState("Brand statement goes here")
     const [githubLink, setGithubLink] = useState("https://github.com")
     const [linkedinLink, setLinkedinLink] = useState("https://linkedin.com")
     const [portfolioLink, setPortfolioLink] = useState("Portfolio Link")
@@ -94,7 +94,7 @@ function Profile() {
             userID = {userID}
             />
 
-            <div className="card text-white bg-dark mb-3" id="profile-header" onMouseEnter={()=>handleEditButton()} onMouseLeave={()=>handleEditButton()}>
+            <div className="card text-white bg-dark mb-3" id="profile-header"  onMouseEnter={()=>handleEditButton()} onMouseLeave={()=>handleEditButton()} >
                 <div id="profile-name"><h2 className="card-header" >{userName}'s Profile</h2></div>
                 <div className="card-body" id="profile-card1">
                     <div className='profile-pic-wrapper'>

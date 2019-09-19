@@ -51,7 +51,7 @@ function EditModal({modalOpen, setModalOpen, setUserProfilePic, setUserBrandStat
         isOpen={modalOpen}
         contentLabel="Example Modal"
         className='editmodal'>
-        <div className="card text-white bg-dark mb-3">
+        <div className="card text-white bg-dark mb-3" style={{overflowY: 'scroll', height: '600px', width: '500px'}}>
             <button className='modal-close info' onClick={()=>setModalOpen(false)}>X</button>  
             <div className="card-header">
             <h1 className="card-title">Edit Profile</h1>
