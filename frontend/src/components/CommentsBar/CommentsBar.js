@@ -3,7 +3,7 @@ import CommentItem from './CommentItem'
 
 
 function CommentsBar({ comments, handleSubmit }) {
-    const [newComment, setNewComment] = useState({message: "", user:"owner", comment_time:'test'})
+    const [newComment, setNewComment] = useState({message: "", 'owner':1})
 
     const handleSend = () =>{
 
@@ -11,7 +11,7 @@ function CommentsBar({ comments, handleSubmit }) {
         handleSubmit(newComment)
     }
 
-    const commentElements = comments.map((comment, i)=><CommentItem key={i} id={i} message={comment.message} comment_time={comment.comment_time} user={comment.user} profile={comment.profile}/>)
+    const commentElements = comments.map((comment, i)=><CommentItem key={i} id={i} foobar={comment.first_name} message={comment.message} comment_time={comment.comment_time} profile={comment.profile}/>)
 
     return (
         <>

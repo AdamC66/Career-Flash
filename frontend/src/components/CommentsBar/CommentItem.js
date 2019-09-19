@@ -1,12 +1,12 @@
 import React from 'react'
 
-function CommentItem({message, comment_time, user, profile}) {
+function CommentItem({message, comment_time, foobar, profile}) {
 
     
     return (
-        <div className={ user === 'owner' ? 'owner comment-bubble' : 'admin comment-bubble' } >
+        <div className={ foobar === 'owner' ? 'owner comment-bubble' : 'admin comment-bubble' } >
             <p className="comment-message"><strong>{ message }</strong></p>
-            <p className="comment-time"><small>{ user } on { comment_time }</small></p>
+            <p className="comment-time"><small>{ foobar } on { comment_time }</small></p>
         </div>
     )
 }

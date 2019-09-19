@@ -3,6 +3,7 @@ import MyDocument from '../../components/MyDocument/MyDocument';
 import CommentsBar from '../../components/CommentsBar/CommentsBar';
 import './document.css'
 import main_url from '../../config';
+import Axios from 'axios';
 export default function Document() {
     const [comments, setComments] = useState([
         {
@@ -22,23 +23,29 @@ export default function Document() {
     
     useEffect(() => {
         let userToken = window.localStorage['token']
-        main_url.get('/api/commentsresume/',{
-            headers: {
-                Authorization: `Token ${userToken}` 
-            }})
-          .then((response) => {
-              setComments(response.data)
-            }).catch((e) =>{
-                console.log("Error:", e)
-                setComments([])
+        getComments('resume')
+        // main_url.get('/api/commentsresume/',{
+        //     headers: {
+        //         Authorization: `Token ${userToken}` 
+        //     }})
+        //   .then((response) => {
+        //       setComments(response.data)
+        //     }).catch((e) =>{
+        //         console.log("Error:", e)
+        //         setComments([])
 
-            }) 
+        //     }) 
     }, [])
             
     const checkLogin = () => {
         const userToken = window.localStorage['token']
+        let url = '/api/profiles'
+        let search = window.location.search;
+        if (search){
+            url = `/api/profiles${search}`
+        }
         if(userToken !== 'null'){
-            main_url.get('/api/profiles/', {
+            Axios.get(`http://localhost:8000/api/comments${search}`, {
                 headers: {
                     Authorization: `Token ${userToken}` 
                 }
@@ -62,11 +69,16 @@ export default function Document() {
         }else{
             url = '/api/commentscoverletter/'
         }
+        let search = window.location.search;
+        if (search){
+            url += search
+        }
         main_url.get(url ,{
             headers: {
                 Authorization: `Token ${userToken}` 
             }}).then((response) => {
               setComments(response.data)
+              console.log('Comments',response.data)
             }).catch((e) =>{
                 setComments([])
             }) 

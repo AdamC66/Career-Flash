@@ -103,19 +103,37 @@ class ProfileViewSet(viewsets.ModelViewSet):
 class CommentResumeViewSet(viewsets.ModelViewSet):
     serializer_class = CommentResumeSerializer
     queryset = Comment_Resume.objects.all()
-
+    owner = serializers.PrimaryKeyRelatedField(
+        read_only=True, 
+        default=serializers.CurrentUserDefault()
+    )
     permission_classes = [permissions.IsAuthenticated]
 
     def get_permissions(self):
         if self.request.method == 'POST':
-            self.permission_classes = (permissions.IsAuthenticated)
+            self.permission_classes = (permissions.IsAuthenticated,)
         return super(CommentResumeViewSet, self).get_permissions()
 
     def get_queryset(self):
         return self.request.user.comments_resume.all()
 
     def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+        serializer.save(owner=self.request.user, profile=self.request.user.profiles_user)
+
+    def list(self, request):
+        profile_id= request.GET.get('user_id', None)
+        queryset = Comment_Resume.objects.filter(profile=profile_id)
+
+        if profile_id:
+            queryset = queryset.filter(profile__id=profile_id)
+            serializer = CommentResumeSerializer(queryset, many=True)
+            return Response(data=serializer.data)
+        else:
+            self.request.user.comments_resume.all()
+            serializer=CommentResumeSerializer(queryset, many=True)
+            return Response(data=serializer.data,status=status.HTTP_200_OK)
+
+
 
 class CommentCoverLetterViewSet(viewsets.ModelViewSet):
     serializer_class = CommentCoverLetterSerializer
@@ -124,7 +142,7 @@ class CommentCoverLetterViewSet(viewsets.ModelViewSet):
 
     def get_permissions(self):
         if self.request.method == 'POST':
-            self.permission_classes = (permissions.IsAuthenticated)
+            self.permission_classes = (permissions.IsAuthenticated,)
         return super(CommentCoverLetterViewSet, self).get_permissions()
 
     def get_queryset(self):
