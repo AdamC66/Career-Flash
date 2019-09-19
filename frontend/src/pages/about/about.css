@@ -1,10 +1,12 @@
-.splashimg{
+.aboutimg{
     position: relative;
     width: 100%;
     margin-top: 0;
 }
-.splashimg img{
+.backimg{
     width:100%;
+    filter: blur(3px);
+    z-index: -1;
 }
 /* .splashimg .btn { */
     /* position: absolute;
@@ -20,17 +22,19 @@
     border-radius: 10px;
   } */
 
-.splashimg .about{
+.aboutimg .about{
     position: absolute;
     top: 30vh;
     left: 50vw; 
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     color: white;
-    background-color: rgba(100,100,100,0.5);
+    background-color: rgba(100,100,100,1.0);
     padding: 10px 100px;
     border-radius: 10px;
     margin: 40px 20px;
+    z-index: 1;
+    font-size: 1.5em;
     
   }
   h1{
